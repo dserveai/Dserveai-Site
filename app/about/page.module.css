@@ -1,0 +1,241 @@
+/* =====================================================================
+   HERO SECTION
+   ===================================================================== */
+.hero {
+  position: relative;
+  padding: 200px 0 120px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(100% 100% at 50% 0%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(80% 80% at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: white;
+  margin: 0 0 24px;
+}
+
+.heroDesc {
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* =====================================================================
+   BENTO STATS GRID
+   ===================================================================== */
+.statsSection {
+  padding: 100px 0;
+  background: var(--bg-secondary);
+  position: relative;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.statCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 32px;
+  padding: 48px;
+  text-align: center;
+  backdrop-filter: blur(20px);
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.statCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.statCard:hover {
+  transform: translateY(-8px);
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(59, 130, 246, 0.1);
+}
+
+.statCard:hover::before {
+  opacity: 1;
+}
+
+.statValue {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(3rem, 5vw, 4rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.5) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.statLabel {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+/* =====================================================================
+   OUR STORY BENTO
+   ===================================================================== */
+.storyGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.storyContent h2 {
+  font-size: 2.5rem;
+  color: white;
+  margin: 0 0 24px;
+}
+
+.storyContent p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.8;
+  margin: 0 0 24px;
+}
+
+.storyVisual {
+  position: relative;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.storyOrb {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.2), transparent 70%);
+  filter: blur(40px);
+  animation: pulse 6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+/* =====================================================================
+   OUR VALUES
+   ===================================================================== */
+.valuesSection {
+  padding: 120px 0;
+}
+
+.valuesHeader {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.valuesHeader h2 {
+  font-size: 3rem;
+  color: white;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.valueCard {
+  background: rgba(10, 15, 25, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 32px;
+  padding: 48px;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.valueCard:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.valueIcon {
+  width: 64px;
+  height: 64px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #60a5fa;
+  margin-bottom: 24px;
+}
+
+.valueCard h3 {
+  font-size: 1.5rem;
+  color: white;
+  margin: 0 0 16px;
+}
+
+.valueCard p {
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* =====================================================================
+   RESPONSIVE
+   ===================================================================== */
+@media (max-width: 1024px) {
+  .statsGrid { grid-template-columns: repeat(2, 1fr); }
+  .storyGrid { grid-template-columns: 1fr; }
+  .storyVisual { min-height: 300px; }
+  .valuesGrid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .statsGrid { grid-template-columns: 1fr; }
+  .hero { padding: 160px 0 80px; }
+  .statCard { padding: 32px; }
+}

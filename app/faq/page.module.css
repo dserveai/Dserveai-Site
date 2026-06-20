@@ -1,0 +1,116 @@
+/* =====================================================================
+   HERO SECTION
+   ===================================================================== */
+.hero {
+  position: relative;
+  padding: 180px 0 80px;
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: clamp(3rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: white;
+  margin: 0 0 24px;
+}
+
+.heroDesc {
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 600px;
+  line-height: 1.6;
+  margin: 0 auto;
+}
+
+/* =====================================================================
+   FAQ ACCORDION
+   ===================================================================== */
+.faqSection {
+  padding: 60px 0 120px;
+}
+
+.faqContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faqItem {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  backdrop-filter: blur(20px);
+}
+
+.faqItem:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.faqItem.open {
+  background: rgba(15, 20, 35, 0.6);
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), inset 0 0 20px rgba(59, 130, 246, 0.05);
+}
+
+.faqButton {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.faqIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  color: #60a5fa;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.4s;
+}
+
+.faqItem.open .faqIcon {
+  transform: rotate(45deg);
+  background: rgba(59, 130, 246, 0.2);
+  color: white;
+}
+
+.faqContent {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.faqItem.open .faqContent {
+  grid-template-rows: 1fr;
+}
+
+.faqContentInner {
+  overflow: hidden;
+  padding: 0 32px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.faqItem.open .faqContentInner {
+  padding-bottom: 32px;
+}

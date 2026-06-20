@@ -1,0 +1,221 @@
+/* ServiceVisualizer.module.css — Reprompt-style 3-panel flow */
+
+/* =========== CARD WRAPPER =========== */
+.vizCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 320px;
+}
+
+/* Top label bar */
+.vizLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.vizLabelDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 currentColor; }
+  50% { opacity: 0.6; box-shadow: 0 0 0 4px transparent; }
+}
+
+/* =========== 3-PANEL FLOW =========== */
+.threePanel {
+  display: grid;
+  grid-template-columns: 1fr 28px 1fr 28px 1fr;
+  gap: 0;
+  align-items: start;
+  flex: 1;
+}
+
+.panelArrow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 36px;
+  transition: opacity 0.5s ease;
+}
+
+/* Each panel */
+.panel {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+  min-height: 200px;
+  position: relative;
+  transition: border-color 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
+}
+
+.panelVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.panelHidden {
+  opacity: 0.2;
+  transform: translateY(4px);
+}
+
+.panelDot {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  transition: background 0.4s ease;
+}
+
+.panelBody {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.panelTitle {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* =========== MOCK FIELDS (input panel) =========== */
+.mockField {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mockFieldLabel {
+  font-size: 0.66rem;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.mockFieldVal {
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: right;
+}
+
+/* =========== CHECK ROWS (process panel) =========== */
+.checkRow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.7);
+  animation: checkSlide 0.35s ease-out both;
+  padding: 3px 0;
+}
+
+@keyframes checkSlide {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.checkDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.checkLabel {
+  flex: 1;
+  font-size: 0.67rem;
+}
+
+.checkBadge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid;
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+}
+
+/* =========== OUTPUT ROWS (result panel) =========== */
+.outputRow {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  animation: resultIn 0.35s ease-out both;
+}
+
+@keyframes resultIn {
+  from { opacity: 0; transform: translateX(6px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.outputLabel {
+  flex: 1;
+  font-size: 0.67rem;
+  color: rgba(255, 255, 255, 0.65);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.outputIcon {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  width: 14px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.outputVal {
+  font-size: 0.67rem;
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.outputSummary {
+  margin-top: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid;
+  font-size: 0.67rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  animation: checkSlide 0.4s ease-out;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}

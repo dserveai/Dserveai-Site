@@ -1,0 +1,117 @@
+.container {
+  width: 100%;
+  position: relative;
+  min-height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+  margin: 60px 0;
+}
+
+/* =========================================
+   CENTRAL WARP TUNNEL ENGINE
+========================================= */
+.centralMap {
+  position: absolute;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 500px; height: 500px; border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: radial-gradient(circle at center, color-mix(in srgb, var(--c) 15%, transparent) 0%, transparent 70%);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1;
+}
+
+.mapCore {
+  width: 280px; height: 280px; border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  position: relative; display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  perspective: 600px;
+}
+
+/* Tunnel Rings */
+.tunnelRing {
+  position: absolute; top: 50%; left: 50%;
+  border-radius: 50%; border: 2px solid rgba(255,255,255,0.1);
+  transform: translate(-50%, -50%) translateZ(-500px);
+  animation: warpTunnel 4s infinite linear;
+}
+.tunnelRing:nth-child(1) { width: 50px; height: 50px; animation-delay: 0s; }
+.tunnelRing:nth-child(2) { width: 100px; height: 100px; animation-delay: -1s; }
+.tunnelRing:nth-child(3) { width: 150px; height: 150px; animation-delay: -2s; }
+.tunnelRing:nth-child(4) { width: 200px; height: 200px; animation-delay: -3s; }
+
+@keyframes warpTunnel {
+  0% { transform: translate(-50%, -50%) translateZ(-500px); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translate(-50%, -50%) translateZ(200px); opacity: 0; }
+}
+
+/* Center Speed Core */
+.speedCore {
+  width: 60px; height: 60px;
+  background: var(--c);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 20; color: #000;
+  box-shadow: 0 0 40px var(--c);
+  transition: all 0.3s ease;
+}
+
+/* Flying Data Packets */
+.dataPacket {
+  position: absolute; top: 50%; left: 50%;
+  width: 24px; height: 24px; background: rgba(255,255,255,0.1); backdrop-filter: blur(4px);
+  border: 1px solid var(--c); border-radius: 4px;
+  display: flex; align-items: center; justify-content: center; color: var(--c);
+  transform: translate(-50%, -50%) scale(0); opacity: 0;
+  z-index: 25;
+}
+
+/* HOVER MODES */
+
+/* Mode 1 & 2: Accelerating */
+.mode-0 .tunnelRing, .mode-1 .tunnelRing { animation-duration: 1.5s; border-color: rgba(255,255,255,0.3); }
+.mode-0 .speedCore, .mode-1 .speedCore { transform: scale(1.2); box-shadow: 0 0 60px var(--c), inset 0 0 20px #fff; }
+
+/* Mode 3 & 4: Hyper Speed Delivery (Shooting Packets) */
+.mode-2 .tunnelRing, .mode-3 .tunnelRing { animation-duration: 0.5s; border-color: var(--c); box-shadow: inset 0 0 20px var(--c); }
+.mode-2 .speedCore, .mode-3 .speedCore { transform: scale(1.5); background: #fff; box-shadow: 0 0 100px var(--c); }
+.mode-2 .dataPacket, .mode-3 .dataPacket { animation: shootPacket 0.6s infinite ease-in; }
+.mode-2 .p1, .mode-3 .p1 { animation-delay: 0s; }
+.mode-2 .p2, .mode-3 .p2 { animation-delay: 0.2s; }
+.mode-2 .p3, .mode-3 .p3 { animation-delay: 0.4s; }
+
+@keyframes shootPacket {
+  0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+  100% { transform: translate(calc(-50% + (var(--tx, 1) * 200px)), calc(-50% + (var(--ty, 1) * 200px))) scale(2); opacity: 0; }
+}
+.p1 { --tx: 1; --ty: -1; }
+.p2 { --tx: -1; --ty: 1; }
+.p3 { --tx: 1; --ty: 1; }
+
+
+/* =========================================
+   STATIC SVG CONNECTOR LINES & CARDS
+========================================= */
+.svgLayer { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
+.connectorLine { fill: none; stroke: rgba(255,255,255,0.1); stroke-width: 2; stroke-dasharray: 6 6; transition: all 0.5s; }
+.connectorLineActive { stroke: var(--c); stroke-width: 3; stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawLine 1s forwards; filter: drop-shadow(0 0 8px var(--c)); }
+@keyframes drawLine { to { stroke-dashoffset: 0; } }
+
+.cardsWrapper { position: relative; z-index: 10; width: 100%; max-width: 1200px; display: flex; justify-content: space-between; align-items: stretch; }
+.col { display: flex; flex-direction: column; gap: 140px; width: 400px; }
+.card { background: rgba(10, 15, 25, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; position: relative; transition: all 0.4s; cursor: pointer; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+.card:hover { transform: translateY(-8px); background: rgba(15, 20, 35, 0.85); border-color: color-mix(in srgb, var(--c) 50%, transparent); box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 30px color-mix(in srgb, var(--c) 15%, transparent); }
+.cardConnectionPoint { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.2); top: 50%; transform: translateY(-50%); transition: all 0.4s; }
+.col:first-child .cardConnectionPoint { right: -6px; }
+.col:last-child .cardConnectionPoint { left: -6px; }
+.card:hover .cardConnectionPoint { background: var(--c); box-shadow: 0 0 15px var(--c); }
+.stepNum { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; font-weight: 800; color: var(--c); margin-bottom: 12px; }
+.stepTitle { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; color: white; margin-bottom: 12px; line-height: 1.2; letter-spacing: -0.02em; }
+.stepDesc { font-size: 1rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 16px; line-height: 1.6; }
+.stepDetail { font-size: 0.9rem; color: rgba(255, 255, 255, 0.5); line-height: 1.6; margin-bottom: 24px; }
+.stepTags { display: flex; flex-wrap: wrap; gap: 8px; }
+.stepTag { font-size: 0.75rem; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); font-weight: 600; }
+@media (max-width: 1024px) { .cardsWrapper { flex-direction: column; align-items: center; gap: 40px; } .col { width: 100%; gap: 40px; } .centralMap, .svgLayer { display: none; } }

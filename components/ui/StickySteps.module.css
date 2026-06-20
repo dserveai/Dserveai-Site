@@ -1,0 +1,185 @@
+.stickySection {
+  padding: 100px 0 0 0;
+  position: relative;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.stickyHeader {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 80px;
+}
+
+.codeLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--c);
+  margin-bottom: 24px;
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 100px;
+  background: color-mix(in srgb, var(--c) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--c) 20%, transparent);
+}
+
+.stickyTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: white;
+  margin-bottom: 24px;
+  letter-spacing: -0.03em;
+}
+
+.stickySubtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+/* Split Layout Container */
+.stickyBody {
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+  position: relative;
+}
+
+/* LEFT SIDE: Sticky Massive Monitor */
+.stickyLeft {
+  flex: 1;
+  position: sticky;
+  top: 140px;
+  height: 60vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 32px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.6), inset 0 0 40px rgba(255,255,255,0.02);
+  overflow: hidden;
+}
+
+/* To ensure the ServiceLiveDashboard takes up the full massive container */
+.navDashboardWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Override the default 280px height of the dashboard wrapper to be full height */
+.navDashboardWrapper > div {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 0 !important;
+  border: none !important;
+  margin: 0 !important;
+}
+
+
+/* RIGHT SIDE: Scrolling Steps */
+.stickyRight {
+  flex: 1;
+  padding-bottom: 30vh;
+  padding-top: 10vh;
+}
+
+.scrollStep {
+  margin-bottom: 120px;
+  opacity: 0.2;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.scrollStep:last-child {
+  margin-bottom: 0;
+}
+
+.scrollStepActive {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stepNum {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  color: var(--c);
+  margin-bottom: 20px;
+  font-weight: 800;
+  background: color-mix(in srgb, var(--c) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--c) 30%, transparent);
+  display: inline-flex;
+  padding: 8px 16px;
+  border-radius: 12px;
+}
+
+.stepTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 24px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.stepDesc {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.stepDetail {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.stepTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.stepTag {
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.6);
+  font-weight: 600;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .stickyBody { 
+    flex-direction: column; 
+    gap: 40px; 
+  }
+  .stickyLeft { 
+    position: relative; 
+    top: 0; 
+    width: 100%; 
+    height: 400px; 
+  }
+  .stickyRight {
+    padding-top: 40px;
+    padding-bottom: 80px;
+  }
+  .scrollStep {
+    opacity: 1; /* Keep fully visible on mobile since there is no sticky context */
+    transform: none;
+    margin-bottom: 80px;
+  }
+}

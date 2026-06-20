@@ -1,0 +1,326 @@
+/* Service detail page — combined Reprompt + Deccan aesthetic */
+
+/* ---- HERO ---- */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 80px;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 65% at 75% 45%, var(--svc-glow, rgba(59,130,246,0.08)) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 15% 75%, rgba(139,92,246,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.heroGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+  padding-top: 48px;
+  padding-bottom: 80px;
+  width: 100%;
+}
+
+.heroLeft {}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  margin-bottom: 32px;
+  transition: color 0.3s;
+  letter-spacing: 0.02em;
+}
+.backLink:hover { color: rgba(255,255,255,0.75); }
+
+.heroIconRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.heroIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  flex-shrink: 0;
+}
+
+.heroCategoryLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 100px;
+  border: 1px solid;
+}
+
+.heroTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.2rem, 3.5vw, 3.6rem);
+  font-weight: 800;
+  color: white;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  margin-bottom: 18px;
+  animation: slideUp 0.7s ease-out 0.1s both;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.heroDesc {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.52);
+  line-height: 1.75;
+  max-width: 460px;
+  margin-bottom: 32px;
+  animation: slideUp 0.7s ease-out 0.2s both;
+}
+
+.heroCtas {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  animation: slideUp 0.7s ease-out 0.3s both;
+}
+
+.heroRight {
+  animation: slideUp 0.7s ease-out 0.15s both;
+  position: relative;
+  z-index: 10;
+}
+
+/* ---- PROOF NUMBERS ---- */
+.proofSection {
+  padding: 0 0 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.proofGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  divide-x: rgba(255,255,255,0.05);
+}
+
+.proofCard {
+  padding: 48px 40px;
+  border-right: 1px solid rgba(255,255,255,0.05);
+  transition: background 0.3s ease;
+}
+.proofCard:last-child { border-right: none; }
+.proofCard:hover { background: rgba(255,255,255,0.02); }
+
+.proofNum {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff 20%, var(--svc-color, #3b82f6));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.04em;
+  margin-bottom: 8px;
+}
+
+.proofLabel {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.5;
+}
+
+/* ---- OVERVIEW SECTION ---- */
+.overviewSection {
+  padding: 100px 0;
+}
+
+.overviewGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.codePrefix {
+  display: inline-block;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  margin-bottom: 14px;
+}
+
+.overviewTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+}
+
+.overviewBody {
+  font-size: 1.02rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.8;
+}
+
+.overviewRight {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.capabilitiesBox,
+.formatsBox {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.capTitle {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 14px;
+}
+
+.capItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.65);
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.capItem:last-child { border-bottom: none; }
+
+.capDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.formatTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.formatTag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: monospace;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.5);
+}
+
+/* ---- HOW IT WORKS SECTION ---- */
+.howSection {
+  padding: 0 0 40px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+/* ---- BOTTOM CTA STRIP ---- */
+.ctaStrip {
+  padding: 80px 0 100px;
+}
+
+.ctaStripInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  padding: 52px 60px;
+  border-radius: 28px;
+  border: 1px solid;
+}
+
+.ctaStripLabel {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+
+.ctaStripTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.ctaStripDesc {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.6;
+  max-width: 480px;
+}
+
+.ctaStripActions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-shrink: 0;
+  min-width: 200px;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 1100px) {
+  .heroInner { grid-template-columns: 1fr; gap: 80px; }
+  .heroRight { margin-top: 40px; }
+  .overviewGrid { grid-template-columns: 1fr; gap: 40px; }
+  .proofGrid { grid-template-columns: 1fr; }
+  .proofCard { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .ctaStripInner { flex-direction: column; align-items: flex-start; padding: 36px 32px; }
+}
+
+@media (max-width: 640px) {
+  .heroCtas { flex-direction: column; }
+  .ctaStripActions { width: 100%; }
+}

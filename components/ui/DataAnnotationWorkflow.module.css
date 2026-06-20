@@ -1,0 +1,362 @@
+.container {
+  width: 100%;
+  position: relative;
+  min-height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+  margin: 60px 0;
+}
+
+/* =========================================
+   CENTRAL ANNOTATION CANVAS
+========================================= */
+.centralMap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: 
+    radial-gradient(circle at center, color-mix(in srgb, var(--c) 15%, transparent) 0%, transparent 70%),
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.mapCore {
+  width: 280px;
+  height: 280px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* The Targeting Reticle (spins slowly) */
+.reticle {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  animation: spinReticle 15s infinite linear;
+}
+
+.reticle::before, .reticle::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.reticle::before { top: -10px; bottom: -10px; left: 50%; width: 1px; margin-left: -0.5px; }
+.reticle::after { left: -10px; right: -10px; top: 50%; height: 1px; margin-top: -0.5px; }
+
+@keyframes spinReticle {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* The Central Data Object (A glowing 3D Cube) */
+.dataObject {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(60deg) rotateZ(45deg);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 10;
+}
+
+.cubeFace {
+  position: absolute;
+  width: 100%; height: 100%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+  transition: all 0.5s;
+}
+
+.cubeFaceFront  { transform: translateZ(40px); }
+.cubeFaceBack   { transform: translateZ(-40px); }
+.cubeFaceRight  { transform: rotateY(90deg) translateZ(40px); }
+.cubeFaceLeft   { transform: rotateY(-90deg) translateZ(40px); }
+.cubeFaceTop    { transform: rotateX(90deg) translateZ(40px); }
+.cubeFaceBottom { transform: rotateX(-90deg) translateZ(40px); }
+
+/* Hover States / Active Annotation Modes */
+
+/* Mode 1: Focus Target */
+.mode-0 .dataObject {
+  transform: rotateX(60deg) rotateZ(90deg) scale(1.1);
+}
+.mode-0 .cubeFace {
+  border-color: var(--c);
+  background: color-mix(in srgb, var(--c) 15%, transparent);
+}
+
+/* Mode 2: Bounding Box Snap */
+.mode-1 .dataObject {
+  transform: rotateX(60deg) rotateZ(0deg) scale(1.2);
+}
+.boundingBox {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 140px; height: 140px;
+  transform: translate(-50%, -50%) scale(1.5);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  pointer-events: none;
+  z-index: 20;
+}
+
+.bboxCorner {
+  position: absolute;
+  width: 20px; height: 20px;
+  border-color: var(--c);
+  border-style: solid;
+  border-width: 0;
+  box-shadow: 0 0 10px var(--c);
+}
+.bboxCornerTL { top: 0; left: 0; border-top-width: 3px; border-left-width: 3px; }
+.bboxCornerTR { top: 0; right: 0; border-top-width: 3px; border-right-width: 3px; }
+.bboxCornerBL { bottom: 0; left: 0; border-bottom-width: 3px; border-left-width: 3px; }
+.bboxCornerBR { bottom: 0; right: 0; border-bottom-width: 3px; border-right-width: 3px; }
+
+.mode-1 .boundingBox {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* Mode 3: Segmentation Trace & QA */
+.mode-2 .dataObject {
+  transform: rotateX(55deg) rotateZ(20deg) scale(1);
+}
+.segmentationPath {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 140px; height: 140px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 15;
+}
+
+.segLine {
+  fill: none;
+  stroke: var(--c);
+  stroke-width: 2;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  transition: stroke-dashoffset 1s cubic-bezier(0.23, 1, 0.32, 1);
+  filter: drop-shadow(0 0 8px var(--c));
+}
+
+.mode-2 .segLine {
+  stroke-dashoffset: 0;
+}
+
+/* Mode 4: Classification Tag & Delivery */
+.mode-3 .dataObject {
+  transform: rotateX(70deg) rotateZ(60deg) scale(0.9);
+}
+.classificationTag {
+  position: absolute;
+  top: 30%; left: 50%;
+  transform: translate(20px, 20px);
+  background: var(--c);
+  color: #000;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 30;
+  box-shadow: 0 4px 20px var(--c);
+}
+
+.classificationTag::before {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: -4px;
+  width: 8px; height: 8px;
+  background: var(--c);
+  transform: rotate(45deg);
+}
+
+.mode-3 .classificationTag {
+  transform: translate(30px, -40px);
+  opacity: 1;
+}
+
+
+/* =========================================
+   CONNECTOR SVG LINES (STATIC)
+========================================= */
+.svgLayer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.connectorLine {
+  fill: none;
+  stroke: rgba(255,255,255,0.1);
+  stroke-width: 2;
+  stroke-dasharray: 6 6;
+  transition: all 0.5s;
+}
+
+.connectorLineActive {
+  stroke: var(--c);
+  stroke-width: 3;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawLine 1s forwards;
+  filter: drop-shadow(0 0 8px var(--c));
+}
+
+@keyframes drawLine {
+  to { stroke-dashoffset: 0; }
+}
+
+/* =========================================
+   CARDS
+========================================= */
+.cardsWrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 140px;
+  width: 400px;
+}
+
+.card {
+  background: rgba(10, 15, 25, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: pointer;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  background: rgba(15, 20, 35, 0.85);
+  border-color: color-mix(in srgb, var(--c) 50%, transparent);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 30px color-mix(in srgb, var(--c) 15%, transparent);
+}
+
+.cardConnectionPoint {
+  position: absolute;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.4s;
+}
+
+.col:first-child .cardConnectionPoint { right: -6px; }
+.col:last-child .cardConnectionPoint { left: -6px; }
+
+.card:hover .cardConnectionPoint {
+  background: var(--c);
+  box-shadow: 0 0 15px var(--c);
+}
+
+.stepNum {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--c);
+  margin-bottom: 12px;
+}
+
+.stepTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 12px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.stepDesc {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.stepDetail {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.stepTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.stepTag {
+  font-size: 0.75rem;
+  padding: 4px 12px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.6);
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .cardsWrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+  .col {
+    width: 100%;
+    margin-top: 0;
+    gap: 40px;
+  }
+  .centralMap {
+    display: none;
+  }
+  .svgLayer {
+    display: none;
+  }
+}

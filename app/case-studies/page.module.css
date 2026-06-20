@@ -1,0 +1,267 @@
+/* =====================================================================
+   HERO SECTION
+   ===================================================================== */
+.hero {
+  position: relative;
+  padding: 180px 0 100px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(ellipse 70% 60% at 50% -10%, rgba(59, 130, 246, 0.15), transparent),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+  background-position: center 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.heroBadgeDot {
+  width: 6px;
+  height: 6px;
+  background: #3b82f6;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #3b82f6;
+}
+
+.heroTitle {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: white;
+  margin: 0;
+}
+
+.heroTitle span {
+  background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.5) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heroTitle .gradient {
+  background: linear-gradient(135deg, #60a5fa, #c084fc, #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heroDesc {
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 650px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* =====================================================================
+   CASE STUDIES GRID
+   ===================================================================== */
+.gridSection {
+  padding: 80px 0 120px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 32px;
+}
+
+/* =====================================================================
+   TROPHY CARD
+   ===================================================================== */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(10, 15, 25, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 28px;
+  padding: 40px;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow: hidden;
+  height: 100%;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 0%), var(--card-color, rgba(255,255,255,0.08)), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.card:hover {
+  background: rgba(15, 20, 35, 0.7);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--card-color-dim);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.cardInner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 20px;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tag {
+  padding: 6px 14px;
+  background: var(--card-color-dim);
+  border: 1px solid var(--card-color-border);
+  color: var(--card-color);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 100px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
+.result {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  color: var(--card-color);
+  font-size: 1.25rem;
+  text-shadow: 0 0 15px var(--card-color-dim);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: white;
+  line-height: 1.3;
+  margin: 0;
+  transition: color 0.3s;
+}
+
+.card:hover .title {
+  color: var(--card-color);
+}
+
+.description {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.microTag {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 6px 12px;
+  border-radius: 100px;
+}
+
+/* =====================================================================
+   CTA
+   ===================================================================== */
+.cta {
+  text-align: center;
+  margin-top: 80px;
+  padding: 80px 40px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 40px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+}
+
+.cta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+}
+
+.cta h2 {
+  color: white;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin: 0 0 20px;
+  line-height: 1.2;
+}
+
+.cta p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 500px;
+  margin: 0 auto 40px;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 140px 0 60px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .card {
+    padding: 32px;
+  }
+  .cta {
+    padding: 64px 32px;
+  }
+}

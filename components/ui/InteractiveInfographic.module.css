@@ -1,0 +1,318 @@
+.container {
+  position: relative;
+  width: 100%;
+  padding: 100px 40px;
+  background: transparent;
+  overflow: hidden;
+  margin: 60px 0 100px 0;
+}
+
+/* =========================================
+   FLOATING TEXT NODES (NO BOXES)
+========================================= */
+.nodeText {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.4s ease;
+}
+
+.nodeText:hover {
+  transform: translateY(-10px);
+}
+
+.stepNum {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--c);
+  margin-bottom: 12px;
+  text-shadow: 0 0 20px color-mix(in srgb, var(--c) 50%, transparent);
+}
+
+.stepTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 800;
+  color: white;
+  margin-bottom: 16px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+}
+
+.stepDesc {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 24px;
+  line-height: 1.6;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+  font-weight: 500;
+}
+
+.stepDetail {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+}
+
+.stepTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.stepTag {
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  border-radius: 100px;
+  color: var(--c);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid color-mix(in srgb, var(--c) 30%, transparent);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--c) 10%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+/* =========================================
+   ENVIRONMENTAL LAYOUTS & ANIMATIONS
+========================================= */
+.layoutGrid {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bgEnvironment {
+  position: absolute;
+  inset: -100px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 1. MAP (Custom Dataset Collection) */
+.layout_map .layoutGrid {
+  grid-template-columns: 1fr 1fr;
+  gap: 100px 60px;
+}
+.layout_map .nodeText:nth-child(even) {
+  margin-top: 120px;
+}
+.env_map {
+  background: 
+    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--c) 15%, transparent) 0%, transparent 60%),
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 60px 60px, 60px 60px;
+}
+.mapPulse {
+  position: absolute;
+  width: 800px; height: 800px;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--c) 20%, transparent);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: radarPulse 6s infinite ease-out;
+}
+@keyframes radarPulse {
+  0% { width: 0; height: 0; opacity: 1; }
+  100% { width: 1200px; height: 1200px; opacity: 0; }
+}
+
+/* 2. MATRIX (Data Annotation) */
+.layout_matrix .layoutGrid {
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+.env_matrix {
+  background: #09090b;
+}
+.laserGrid {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(rgba(139,92,246,0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139,92,246,0.15) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.laserScannerLine {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: var(--c);
+  box-shadow: 0 0 30px var(--c), 0 0 10px var(--c);
+  animation: matrixScan 4s infinite linear alternate;
+}
+@keyframes matrixScan {
+  0% { top: 10%; }
+  100% { top: 90%; }
+}
+
+/* 3. RADAR (Quality Assurance) */
+.layout_radar .layoutGrid {
+  grid-template-columns: 1fr;
+  gap: 120px;
+  align-items: center;
+  max-width: 800px;
+}
+.env_radar {
+  background: radial-gradient(circle at center, color-mix(in srgb, var(--c) 10%, transparent), transparent 70%);
+}
+.verticalScanner {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 300px;
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--c) 30%, transparent));
+  border-bottom: 3px solid var(--c);
+  animation: qaScanDown 8s infinite linear;
+}
+@keyframes qaScanDown {
+  0% { transform: translateY(-300px); }
+  100% { transform: translateY(1500px); }
+}
+
+/* 4. PIPELINE (Rapid Delivery - Vertical Waterfall) */
+.layout_pipeline .layoutGrid {
+  grid-template-columns: 1fr;
+  gap: 160px;
+}
+.layout_pipeline .nodeText {
+  max-width: 500px;
+}
+.layout_pipeline .nodeText:nth-child(even) {
+  align-self: flex-end;
+  text-align: right;
+  align-items: flex-end;
+}
+.env_pipeline {
+  display: flex;
+  justify-content: center;
+}
+.centralPipe {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 12px; height: 100%;
+  background: rgba(255,255,255,0.05);
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+}
+.dataPacket {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 12px; height: 120px;
+  background: var(--c);
+  box-shadow: 0 0 40px var(--c), 0 0 20px var(--c);
+  border-radius: 10px;
+  animation: waterfallDrop 2s infinite linear;
+}
+@keyframes waterfallDrop {
+  0% { top: -120px; }
+  100% { top: 100%; }
+}
+
+/* 5. DNA (Healthcare) */
+.layout_dna .layoutGrid {
+  grid-template-columns: 1fr;
+  gap: 100px;
+  max-width: 900px;
+}
+.layout_dna .nodeText:nth-child(odd) {
+  margin-left: 10%;
+}
+.layout_dna .nodeText:nth-child(even) {
+  margin-left: auto;
+  margin-right: 10%;
+  text-align: right;
+  align-items: flex-end;
+}
+.env_dna {
+  background: radial-gradient(circle at center, rgba(236,72,153,0.08) 0%, transparent 80%);
+}
+.dnaWaveLine {
+  position: absolute;
+  top: 0; left: 50%;
+  width: 200px; height: 100%;
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 60px,
+    color-mix(in srgb, var(--c) 25%, transparent) 60px,
+    color-mix(in srgb, var(--c) 25%, transparent) 64px
+  );
+  mask-image: radial-gradient(ellipse at center, #000 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, transparent 70%);
+  animation: dnaVerticalScroll 15s infinite linear;
+}
+@keyframes dnaVerticalScroll {
+  from { background-position: 0 0; }
+  to { background-position: 0 640px; }
+}
+
+/* 6. CUBE (Computer Vision Hologram) */
+.layout_cube {
+  perspective: 1500px;
+}
+.layout_cube .layoutGrid {
+  grid-template-columns: 1fr 1fr;
+  gap: 120px;
+  transform: rotateX(15deg) rotateY(-5deg);
+  transform-style: preserve-3d;
+}
+.layout_cube .nodeText {
+  transform: translateZ(50px);
+}
+.env_cube {
+  background: #09090b;
+}
+.isoBase {
+  position: absolute;
+  bottom: -20%; left: -20%; right: -20%; height: 100%;
+  background: 
+    linear-gradient(rgba(56,189,248,0.15) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(56,189,248,0.15) 2px, transparent 2px);
+  background-size: 80px 80px;
+  transform: rotateX(70deg) rotateZ(-30deg);
+  animation: isoFloat 20s infinite linear;
+}
+@keyframes isoFloat {
+  to { background-position: 80px 80px; }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 1024px) {
+  .layoutGrid {
+    grid-template-columns: 1fr !important;
+    gap: 80px !important;
+  }
+  .layout_map .nodeText:nth-child(even),
+  .layout_pipeline .nodeText:nth-child(even),
+  .layout_dna .nodeText:nth-child(even) {
+    margin: 0 !important;
+    text-align: left !important;
+    align-items: flex-start !important;
+  }
+  .centralPipe {
+    left: 20px;
+    transform: none;
+  }
+  .dataPacket {
+    left: 20px;
+    transform: none;
+  }
+  .layout_pipeline .nodeText {
+    padding-left: 60px;
+  }
+  .layout_cube .layoutGrid {
+    transform: none;
+  }
+}

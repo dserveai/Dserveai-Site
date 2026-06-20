@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Dserve AI Logo: Connected data nodes representing precision data intelligence -->
+  <!-- Left node (circle) -->
+  <circle cx="62" cy="112" r="34" fill="white"/>
+  <!-- Top node (larger circle) -->
+  <circle cx="110" cy="60" r="30" fill="white"/>
+  <!-- Bottom-right node -->
+  <circle cx="148" cy="138" r="26" fill="white"/>
+  <!-- Organic bridge connecting all three nodes -->
+  <path d="
+    M 62 82
+    C 62 68 80 52 110 60
+    C 128 64 138 80 148 112
+    C 148 126 138 156 148 138
+    C 142 158 118 164 100 152
+    C 78 138 64 130 62 112
+    Z
+  " fill="white"/>
+</svg>
