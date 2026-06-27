@@ -25,6 +25,9 @@ export default function TiltCard({
   const glowRef = useRef<HTMLDivElement>(null);
 
   const handleMove = (e: MouseEvent<HTMLDivElement>) => {
+    // Disable on touch devices to prevent stuck transforms
+    if (typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches) return;
+    
     const el = ref.current;
     const glow = glowRef.current;
     if (!el) return;

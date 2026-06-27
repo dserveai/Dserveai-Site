@@ -199,7 +199,7 @@ export function AnnotationVisualizer({ color = "#8b5cf6" }: { color?: string }) 
             <div className={styles.mockField}><span className={styles.mockFieldLabel}>Asset type</span><span className={styles.mockFieldVal}>Images + Text</span></div>
             <div className={styles.mockField}><span className={styles.mockFieldLabel}>Volume</span><span className={styles.mockFieldVal}>198,800 files</span></div>
             <div className={styles.mockField}><span className={styles.mockFieldLabel}>Taxonomy</span><span className={styles.mockFieldVal}>Custom v2.3</span></div>
-            <div className={styles.mockField}><span className={styles.mockFieldLabel}>IAA target</span><span className={styles.mockFieldVal}>95%+</span></div>
+            <div className={styles.mockField}><span className={styles.mockFieldLabel}>IAA target</span><span className={styles.mockFieldVal}>99%+</span></div>
           </div>
         }
         processPanel={
@@ -366,7 +366,7 @@ export function DeliveryVisualizer({ color = "#ec4899" }: { color?: string }) {
             ))}
             {outputCount >= 4 && (
               <div className={styles.outputSummary} style={{ borderColor: `${color}30`, background: `${color}08` }}>
-                <span style={{ color }}>✓</span> Day 5 — On schedule
+                <span style={{ color }}>✓</span> Day 5: On schedule
               </div>
             )}
           </div>
@@ -506,6 +506,142 @@ export function ComputerVisionVisualizer({ color = "#f59e0b" }: { color?: string
             {outputCount >= 5 && (
               <div className={styles.outputSummary} style={{ borderColor: `${color}30`, background: `${color}08` }}>
                 <span style={{ color }}>✓</span> 283K annotated frames ready
+              </div>
+            )}
+          </div>
+        }
+      />
+    </div>
+  );
+}
+
+/* ---- 7. SYNTHETIC DATA GENERATION ---- */
+export function SyntheticVisualizer({ color = "#8b5cf6" }: { color?: string }) {
+  const phase = usePhaseLoop([1200, 2000, 2000, 2500]);
+  const [processCount, setProcessCount] = useState(0);
+  const [outputCount, setOutputCount] = useState(0);
+
+  useEffect(() => {
+    if (phase === 1) { setProcessCount(0); setOutputCount(0); let i = 0; const t = setInterval(() => { i++; setProcessCount(i); if (i >= 5) clearInterval(t); }, 320); return () => clearInterval(t); }
+    if (phase === 2) { setOutputCount(0); let i = 0; const t = setInterval(() => { i++; setOutputCount(i); if (i >= 3) clearInterval(t); }, 300); return () => clearInterval(t); }
+    if (phase === 0) { setProcessCount(0); setOutputCount(0); }
+  }, [phase]);
+
+  const tasks = ["Generating 3D Meshes", "Applying Domain Randomization", "Raytracing Physics", "Baking Ground Truth Labels", "Packaging COCO JSON"];
+  const results = [
+    { name: "Photoreal Frames", count: "1,250,000", status: "Rendered", s: "#10b981" },
+    { name: "Segmentation Masks", count: "100%", status: "Pixel-Perfect", s: "#10b981" },
+    { name: "Privacy Risk", count: "0.0%", status: "Cleared", s: "#10b981" },
+  ];
+
+  return (
+    <div className={styles.vizCard}>
+      <div className={styles.vizLabel} style={{ color }}>
+        <span className={styles.vizLabelDot} style={{ background: color }} />
+        Procedural Generation Engine
+      </div>
+      <ThreePanelFlow color={color} phase={phase}
+        inputPanel={
+          <div className={styles.panelBody}>
+            <div className={styles.panelTitle}>Engine Parameters</div>
+            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Environment</span><span className={styles.mockFieldVal}>Urban Intersection</span></div>
+            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Lighting Var.</span><span className={styles.mockFieldVal}>Dawn to Dusk</span></div>
+            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Camera</span><span className={styles.mockFieldVal}>Fisheye + LiDAR</span></div>
+            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Randomization</span><span className={styles.mockFieldVal}>High</span></div>
+          </div>
+        }
+        processPanel={
+          <div className={styles.panelBody}>
+            <div className={styles.panelTitle}>Rendering Active</div>
+            {tasks.slice(0, processCount).map((t, i) => (
+              <div key={i} className={styles.checkRow}>
+                <span className={styles.checkDot} style={{ background: color }} />
+                <span className={styles.checkLabel}>{t}</span>
+              </div>
+            ))}
+          </div>
+        }
+        outputPanel={
+          <div className={styles.panelBody}>
+            <div className={styles.panelTitle}>Synthetic Output</div>
+            {results.slice(0, outputCount).map((r, i) => (
+              <div key={i} className={styles.outputRow}>
+                <span className={styles.outputLabel}>{r.name}</span>
+                <span className={styles.outputVal} style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.65rem" }}>{r.count}</span>
+                <span className={styles.checkBadge} style={{ color: r.s, borderColor: `${r.s}30`, background: `${r.s}10` }}>{r.status}</span>
+              </div>
+            ))}
+            {outputCount >= 3 && (
+              <div className={styles.outputSummary} style={{ borderColor: `${color}30`, background: `${color}08` }}>
+                <span style={{ color }}>✓</span> Batch transferred to secure cloud
+              </div>
+            )}
+          </div>
+        }
+      />
+    </div>
+  );
+}
+
+/* ---- 8. CUSTOM AI SOLUTIONS ---- */
+export function CustomAIVisualizer({ color = "#14b8a6" }: { color?: string }) {
+  const phase = usePhaseLoop([1200, 2000, 2000, 2500]);
+  const [processCount, setProcessCount] = useState(0);
+  const [outputCount, setOutputCount] = useState(0);
+
+  useEffect(() => {
+    if (phase === 1) { setProcessCount(0); setOutputCount(0); let i = 0; const t = setInterval(() => { i++; setProcessCount(i); if (i >= 5) clearInterval(t); }, 320); return () => clearInterval(t); }
+    if (phase === 2) { setOutputCount(0); let i = 0; const t = setInterval(() => { i++; setOutputCount(i); if (i >= 4) clearInterval(t); }, 300); return () => clearInterval(t); }
+    if (phase === 0) { setProcessCount(0); setOutputCount(0); }
+  }, [phase]);
+
+  const tasks = ["Aggregating Data Silos", "Base Model Fine-Tuning", "RAG Vector Indexing", "INT8 Quantization", "API Gateway Compilation"];
+  const results = [
+    { name: "Inference Server", val: "Running", s: "#10b981" },
+    { name: "Avg Latency", val: "42ms", s: "#10b981" },
+    { name: "Accuracy Threshold", val: "Met (98.9%)", s: "#10b981" },
+    { name: "Drift Monitor", val: "Active", s: "#10b981" },
+  ];
+
+  return (
+    <div className={styles.vizCard}>
+      <div className={styles.vizLabel} style={{ color }}>
+        <span className={styles.vizLabelDot} style={{ background: color }} />
+        Neural Architecture Compiler
+      </div>
+      <ThreePanelFlow color={color} phase={phase}
+        inputPanel={
+          <div className={styles.panelBody}>
+            <div className={styles.panelTitle}>Business Objective</div>
+            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Goal</span><span className={styles.mockFieldVal}>Predictive Main.</span></div>
+            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Hardware</span><span className={styles.mockFieldVal}>Edge TPU + Cloud</span></div>
+            <div className={styles.mockField}><span className={styles.mockFieldLabel}>SLA</span><span className={styles.mockFieldVal}>99.9% Uptime</span></div>
+            <div className={styles.mockField}><span className={styles.mockFieldLabel}>IP Ownership</span><span className={styles.mockFieldVal}>100% Client</span></div>
+          </div>
+        }
+        processPanel={
+          <div className={styles.panelBody}>
+            <div className={styles.panelTitle}>Compilation Phase</div>
+            {tasks.slice(0, processCount).map((t, i) => (
+              <div key={i} className={styles.checkRow}>
+                <span className={styles.checkDot} style={{ background: color }} />
+                <span className={styles.checkLabel}>{t}</span>
+              </div>
+            ))}
+          </div>
+        }
+        outputPanel={
+          <div className={styles.panelBody}>
+            <div className={styles.panelTitle}>Deployed Solution</div>
+            {results.slice(0, outputCount).map((r, i) => (
+              <div key={i} className={styles.outputRow}>
+                <span className={styles.outputLabel}>{r.name}</span>
+                <span className={styles.checkBadge} style={{ color: r.s, borderColor: `${r.s}30`, background: `${r.s}10` }}>{r.val}</span>
+              </div>
+            ))}
+            {outputCount >= 4 && (
+              <div className={styles.outputSummary} style={{ borderColor: `${color}30`, background: `${color}08` }}>
+                <span style={{ color }}>✓</span> MLOps CI/CD Pipeline Established
               </div>
             )}
           </div>

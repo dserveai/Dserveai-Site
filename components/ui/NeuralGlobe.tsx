@@ -127,10 +127,10 @@ export default function NeuralKnowledgeCore() {
 
     // Fast 3D Rotation Math
     const rotate3D = (x: number, y: number, z: number, rx: number, ry: number) => {
-      let x1 = x * Math.cos(ry) - z * Math.sin(ry);
-      let z1 = x * Math.sin(ry) + z * Math.cos(ry);
-      let y2 = y * Math.cos(rx) - z1 * Math.sin(rx);
-      let z2 = y * Math.sin(rx) + z1 * Math.cos(rx);
+      const x1 = x * Math.cos(ry) - z * Math.sin(ry);
+      const z1 = x * Math.sin(ry) + z * Math.cos(ry);
+      const y2 = y * Math.cos(rx) - z1 * Math.sin(rx);
+      const z2 = y * Math.sin(rx) + z1 * Math.cos(rx);
       return { x: x1, y: y2, z: z2 };
     };
 

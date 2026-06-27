@@ -312,3 +312,31 @@
     display: none;
   }
 }
+
+@media (max-width: 768px) {
+  .workflowContainer {
+    padding: 60px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .workflowContainer { padding: 40px 0; }
+  .cardsWrapper { gap: 24px; }
+  .col { gap: 24px; }
+  .stepCard { padding: 24px; border-radius: 16px; }
+  .stepNum { width: 36px; height: 36px; font-size: 1rem; margin-bottom: 20px; }
+  .stepTitle { font-size: 1.25rem; }
+  .stepDesc { font-size: 0.95rem; }
+  .stepDetail { font-size: 0.85rem; }
+  .stepTag { font-size: 0.7rem; padding: 4px 10px; }
+}
+
+@media (hover: none) {
+  .stepCard:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .stepCard:hover::before {
+    opacity: 0;
+  }
+}

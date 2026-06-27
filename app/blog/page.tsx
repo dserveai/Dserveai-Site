@@ -1,182 +1,109 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Search, ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import Pagination from "@/components/ui/Pagination";
 import styles from "./page.module.css";
 import postsData from "@/lib/posts_data.json";
 
-// We extract unique categories from the data, but hardcode "All" first.
+const POSTS_PER_PAGE = 12;
 const allCategories = ["All", ...Array.from(new Set(postsData.map(post => post.category)))];
 
 export default function BlogPage() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
-  // Filter posts based on category and search query
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeCategory]);
+
   const filteredPosts = postsData.filter((post) => {
-    const matchesCategory = activeCategory === "All" || post.category === activeCategory;
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
+    return activeCategory === "All" || post.category === activeCategory;
   });
 
-  const featuredPost = filteredPosts.length > 0 ? filteredPosts[0] : null;
-  const gridPosts = filteredPosts.slice(1);
+  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  const currentPosts = filteredPosts.slice(
+    (currentPage - 1) * POSTS_PER_PAGE,
+    currentPage * POSTS_PER_PAGE
+  );
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
-    <>
+    <div className={styles.pageWrapper}>
       <Navbar />
-      <main>
-        {/* Immersive Hero Section */}
-        <section className={styles.hero}>
-          <div className={styles.heroBg} />
-          <div className={`container ${styles.heroContent}`}>
-            <div className={styles.heroBadge}>
-              <span className={styles.heroBadgeDot} /> Knowledge Hub
-            </div>
-            <h1 className={styles.heroTitle}>
-              AI Data Insights <br /><span className={styles.gradient}>& Resources</span>
-            </h1>
-            <p className={styles.heroDesc}>
-              Expert guides, industry analysis, and practical resources for AI teams building the future with high-quality data.
-            </p>
-
-            {/* Search and Filter Toolbar */}
-            <div className={styles.toolbar}>
-              <div className={styles.searchBox}>
-                <Search size={20} className={styles.searchIcon} />
-                <input 
-                  type="text" 
-                  placeholder="Search articles, guides, and insights..." 
-                  className={styles.searchInput}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-              </div>
-
-              {/* Apple-style Category Track */}
-              <div className={styles.categoryTrackWrapper}>
-                <div className={styles.categoryTrack}>
-                  {allCategories.map(cat => (
-                    <button 
-                      key={cat} 
-                      onClick={() => setActiveCategory(cat)}
-                      className={`${styles.catBtn} ${activeCategory === cat ? styles.active : ""}`}
-                    >
-                      {activeCategory === cat && <div className={styles.catActiveBg} />}
-                      {cat}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Bento Grid Section */}
-        <section className={`section ${styles.blogSection}`}>
+      
+      <main className={styles.main}>
+        {/* Enterprise Minimalist Header */}
+        <header className={styles.header}>
           <div className="container">
-            <div className={styles.grid}>
-              
-              {/* No Results State */}
-              {filteredPosts.length === 0 && (
-                <div className={styles.noResults}>
-                  No articles found matching your search criteria.
-                </div>
-              )}
-
-              {/* Massive Featured Post */}
-              {featuredPost && (
-                <Link href={`/blog/${featuredPost.slug}`} className={styles.featured}>
-                  <div className={styles.featuredContent}>
-                    <div className={styles.featuredMeta}>
-                      <span className={styles.tag}>{featuredPost.category}</span>
-                      <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.85rem" }}>
-                        {new Date(featuredPost.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
-                      </span>
-                    </div>
-                    <h2 className={styles.featuredTitle} dangerouslySetInnerHTML={{ __html: featuredPost.title }} />
-                    <p className={styles.featuredExcerpt} dangerouslySetInnerHTML={{ __html: featuredPost.excerpt }} />
-                    <div className={styles.featuredDetails}>
-                      <span>{featuredPost.readTime} read</span>
-                      <span className="btn btn--primary" style={{ padding: "10px 24px" }}>Read Article</span>
-                    </div>
-                  </div>
-                  <div className={styles.featuredVisual}>
-                    <div className={styles.orbContainer}>
-                      <div className={styles.glowingOrb} />
-                      <div className={styles.abstractShape}>
-                        {/* Abstract visual representation inside the orb */}
-                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                          <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                          <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              )}
-
-              {/* Standard Bento Grid Posts */}
-              {gridPosts.map((post) => (
-                <Link 
-                  key={post.slug} 
-                  href={`/blog/${post.slug}`} 
-                  className={styles.blogCard}
-                  onMouseMove={(e) => {
-                    const rect = e.currentTarget.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
-                    e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
-                  }}
+            <h1 className={styles.title}>Knowledge & Development</h1>
+            <p className={styles.subtitle}>
+              Explore deep technical learnings, development methodologies, and the foundational knowledge driving the next generation of AI systems.
+            </p>
+            
+            {/* Minimalist Category Track */}
+            <div className={styles.categoryTrack}>
+              {allCategories.map(cat => (
+                <button 
+                  key={cat} 
+                  onClick={() => setActiveCategory(cat)}
+                  className={`${styles.catBtn} ${activeCategory === cat ? styles.active : ""}`}
                 >
-                  <div className={styles.cardInner}>
-                    <div className={styles.blogMeta}>
-                      <span className={styles.tag} style={{ background: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.8)" }}>
-                        {post.category}
-                      </span>
-                      <span className={styles.blogDate}>{post.readTime}</span>
-                    </div>
-                    
-                    <h3 className={styles.blogTitle} dangerouslySetInnerHTML={{ __html: post.title }} />
-                    
-                    <div className={styles.blogFooter}>
-                      <span className={styles.blogDate}>
-                        {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-                      </span>
-                      <div className={styles.blogArrow}>
-                        <ArrowRight size={16} />
-                      </div>
-                    </div>
-                  </div>
-                </Link>
+                  {cat}
+                </button>
               ))}
             </div>
           </div>
-        </section>
+        </header>
 
-        {/* Integrated Newsletter CTA */}
-        <section className={styles.newsletterSection}>
+        {/* Enterprise Feed */}
+        <section className={styles.feed}>
           <div className="container">
-            <div className={styles.newsletterCard}>
-              <div className={styles.newsletterContent}>
-                <h2>Stay Ahead in <span className="gradient-text">AI & Data</span></h2>
-                <p>Get weekly insights on AI training data, annotation best practices, and industry trends delivered directly to your inbox.</p>
+            
+            {filteredPosts.length === 0 ? (
+              <div className={styles.emptyState}>No publications available in this category.</div>
+            ) : (
+              <div className={styles.grid}>
+                {currentPosts.map((post) => (
+                  <article key={post.slug} className={styles.card}>
+                    <Link href={`/blog/${post.slug}`} className={styles.cardLink}>
+                      <div className={styles.cardMeta}>
+                        <span className={styles.date}>
+                          {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                        </span>
+                        <span className={styles.category}>{post.category}</span>
+                      </div>
+                      
+                      <h3 className={styles.cardTitle}>{post.title}</h3>
+                      <p className={styles.cardExcerpt}>{post.excerpt}</p>
+
+                      <div className={styles.cardFooter}>
+                        <span className={styles.readLabel}>Read publication</span>
+                        <ArrowUpRight className={styles.arrow} size={18} />
+                      </div>
+                    </Link>
+                  </article>
+                ))}
               </div>
-              <form className={styles.newsletterForm} onSubmit={(e) => e.preventDefault()}>
-                <input type="email" className={styles.input} placeholder="Enter your work email" required />
-                <button type="submit" className="btn btn--primary">Subscribe</button>
-              </form>
-            </div>
+            )}
+
+            <Pagination 
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+
           </div>
         </section>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

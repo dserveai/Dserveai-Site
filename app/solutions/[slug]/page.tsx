@@ -3,11 +3,61 @@ import Link from "next/link";
 import { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { industries } from "@/lib/data";
+import { solutions } from "@/lib/data";
 import { DynamicIcon } from "@/components/ui/Icons";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import LiveDashboard from "@/components/ui/LiveDashboard";
 import styles from "./page.module.css";
+
+// Import bespoke custom content blocks
+import HealthcarePageContent from "@/components/solutions/HealthcarePageContent";
+import AgenticPageContent from "@/components/solutions/AgenticPageContent";
+import CVPageContent from "@/components/solutions/CVPageContent";
+import GenAIPageContent from "@/components/solutions/GenAIPageContent";
+import MultimodalPageContent from "@/components/solutions/MultimodalPageContent";
+import BiometricsPageContent from "@/components/solutions/BiometricsPageContent";
+import ConversationalPageContent from "@/components/solutions/ConversationalPageContent";
+import PhysicalPageContent from "@/components/solutions/PhysicalPageContent";
+
+// Import Pipeline Animations
+import { 
+  HealthcareOrb, 
+  AgenticOrb, 
+  CVOrb, 
+  GenAIOrb, 
+  MultimodalOrb, 
+  BiometricsOrb, 
+  ConversationalOrb, 
+  PhysicalOrb 
+} from "@/components/solutions/PipelineOrbs";
+
+function getCustomContent(slug: string, solution: any, color: string) {
+  switch (slug) {
+    case "healthcare-ai": return <HealthcarePageContent solution={solution} color={color} />;
+    case "agentic-ai": return <AgenticPageContent solution={solution} color={color} />;
+    case "computer-vision": return <CVPageContent solution={solution} color={color} />;
+    case "generative-ai": return <GenAIPageContent solution={solution} color={color} />;
+    case "multimodal-ai": return <MultimodalPageContent solution={solution} color={color} />;
+    case "biometric-ai": return <BiometricsPageContent solution={solution} color={color} />;
+    case "conversational-ai": return <ConversationalPageContent solution={solution} color={color} />;
+    case "physical-ai": return <PhysicalPageContent solution={solution} color={color} />;
+    default: return <CVPageContent solution={solution} color={color} />;
+  }
+}
+
+function getPipelineAnimation(slug: string, color: string) {
+  switch (slug) {
+    case "healthcare-ai": return <HealthcareOrb color={color} />;
+    case "agentic-ai": return <AgenticOrb color={color} />;
+    case "computer-vision": return <CVOrb color={color} />;
+    case "generative-ai": return <GenAIOrb color={color} />;
+    case "multimodal-ai": return <MultimodalOrb color={color} />;
+    case "biometric-ai": return <BiometricsOrb color={color} />;
+    case "conversational-ai": return <ConversationalOrb color={color} />;
+    case "physical-ai": return <PhysicalOrb color={color} />;
+    default: return <CVOrb color={color} />;
+  }
+}
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -72,35 +122,70 @@ const workflowData: Record<string, { title: string; desc: string }[]> = {
    ============================================================ */
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params;
-  const industry = industries.find((i) => i.slug === params.slug);
-  if (!industry) return { title: "Not Found" };
+  const solution = solutions.find((i) => i.slug === params.slug);
+  if (!solution) return { title: "Not Found" };
+
+  const title = `Enterprise AI Data Pipelines for ${solution.name} | Dserve AI`;
+  const description = `Accelerate your ${solution.name} models with our secure, highly accurate, and scalable data processing engine. ${solution.details.overview.substring(0, 100)}...`;
+
   return {
-    title: `Enterprise Data Pipelines for ${industry.name} | Dserve AI`,
-    description: `Accelerate your ${industry.name} models with our secure, highly accurate, and scalable data processing engine.`,
+    title,
+    description,
+    keywords: `${solution.name.toLowerCase()} ai, ${solution.name.toLowerCase()} training data, ai data pipelines for ${solution.name.toLowerCase()}`,
     openGraph: {
-      title: `Enterprise Data Pipelines for ${industry.name}`,
-      description: industry.details.overview,
+      title,
+      description,
+      type: "website",
+      url: `https://dserveai.com/solutions/${params.slug}`,
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: solution.name }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/og-image.jpg"],
     },
   };
 }
 
 export async function generateStaticParams() {
-  return industries.map((i) => ({ slug: i.slug }));
+  return solutions.map((i) => ({ slug: i.slug }));
 }
 
 /* ============================================================
    PAGE
    ============================================================ */
-export default async function IndustryPage(props: Props) {
+export default async function SolutionPage(props: Props) {
   const params = await props.params;
-  const industry = industries.find((i) => i.slug === params.slug);
-  if (!industry) notFound();
+  const solution = solutions.find((i) => i.slug === params.slug);
+  if (!solution) notFound();
 
-  const workflow = workflowData[industry.slug] ?? [];
-  const color = industry.color;
+  const workflow = workflowData[solution.slug] ?? [];
+  const color = solution.color;
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": `AI Data Pipelines for ${solution.name}`,
+            "description": solution.details.overview,
+            "provider": {
+              "@type": "Organization",
+              "name": "Dserve AI",
+              "url": "https://dserveai.com"
+            },
+            "areaServed": {
+              "@type": "Place",
+              "name": "Worldwide"
+            },
+            "serviceType": `Data Annotation for ${solution.name}`
+          })
+        }}
+      />
       <Navbar />
       <main>
 
@@ -111,18 +196,15 @@ export default async function IndustryPage(props: Props) {
           <div className={styles.heroBg} />
           
           <div className={styles.heroContent}>
-            <div className={styles.heroLabel}>
-              <DynamicIcon name={industry.iconName} size={16} color={color} />
-              Industry Data Solution
-            </div>
+            {/* Label Removed */}
             <h1 className={styles.heroTitle}>
-              Enterprise Data Pipelines for {industry.name}
+              Enterprise Data Pipelines for {solution.name}
             </h1>
           </div>
 
           <div className={`container ${styles.dashboardWrapper}`}>
             <ScrollReveal>
-              <LiveDashboard slug={industry.slug} color={color} industryName={industry.name} />
+              <LiveDashboard slug={solution.slug} color={color} solutionName={solution.name} />
             </ScrollReveal>
           </div>
         </section>
@@ -130,52 +212,10 @@ export default async function IndustryPage(props: Props) {
         {/* ============================================================
             2. SEO DEEP DIVE BENTO GRID
         ============================================================ */}
-        <section className={styles.deepDiveSection} style={{ "--c": color } as React.CSSProperties}>
-          <div className="container">
-            <ScrollReveal>
-              <div className={styles.sectionHeader}>
-                <h2>Comprehensive {industry.name} Capabilities</h2>
-                <p>
-                  Our specialized annotators and domain experts execute complex data tasks with unmatched precision. Everything is tailored specifically to the requirements of the {industry.name} sector.
-                </p>
-              </div>
-            </ScrollReveal>
-
-            <div className={styles.bentoGrid6}>
-              <ScrollReveal delay={100} className={`${styles.bentoCard} ${styles.bentoCardLarge}`}>
-                <h3 className={styles.bentoCardTitle}>Specialized Data Modalities</h3>
-                <p className={styles.bentoCardDesc}>
-                  We ingest and process exactly what you need. From massive JSON-L files containing conversational turns, to high-resolution DICOM imagery, our platform natively supports the standard data formats essential for {industry.name} training.
-                </p>
-                <div className={styles.microAnim} />
-              </ScrollReveal>
-              
-              <ScrollReveal delay={200} className={styles.bentoCard}>
-                <h3 className={styles.bentoCardTitle}>95%+ IAA Accuracy</h3>
-                <p className={styles.bentoCardDesc}>
-                  Every dataset undergoes strict Inter-Annotator Agreement checks. We don't deliver data until it passes our multi-stage QA threshold.
-                </p>
-                <div className={styles.microAnim} style={{ animationDelay: '0.5s' }} />
-              </ScrollReveal>
-
-              <ScrollReveal delay={300} className={styles.bentoCard}>
-                <h3 className={styles.bentoCardTitle}>Subject Matter Experts</h3>
-                <p className={styles.bentoCardDesc}>
-                  Crowdsourcing fails for {industry.name}. We utilize vetted domain experts (e.g., clinicians, linguists, engineers) to execute complex labeling tasks.
-                </p>
-                <div className={styles.microAnim} style={{ animationDelay: '1s' }} />
-              </ScrollReveal>
-
-              <ScrollReveal delay={400} className={`${styles.bentoCard} ${styles.bentoCardLarge}`}>
-                <h3 className={styles.bentoCardTitle}>Zero-Trust Compliance</h3>
-                <p className={styles.bentoCardDesc}>
-                  Security is paramount. Data is processed in SOC2 Type II and HIPAA-compliant environments. Annotators work via secure VDI terminals, ensuring your proprietary {industry.name} assets never leave our encrypted sandbox.
-                </p>
-                <div className={styles.microAnim} style={{ animationDelay: '1.5s' }} />
-              </ScrollReveal>
-            </div>
-          </div>
-        </section>
+        {/* ============================================================
+            2. CUSTOM BESPOKE CONTENT
+        ============================================================ */}
+        {getCustomContent(solution.slug, solution, color)}
 
         {/* ============================================================
             3. STICKY SCROLL PROCESS
@@ -193,7 +233,7 @@ export default async function IndustryPage(props: Props) {
               <div className={styles.stickyLeft}>
                 <div className={styles.stickyGraphic} />
                 <div className={styles.stickyCenterOrb}>
-                  <DynamicIcon name={industry.iconName} size={48} color={color} />
+                  {getPipelineAnimation(solution.slug, color)}
                 </div>
               </div>
 
@@ -218,18 +258,45 @@ export default async function IndustryPage(props: Props) {
           <div className="container">
             <ScrollReveal>
               <div className={styles.leadMagnetBox}>
-                <h2 className={styles.leadTitle}>Start Your {industry.name} Pilot</h2>
+                <h2 className={styles.leadTitle}>Start Your {solution.name} Pilot</h2>
                 <p className={styles.leadDesc}>
                   Stop worrying about data quality. Book a technical scoping call with our engineers today to design a custom pipeline for your model.
                 </p>
-                <div className={styles.leadForm}>
-                  <input type="email" placeholder="Enter your work email..." className={styles.leadInput} />
-                  <Link href="/contact" className={styles.leadBtn}>
+                <div className={styles.leadForm} style={{ justifyContent: 'center' }}>
+                  <Link href="/contact" className={styles.leadBtn} style={{ background: color }}>
                     Book Scoping Call
                   </Link>
                 </div>
               </div>
             </ScrollReveal>
+          </div>
+        </section>
+
+        {/* ============================================================
+            RELATED SOLUTIONS (INTERNAL LINKING)
+        ============================================================ */}
+        <section className={styles.relatedSection}>
+          <div className="container">
+            <h2 className={styles.relatedTitle}>Explore Other Solutions</h2>
+            <div className={styles.relatedGrid}>
+              {solutions.filter(i => i.slug !== solution.slug).map(ind => (
+                <Link 
+                  key={ind.slug} 
+                  href={`/solutions/${ind.slug}`} 
+                  className={styles.relatedCard}
+                  style={{ "--hover-color": `${ind.color}15` } as React.CSSProperties}
+                >
+                  <div className={styles.relatedCardTop}>
+                    <div className={styles.relatedIconWrap} style={{ color: ind.color, background: `${ind.color}15` }}>
+                      <DynamicIcon name={ind.iconName} size={24} color={ind.color} />
+                    </div>
+                    <span className={styles.relatedArrow}>→</span>
+                  </div>
+                  <h4 className={styles.relatedCardTitle}>{ind.name}</h4>
+                  <p className={styles.relatedCardDesc}>{ind.desc}</p>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 

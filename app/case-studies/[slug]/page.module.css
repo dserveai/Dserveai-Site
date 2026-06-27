@@ -1,0 +1,376 @@
+.pageWrapper {
+  background-color: #000;
+  min-height: 100vh;
+  color: white;
+}
+
+.hero {
+  position: relative;
+  height: 85vh;
+  min-height: 700px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.heroImage {
+  object-fit: cover;
+  z-index: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #000 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 100px;
+  max-width: 1000px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 40px;
+  transition: color 0.3s;
+}
+
+.backLink:hover {
+  color: white;
+}
+
+.tag {
+  display: inline-block;
+  padding: 8px 16px;
+  background: color-mix(in srgb, var(--c) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--c) 30%, transparent);
+  color: var(--c);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 100px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 24px 0;
+}
+
+.description {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Stats Box */
+.statsContainer {
+  position: relative;
+  z-index: 3;
+  margin-top: -60px;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  background: rgba(10, 10, 15, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px;
+  padding: 48px;
+  backdrop-filter: blur(24px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.statBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+.statBox:last-child {
+  border-right: none;
+}
+
+.statValue {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--c);
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Editorial Content */
+.contentSection {
+  padding: 140px 0;
+}
+
+.editorialGrid {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 80px;
+  max-width: 1100px;
+  margin: 0 auto 120px;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: white;
+  position: sticky;
+  top: 120px;
+  margin: 0;
+}
+
+.sectionBody {
+  font-size: 1.3rem;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
+
+.impactSection {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 100%);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-radius: 40px;
+  padding: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.impactSection::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c), transparent);
+  opacity: 0.5;
+}
+
+.impactBody {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: white;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* =====================================================================
+   DEEP DIVE COMPONENTS
+   ===================================================================== */
+.deepDiveSection {
+  margin: 120px auto;
+  max-width: 1000px;
+}
+
+.deepDiveTitle {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 48px;
+}
+
+/* Insight Box */
+.insightBox {
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 4px solid var(--c);
+  padding: 48px;
+  border-radius: 0 24px 24px 0;
+}
+.insightContent {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+/* Workflow */
+.workflowGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+.workflowStep {
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+.workflowStep:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--c) 30%, transparent);
+}
+.workflowStep::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 4px;
+  background: var(--c);
+}
+.workflowStepTitle {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 16px 0;
+}
+.workflowStepDesc {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Tech Specs */
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  overflow: hidden;
+}
+.techSpec {
+  background: #050505;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+.techLabel {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 8px;
+}
+.techValue {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+/* =====================================================================
+   RELATED
+   ===================================================================== */
+/* Related */
+.relatedSection {
+  padding: 120px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: #020617;
+}
+
+.relatedTitle {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.relatedCard {
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 32px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.relatedCard:hover {
+  border-color: color-mix(in srgb, var(--c) 30%, transparent);
+  transform: translateY(-8px);
+}
+
+.relatedTag {
+  font-size: 0.8rem;
+  color: var(--c);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.relatedCardTitle {
+  font-family: var(--font-display);
+  color: white;
+  font-size: 1.5rem;
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .editorialGrid { grid-template-columns: 1fr; gap: 24px; margin-bottom: 80px; }
+  .sectionTitle { position: static; }
+  .relatedGrid { grid-template-columns: repeat(2, 1fr); }
+  .impactSection { padding: 40px; }
+}
+
+@media (max-width: 768px) {
+  .hero { height: auto; min-height: 80vh; padding-top: 140px; }
+  .title { font-size: 2.5rem; }
+  .description { font-size: 1.1rem; }
+  .statsContainer { margin-top: -30px; }
+  .statsGrid { grid-template-columns: 1fr; gap: 40px; padding: 32px; }
+  .statBox { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 32px; }
+  .statBox:last-child { border-bottom: none; padding-bottom: 0; }
+  .statValue { font-size: 2.5rem; }
+  .contentSection { padding: 80px 0; }
+  .impactBody { font-size: 1.2rem; }
+  .relatedGrid { grid-template-columns: 1fr; }
+  
+  .workflowGrid { grid-template-columns: 1fr; }
+  .techGrid { grid-template-columns: 1fr; }
+  .insightBox { padding: 32px; border-radius: 0; border-left: none; border-top: 4px solid var(--c); }
+}
+
+@media (max-width: 480px) {
+  .hero { padding-top: 110px; }
+  .title { font-size: clamp(1.75rem, 7vw, 2.25rem); }
+  .description { font-size: 0.95rem; }
+  .statsGrid { padding: 24px 16px; }
+  .statValue { font-size: 2rem; }
+  .statLabel { font-size: 0.85rem; }
+  .contentSection { padding: 56px 0; }
+  .impactSection { padding: 28px; border-radius: 16px; }
+  .impactBody { font-size: 1.05rem; }
+  .editorialGrid { margin-bottom: 56px; }
+}

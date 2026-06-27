@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Plus } from "lucide-react";
+import { Plus, ArrowRight } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import styles from "./page.module.css";
@@ -17,14 +17,32 @@ export default function FAQPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.q,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.a
+              }
+            }))
+          })
+        }}
+      />
       <Navbar />
       <main>
         {/* Minimalist Hero */}
         <section className={styles.hero}>
           <div className="container">
-            <h1 className={styles.heroTitle}>
+            <h1 className="sr-only">AI Data Services and Annotation FAQ</h1>
+            <h2 className={styles.heroTitle}>
               Frequently Asked <span className="gradient-text">Questions</span>
-            </h1>
+            </h2>
             <p className={styles.heroDesc}>
               Everything you need to know about Dserve AI's data collection, annotation services, and enterprise pipelines.
             </p>
@@ -39,7 +57,7 @@ export default function FAQPage() {
                 const isOpen = openIndex === index;
                 
                 return (
-                  <div 
+                  <article 
                     key={index} 
                     className={`${styles.faqItem} ${isOpen ? styles.open : ""}`}
                   >
@@ -59,7 +77,7 @@ export default function FAQPage() {
                         {faq.a}
                       </div>
                     </div>
-                  </div>
+                  </article>
                 );
               })}
             </div>
@@ -72,7 +90,7 @@ export default function FAQPage() {
               <p style={{ color: "rgba(255,255,255,0.55)", marginBottom: 40, maxWidth: 500, marginLeft: "auto", marginRight: "auto", fontSize: "1.05rem", lineHeight: 1.7 }}>
                 Our team of data engineering experts is ready to discuss your unique ML requirements.
               </p>
-              <a href="/contact" className="btn btn--primary btn--lg">Contact Sales →</a>
+              <a href="/contact" className="btn btn--primary btn--lg">Contact Us <ArrowRight size={18} /></a>
             </div>
           </div>
         </section>

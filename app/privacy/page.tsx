@@ -41,7 +41,7 @@ export default function PrivacyPage() {
 
             <h2 style={{ color: "white", fontSize: "1.5rem", marginBottom: "16px", marginTop: "32px", fontFamily: "'Outfit', sans-serif" }}>5. Contact Us</h2>
             <p style={{ marginBottom: "24px" }}>
-              If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:privacy@dserveai.com" style={{ color: "#0ea5e9" }}>privacy@dserveai.com</a>.
+              If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:connect@dserveai.com" style={{ color: "#0ea5e9" }}>connect@dserveai.com</a>.
             </p>
           </article>
         </div>

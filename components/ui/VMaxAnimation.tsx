@@ -160,13 +160,13 @@ export default function PerceptionMatrix() {
 
     // Math helper to rotate 3D vertices
     const rotate3D = (v: number[], rx: number, ry: number, rz: number) => {
-      let x = v[0], y = v[1], z = v[2];
-      let x1 = x * Math.cos(rz) - y * Math.sin(rz);
-      let y1 = x * Math.sin(rz) + y * Math.cos(rz);
-      let x2 = x1 * Math.cos(ry) + z * Math.sin(ry);
-      let z2 = -x1 * Math.sin(ry) + z * Math.cos(ry);
-      let y3 = y1 * Math.cos(rx) - z2 * Math.sin(rx);
-      let z3 = y1 * Math.sin(rx) + z2 * Math.cos(rx);
+      const x = v[0], y = v[1], z = v[2];
+      const x1 = x * Math.cos(rz) - y * Math.sin(rz);
+      const y1 = x * Math.sin(rz) + y * Math.cos(rz);
+      const x2 = x1 * Math.cos(ry) + z * Math.sin(ry);
+      const z2 = -x1 * Math.sin(ry) + z * Math.cos(ry);
+      const y3 = y1 * Math.cos(rx) - z2 * Math.sin(rx);
+      const z3 = y1 * Math.sin(rx) + z2 * Math.cos(rx);
       return { x: x2, y: y3, z: z3 };
     };
 

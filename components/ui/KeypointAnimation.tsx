@@ -281,19 +281,19 @@ export default function DataRefinery() {
 
         for (let j = 0; j < geo.vertices.length; j++) {
           const v = geo.vertices[j];
-          let rx = v[0] * obj.scale;
-          let ry = v[1] * obj.scale;
-          let rz = v[2] * obj.scale;
+          const rx = v[0] * obj.scale;
+          const ry = v[1] * obj.scale;
+          const rz = v[2] * obj.scale;
 
-          let x1 = rx * cosZ - ry * sinZ;
-          let y1 = rx * sinZ + ry * cosZ;
-          let z1 = rz;
-          let x2 = x1 * cosY + z1 * sinY;
-          let y2 = y1;
-          let z2 = -x1 * sinY + z1 * cosY;
-          let x3 = x2;
-          let y3 = y2 * cosX - z2 * sinX;
-          let z3 = y2 * sinX + z2 * cosX;
+          const x1 = rx * cosZ - ry * sinZ;
+          const y1 = rx * sinZ + ry * cosZ;
+          const z1 = rz;
+          const x2 = x1 * cosY + z1 * sinY;
+          const y2 = y1;
+          const z2 = -x1 * sinY + z1 * cosY;
+          const x3 = x2;
+          const y3 = y2 * cosX - z2 * sinX;
+          const z3 = y2 * sinX + z2 * cosX;
 
           baseVertices.push({ x: x3, y: y3, z: z3 });
           

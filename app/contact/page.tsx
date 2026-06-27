@@ -1,23 +1,137 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { DynamicIcon } from "@/components/ui/Icons";
+import { ArrowRight } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import styles from "./page.module.css";
 
 // Note: Metadata export is not allowed with "use client", so we remove it.
 // In a real app we'd split the layout/metadata from the client form.
 
+const countryList = [
+  "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Mauritania", "Mauritius", "Mexico", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Somalia", "South Africa", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+];
+
+function CountryAutocomplete({ name }: { name?: string }) {
+  const [query, setQuery] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState("");
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  const filtered = countryList.filter(c => c.toLowerCase().includes(query.toLowerCase()));
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div ref={wrapperRef} style={{ position: 'relative' }}>
+      <input 
+        type="text" 
+        name={name}
+        className={`input ${styles.customInput}`} 
+        placeholder="Type to search..." 
+        value={selected || query}
+        onChange={(e) => {
+          setQuery(e.target.value);
+          setSelected("");
+          setIsOpen(true);
+        }}
+        onFocus={() => setIsOpen(true)}
+        required
+      />
+      {isOpen && (
+        <div style={{
+          position: 'absolute',
+          top: '100%',
+          left: 0,
+          right: 0,
+          background: 'rgba(10, 15, 25, 0.95)',
+          border: '1px solid rgba(255, 255, 255, 0.15)',
+          borderRadius: '8px',
+          marginTop: '8px',
+          maxHeight: '200px',
+          overflowY: 'auto',
+          zIndex: 50,
+          backdropFilter: 'blur(10px)',
+          boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
+        }}>
+          {filtered.length > 0 ? filtered.map(c => (
+            <div 
+              key={c}
+              style={{
+                padding: '12px 16px',
+                cursor: 'pointer',
+                color: 'rgba(255,255,255,0.8)',
+                transition: 'background 0.2s',
+                borderBottom: '1px solid rgba(255,255,255,0.05)'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+              onClick={() => {
+                setSelected(c);
+                setQuery("");
+                setIsOpen(false);
+              }}
+            >
+              {c}
+            </div>
+          )) : (
+            <div style={{ padding: '12px 16px', color: 'rgba(255,255,255,0.4)' }}>No countries found</div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    // Here we would typically send the data to an API
+    setIsSubmitting(true);
+    setErrorMsg("");
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      fullName: formData.get("fullName"),
+      company: formData.get("company"),
+      email: formData.get("email"),
+      country: formData.get("country"),
+      phone: (formData.get("phoneCode") as string || "") + (formData.get("phoneNumber") as string || ""),
+      projectDetails: formData.get("projectDetails"),
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message.");
+      }
+      setSubmitted(true);
+    } catch (err) {
+      console.error(err);
+      setErrorMsg("An error occurred. Please try again or contact us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   return (
     <>
@@ -28,8 +142,9 @@ export default function ContactPage() {
           <div className={styles.heroBg} />
           <div className={`container ${styles.heroContent}`}>
             <ScrollReveal>
-              <span className="section-label">Enterprise Consulting</span>
-              <h1 className={styles.heroTitle}>Engineer Your Custom<br /><span className="gradient-text">Data Pipeline</span></h1>
+              <span className="section-label">Talk to an Expert</span>
+              <h1 className="sr-only">Contact Our AI Data Annotation Experts</h1>
+              <h2 className={styles.heroTitle}>Engineer Your Custom<br /><span className="gradient-text">Data Pipeline</span></h2>
               <p className={styles.heroDesc}>
                 Tell us about your model requirements. Our engineering team will respond within 24 hours with a tailored architecture and pilot proposal.
               </p>
@@ -57,50 +172,78 @@ export default function ContactPage() {
                       <>
                         <div className={styles.formRow}>
                           <div className={styles.formGroup}>
-                            <label className={styles.label}>Your Name *</label>
-                            <input type="text" className={`input ${styles.customInput}`} placeholder="First Name" required />
+                            <label className={styles.label}>Full Name *</label>
+                            <input type="text" name="fullName" className={`input ${styles.customInput}`} placeholder="John Doe" required />
                           </div>
                           <div className={styles.formGroup}>
                             <label className={styles.label}>Company *</label>
-                            <input type="text" className={`input ${styles.customInput}`} placeholder="Company Name" required />
+                            <input type="text" name="company" className={`input ${styles.customInput}`} placeholder="Company Name" required />
                           </div>
                         </div>
                         <div className={styles.formGroup}>
                           <label className={styles.label}>Work Email *</label>
-                          <input type="email" className={`input ${styles.customInput}`} placeholder="you@company.com" required />
+                          <input type="email" name="email" className={`input ${styles.customInput}`} placeholder="you@company.com" required />
                         </div>
                         <div className={styles.formRow}>
                           <div className={styles.formGroup}>
-                            <label className={styles.label}>Project Timeline *</label>
-                            <select className={`input ${styles.customInput}`} required>
-                              <option value="">Select Timeline</option>
-                              <option>Immediate (within 1 month)</option>
-                              <option>1-3 months</option>
-                              <option>3-6 months</option>
-                              <option>Exploring options</option>
-                            </select>
+                            <label className={styles.label}>Country *</label>
+                            <CountryAutocomplete name="country" />
                           </div>
                           <div className={styles.formGroup}>
-                            <label className={styles.label}>Estimated Volume</label>
-                            <select className={`input ${styles.customInput}`} required>
-                              <option value="">Select Volume</option>
-                              <option>&lt; 100K data points</option>
-                              <option>100K - 1M data points</option>
-                              <option>1M+ data points</option>
-                              <option>Ongoing pipeline</option>
-                            </select>
+                            <label className={styles.label}>Phone No</label>
+                            <div style={{ display: 'flex', gap: '8px' }}>
+                              <input 
+                                type="tel" 
+                                name="phoneCode"
+                                className={`input ${styles.customInput}`} 
+                                placeholder="+1" 
+                                maxLength={4}
+                                style={{ width: '80px', textAlign: 'center' }}
+                                onInput={(e) => {
+                                  let val = e.currentTarget.value.replace(/[^0-9+]/g, '');
+                                  if (val && !val.startsWith('+')) {
+                                    val = '+' + val.replace(/\+/g, '');
+                                  }
+                                  if (val.startsWith('+')) {
+                                    val = '+' + val.substring(1).replace(/\+/g, '');
+                                  }
+                                  e.currentTarget.value = val;
+                                }}
+                              />
+                              <input 
+                                type="tel" 
+                                name="phoneNumber"
+                                className={`input ${styles.customInput}`} 
+                                placeholder="5550000000" 
+                                maxLength={15}
+                                style={{ flex: 1 }}
+                                onInput={(e) => {
+                                  e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
+                                }}
+                              />
+                            </div>
                           </div>
                         </div>
                         <div className={styles.formGroup}>
                           <label className={styles.label}>Project Details *</label>
                           <textarea 
+                            name="projectDetails"
                             className={`input ${styles.textarea} ${styles.customInput}`} 
                             placeholder="Describe your model architecture, data modalities (text, image, LiDAR, etc.), and any strict compliance requirements..."
                             required
                           />
                         </div>
-                        <button type="submit" className={`btn btn--primary btn--lg ${styles.submitBtn}`}>
-                          Get in Touch →
+                        
+                        {errorMsg && (
+                          <div style={{ color: '#ef4444', marginBottom: '16px', fontSize: '0.9rem' }}>
+                            {errorMsg}
+                          </div>
+                        )}
+
+                        <button type="submit" disabled={isSubmitting} className={`btn btn--primary btn--lg ${styles.submitBtn}`}>
+                          {isSubmitting ? "Sending..." : (
+                            <>Get in Touch <ArrowRight size={18} /></>
+                          )}
                         </button>
                         <p className={styles.formNote}>
                           <span style={{ display: "inline-block", verticalAlign: "middle", marginRight: "4px" }}>
@@ -156,9 +299,9 @@ export default function ContactPage() {
 
                   <div className={styles.contactDirect}>
                     <h4>Direct Contact</h4>
-                    <a href="mailto:enterprise@dserveai.com" className={styles.contactEmail}>
+                    <a href="mailto:connect@dserveai.com" className={styles.contactEmail}>
                       <DynamicIcon name="mail" size={16} color="currentColor" />
-                      enterprise@dserveai.com
+                      connect@dserveai.com
                     </a>
                     <a href="https://www.linkedin.com/company/106909852/" target="_blank" rel="noopener noreferrer" className={styles.contactEmail}>
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">

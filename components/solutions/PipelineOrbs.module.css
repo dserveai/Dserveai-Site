@@ -1,0 +1,159 @@
+.orbWrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Healthcare */
+.ring1, .ring2 {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 50%;
+  border: 2px solid;
+  animation: pulse 3s infinite ease-out;
+  opacity: 0;
+}
+.ring2 { animation-delay: 1.5s; }
+.pulseIcon { animation: heartbeat 1.5s infinite; }
+
+@keyframes pulse {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.15); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.15); }
+}
+
+/* Agentic */
+.dashRing {
+  position: absolute;
+  top: 10%; left: 10%; right: 10%; bottom: 10%;
+  border-radius: 50%;
+  border: 2px dashed;
+  animation: spin 8s linear infinite;
+  opacity: 0.5;
+}
+.nodesContainer {
+  position: absolute;
+  width: 100%; height: 100%;
+  animation: spin 12s linear infinite reverse;
+}
+.node1, .node2, .node3 {
+  position: absolute;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+}
+.node1 { top: 10%; left: 50%; transform: translateX(-50%); }
+.node2 { bottom: 20%; left: 15%; }
+.node3 { bottom: 20%; right: 15%; }
+
+/* Computer Vision */
+.scanner {
+  position: absolute;
+  width: 100%; height: 40%;
+  top: 0; left: 0;
+  animation: scan 2s infinite ease-in-out alternate;
+  opacity: 0.3;
+  border-bottom: 2px solid rgba(255,255,255,0.8);
+}
+.crosshair {
+  position: absolute;
+  width: 60%; height: 60%;
+  border: 1px solid;
+  opacity: 0.4;
+}
+
+@keyframes scan {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(150%); }
+}
+
+/* Gen AI */
+.sparkleRing {
+  position: absolute;
+  width: 80%; height: 80%;
+  border-radius: 50%;
+  border: 2px dotted;
+  animation: spin 6s linear infinite;
+  opacity: 0.6;
+}
+.spinIcon {
+  animation: slowFloat 3s infinite ease-in-out;
+}
+
+/* Multimodal */
+.layer1, .layer2, .layer3 {
+  position: absolute;
+  width: 60%; height: 60%;
+  border: 2px solid;
+  border-radius: 12px;
+  opacity: 0.3;
+}
+.layer1 { transform: rotate(15deg); animation: wobble1 4s infinite ease-in-out; }
+.layer2 { transform: rotate(-15deg); animation: wobble2 5s infinite ease-in-out; }
+.layer3 { transform: rotate(45deg); animation: wobble3 6s infinite ease-in-out; }
+
+@keyframes wobble1 { 0%, 100% { transform: rotate(15deg) scale(1); } 50% { transform: rotate(25deg) scale(1.1); } }
+@keyframes wobble2 { 0%, 100% { transform: rotate(-15deg) scale(1); } 50% { transform: rotate(-25deg) scale(1.05); } }
+@keyframes wobble3 { 0%, 100% { transform: rotate(45deg) scale(1); } 50% { transform: rotate(35deg) scale(1.15); } }
+
+/* Biometrics */
+.fingerprintScan {
+  position: absolute;
+  width: 100%; height: 4px;
+  box-shadow: 0 0 10px currentColor;
+  animation: verticalScan 2s infinite linear;
+}
+
+@keyframes verticalScan {
+  0% { top: 10%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 90%; opacity: 0; }
+}
+
+/* Conversational */
+.soundWave1, .soundWave2, .soundWave3 {
+  position: absolute;
+  width: 6px;
+  border-radius: 4px;
+  animation: eq 1s infinite ease-in-out alternate;
+  opacity: 0.5;
+}
+.soundWave1 { left: 20%; height: 20px; animation-delay: 0.1s; }
+.soundWave2 { right: 20%; height: 40px; animation-delay: 0.3s; }
+.soundWave3 { left: 40%; height: 60px; animation-delay: 0.5s; opacity: 0.1; }
+
+@keyframes eq {
+  0% { transform: scaleY(0.5); }
+  100% { transform: scaleY(1.5); }
+}
+
+/* Physical */
+.gearRing {
+  position: absolute;
+  width: 80%; height: 80%;
+  border-radius: 50%;
+  border: 4px dashed;
+  animation: spin 10s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes slowFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}

@@ -43,12 +43,12 @@ export default function Navbar() {
     <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
       <nav className={styles.nav}>
         {/* Wordmark and Logo */}
-        <Link href="/" className={styles.logo}>
+        <a href="/" className={styles.logo}>
           <Image src="/logo.png" alt="Dserve AI Logo" width={36} height={36} className={styles.logoIcon} />
           <span className={styles.logoText}>
-            Dserve <span className={styles.logoAI}>AI</span>
+            Dserve<span className={styles.logoAI}>AI</span>
           </span>
-        </Link>
+        </a>
 
         {/* Desktop Links */}
         <ul className={styles.links}>

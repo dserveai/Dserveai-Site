@@ -237,7 +237,34 @@ select.customInput option {
   .infoPanels { order: -1; }
 }
 
+@media (max-width: 768px) {
+  .hero { padding: 130px 0 60px; }
+  .heroTitle { font-size: clamp(2rem, 6vw, 2.75rem); }
+  .heroDesc { font-size: 1rem; }
+  .formWrap { padding: 36px 24px; }
+  .formTitle { font-size: 1.5rem; }
+  .formDesc { font-size: 0.9rem; }
+  .formRow { grid-template-columns: 1fr; }
+  .infoCard { padding: 28px 24px; }
+  .infoTitle { font-size: 1.15rem; }
+  .contactDirect h4 { font-size: 1rem; }
+}
+
 @media (max-width: 640px) {
   .formWrap { padding: 32px 24px; }
   .formRow { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 100px 0 40px; }
+  .heroTitle { font-size: clamp(1.75rem, 7vw, 2.25rem); }
+  .heroDesc { font-size: 0.9rem; }
+  .formWrap { padding: 24px 16px; border-radius: 16px; }
+  .formTitle { font-size: 1.3rem; }
+  .contactGrid { gap: 28px; }
+  .infoCard { padding: 24px 16px; border-radius: 16px; }
+  .infoBullet { font-size: 0.875rem; }
+  .submitBtn { width: 100%; justify-content: center; }
+  .infoStep { gap: 12px; }
+  .infoStepNum { width: 32px; height: 32px; font-size: 0.8rem; }
 }

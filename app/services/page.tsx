@@ -1,29 +1,59 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight, Database, Code2, Zap, ShieldCheck } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { services, industries, process } from "@/lib/data";
+import { services, solutions, process } from "@/lib/data";
 import { DynamicIcon } from "@/components/ui/Icons";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import TiltCard from "@/components/ui/TiltCard";
 import InteractiveCanvas from "@/components/ui/InteractiveCanvas";
+import RotatingServiceText from "@/components/ui/RotatingServiceText";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Services — Custom AI Data Pipelines | Dserve AI",
+  title: "Services | Custom AI Data Pipelines | Dserve AI",
   description: "End-to-end AI data services: custom dataset collection, precision annotation, quality assurance, and enterprise consulting across healthcare, computer vision, NLP, and more.",
 };
 
 const statsData = [
   { value: "1M+", label: "Data Units Delivered" },
   { value: "50+", label: "Dataset Categories" },
-  { value: "95%+", label: "Annotation Accuracy (IAA)" },
+  { value: "99%+", label: "Annotation Accuracy (IAA)" },
   { value: "30+", label: "Countries Sourced" },
 ];
 
 export default function ServicesPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "AI Data Annotation and Collection",
+            "provider": {
+              "@type": "Organization",
+              "name": "Dserve AI",
+              "url": "https://dserveai.com"
+            },
+            "areaServed": {
+              "@type": "Place",
+              "name": "Worldwide"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "AI Data Services",
+              "itemListElement": services.map(s => ({
+                "@type": "OfferCatalog",
+                "name": s.title,
+                "description": s.description
+              }))
+            }
+          })
+        }}
+      />
       <Navbar />
       <main>
 
@@ -46,14 +76,17 @@ export default function ServicesPage() {
 
             {/* Left: hero text */}
             <div className={styles.entryLeft}>
-              <h1 className={styles.entryTitle}>
+              <h1 className="sr-only">Enterprise AI Data Pipelines and Services</h1>
+              <h2 className={styles.entryTitle}>
                 Data that trains<br />
-                the world&apos;s<br />
-                <em>best AI.</em>
-              </h1>
+                the world&apos;s best<br />
+                <div className={styles.rotatingContainer}>
+                  <RotatingServiceText />
+                </div>
+              </h2>
 
               <p className={styles.entryDesc}>
-                We handle everything from custom data collection and precision labeling to rigorous quality assurance. Our complete pipeline ensures your engineering team gets exactly what they need to build reliable models.
+                Fueling the next generation of AI breakthroughs. We provide the high-fidelity data and specialized solutions needed to turn ambitious concepts into production-ready reality.
               </p>
 
               <div className={styles.entryCtas}>
@@ -96,39 +129,41 @@ export default function ServicesPage() {
 
             <div className={styles.serviceRail}>
               {services.map((service, index) => (
-                <ScrollReveal key={service.slug} delay={index * 80}>
-                  <Link
-                    href={`/services/${service.slug}`}
-                    className={styles.serviceCard}
-                    style={{ "--svc-color": service.color } as React.CSSProperties}
-                  >
-                    <div className={styles.serviceCardGlow} />
+                <ScrollReveal key={service.slug} delay={index * 80} className={styles.scrollRevealWrap}>
+                  <article style={{ display: 'flex', width: '100%', height: '100%' }}>
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className={styles.serviceCard}
+                      style={{ "--svc-color": service.color, flex: 1, height: '100%' } as React.CSSProperties}
+                    >
+                      <div className={styles.serviceCardGlow} />
 
-                    <div className={styles.serviceIconRow}>
-                      <div
-                        className={styles.serviceIcon}
-                        style={{
-                          background: `${service.color}15`,
-                        }}
-                      >
-                        <DynamicIcon name={service.iconName} size={26} color={service.color} />
+                      <div className={styles.serviceIconRow}>
+                        <div
+                          className={styles.serviceIcon}
+                          style={{
+                            background: `${service.color}15`,
+                          }}
+                        >
+                          <DynamicIcon name={service.iconName} size={26} color={service.color} />
+                        </div>
+                        <div className={styles.serviceArrow}>
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                            <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                          </svg>
+                        </div>
                       </div>
-                      <div className={styles.serviceArrow}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <path d="M7 17L17 7M17 7H7M17 7v10"/>
-                        </svg>
+
+                      <h3 className={styles.serviceTitle}>{service.title}</h3>
+                      <p className={styles.serviceDesc}>{service.description}</p>
+
+                      <div className={styles.serviceTags}>
+                        {service.features.slice(0, 3).map(f => (
+                          <span key={f} className={styles.serviceTag}>{f}</span>
+                        ))}
                       </div>
-                    </div>
-
-                    <h3 className={styles.serviceTitle}>{service.title}</h3>
-                    <p className={styles.serviceDesc}>{service.description}</p>
-
-                    <div className={styles.serviceTags}>
-                      {service.features.slice(0, 3).map(f => (
-                        <span key={f} className={styles.serviceTag}>{f}</span>
-                      ))}
-                    </div>
-                  </Link>
+                    </Link>
+                  </article>
                 </ScrollReveal>
               ))}
             </div>
@@ -136,9 +171,9 @@ export default function ServicesPage() {
         </section>
 
         {/* ============================================
-            INDUSTRIES STRIP
+            SOLUTIONS STRIP
         ============================================= */}
-        <section className={styles.industriesStrip}>
+        <section className={styles.solutionsStrip}>
           <div className="container">
             <ScrollReveal>
               <div className={styles.stripHeader}>
@@ -147,9 +182,9 @@ export default function ServicesPage() {
               </div>
             </ScrollReveal>
             <div className={styles.bentoGrid}>
-              {industries.map((ind, i) => (
+              {solutions.map((ind, i) => (
                 <ScrollReveal key={ind.name} delay={i * 40}>
-                  <Link href={`/industries/${ind.slug}`} style={{ textDecoration: 'none' }}>
+                  <Link href={`/solutions/${ind.slug}`} style={{ textDecoration: 'none' }}>
                     <TiltCard 
                       className={styles.bentoCard}
                       style={{ "--c": ind.color } as React.CSSProperties}
@@ -158,7 +193,7 @@ export default function ServicesPage() {
                         <div className={styles.bentoIcon}>
                           <DynamicIcon name={ind.iconName} size={24} color={ind.color} />
                         </div>
-                        <span className={styles.bentoArrow}>Explore →</span>
+                        <span className={styles.bentoArrow}>Explore <ArrowRight size={14} /></span>
                       </div>
                       <div className={styles.bentoBottom}>
                         <h4 className={styles.bentoName}>{ind.name}</h4>
@@ -173,40 +208,100 @@ export default function ServicesPage() {
         </section>
 
         {/* ============================================
-            PROCESS — Vertical Timeline
+            POC VALIDATION ENGINE
         ============================================= */}
-        <section className={styles.processSection}>
+        <section className={styles.pocSection}>
           <div className="container">
-            <div className={styles.processGrid}>
-
-              {/* Left: sticky label */}
+            <div className={styles.pocHeader}>
               <ScrollReveal>
-                <div className={styles.processLeft}>
-                  <span className="section-label" style={{ marginBottom: "24px", display: "block" }}>How We Work</span>
-                  <h2 className={styles.processTitle}>
-                    A workflow built<br />for <em>production.</em>
-                  </h2>
-                  <p className={styles.processSubtitle}>
-                    Every engagement follows our battle-tested four-phase process. No surprises. No missed deadlines. Just reliable, high-quality data delivered to your cloud.
+                <h2 className={styles.pocTitle}>
+                  The Proof of Concept Engine
+                </h2>
+                <p className={styles.pocDesc}>
+                  We don't ask for blind trust. Validate our accuracy, latency, and throughput on a subset of your raw data before committing to production scale.
+                </p>
+              </ScrollReveal>
+            </div>
+
+            <div className={styles.pocGrid}>
+              
+              {/* Step 1 */}
+              <ScrollReveal delay={0}>
+                <div className={styles.pocCard}>
+                  <div className={styles.pocCardTop}>
+                    <div className={styles.pocIconBox} style={{ color: "#0ea5e9" }}>
+                      <Database size={28} />
+                    </div>
+                    <span className={styles.pocStep}>01</span>
+                  </div>
+                  <h3 className={styles.pocCardTitle}>Secure Ingestion</h3>
+                  <p className={styles.pocCardDesc}>
+                    You provide a 5% subset of your data. It is ingested into our SOC2-compliant, air-gapped sandbox environment where it is profiled and encrypted at rest.
                   </p>
-                  <Link href="/contact" className="btn btn--primary">Discuss Your Workflow →</Link>
+                  <div className={styles.pocMetrics}>
+                    <div className={styles.pocMetric}>
+                      <span className={styles.pocMetricValue}>AES-256</span>
+                      <span className={styles.pocMetricLabel}>Encryption</span>
+                    </div>
+                    <div className={styles.pocMetric}>
+                      <span className={styles.pocMetricValue}>SOC2 Type II</span>
+                      <span className={styles.pocMetricLabel}>Compliance</span>
+                    </div>
+                  </div>
                 </div>
               </ScrollReveal>
 
-              {/* Right: timeline steps */}
-              <div className={styles.processRight}>
-                {process.map((p, i) => (
-                  <ScrollReveal key={p.step} delay={i * 100}>
-                    <div className={styles.processStep}>
-                      <div className={styles.processStepNum}>{p.step}</div>
-                      <div className={styles.processStepContent}>
-                        <h4 className={styles.processStepTitle}>{p.title}</h4>
-                        <p className={styles.processStepDesc}>{p.desc}</p>
-                      </div>
+              {/* Step 2 */}
+              <ScrollReveal delay={100}>
+                <div className={styles.pocCard}>
+                  <div className={styles.pocCardTop}>
+                    <div className={styles.pocIconBox} style={{ color: "#8b5cf6", borderColor: "rgba(139,92,246,0.3)", background: "rgba(139,92,246,0.05)" }}>
+                      <Code2 size={28} />
                     </div>
-                  </ScrollReveal>
-                ))}
-              </div>
+                    <span className={styles.pocStep}>02</span>
+                  </div>
+                  <h3 className={styles.pocCardTitle}>Ontology Hardening</h3>
+                  <p className={styles.pocCardDesc}>
+                    Our ML engineers review your existing labeling guidelines. We convert any ambiguous instructions into deterministic, mathematically verifiable rules.
+                  </p>
+                  <div className={styles.pocMetrics}>
+                    <div className={styles.pocMetric}>
+                      <span className={styles.pocMetricValue} style={{ color: "#8b5cf6" }}>Deterministic</span>
+                      <span className={styles.pocMetricLabel}>Logic Gates</span>
+                    </div>
+                    <div className={styles.pocMetric}>
+                      <span className={styles.pocMetricValue}>Senior SME</span>
+                      <span className={styles.pocMetricLabel}>Reviewers</span>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              {/* Step 3 */}
+              <ScrollReveal delay={200}>
+                <div className={styles.pocCard}>
+                  <div className={styles.pocCardTop}>
+                    <div className={styles.pocIconBox} style={{ color: "#10b981", borderColor: "rgba(16,185,129,0.3)", background: "rgba(16,185,129,0.05)" }}>
+                      <ShieldCheck size={28} />
+                    </div>
+                    <span className={styles.pocStep}>03</span>
+                  </div>
+                  <h3 className={styles.pocCardTitle}>Inference & Audit</h3>
+                  <p className={styles.pocCardDesc}>
+                    We execute the sprint in 72 hours. The final dataset is delivered alongside an Inter-Annotator Agreement (IAA) audit proving we hit the required accuracy.
+                  </p>
+                  <div className={styles.pocMetrics}>
+                    <div className={styles.pocMetric}>
+                      <span className={styles.pocMetricValue} style={{ color: "#10b981" }}>&gt;99%</span>
+                      <span className={styles.pocMetricLabel}>IAA Guarantee</span>
+                    </div>
+                    <div className={styles.pocMetric}>
+                      <span className={styles.pocMetricValue}>72 Hours</span>
+                      <span className={styles.pocMetricLabel}>Turnaround</span>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
 
             </div>
           </div>
@@ -222,14 +317,14 @@ export default function ServicesPage() {
               <div className={styles.ctaInner}>
                 <div>
                   <h2 className={styles.ctaTitle}>
-                    Ready to build your<br /><em>data advantage?</em>
+                    Your foundation model deserves<br /><em>better data.</em>
                   </h2>
                   <p className={styles.ctaSubtitle}>
-                    Tell us about your project. We&apos;ll scope a custom pipeline, align on your delivery timeline, and get your team moving in days — not months.
+                    Partner with Dserve AI to build proprietary, high-fidelity datasets that unlock your competitive edge. Scoped in hours, execution in days, scale in weeks.
                   </p>
                 </div>
                 <div className={styles.ctaActions}>
-                  <Link href="/contact" className="btn btn--primary btn--lg">Start a Pilot Project →</Link>
+                  <Link href="/contact" className="btn btn--primary btn--lg">Start a Pilot Project <ArrowRight size={18} /></Link>
                   <Link href="/case-studies" className="btn btn--secondary btn--lg">See Case Studies</Link>
                 </div>
               </div>

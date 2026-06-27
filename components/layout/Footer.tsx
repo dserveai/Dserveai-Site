@@ -8,23 +8,19 @@ const footerLinks = {
     { href: "/case-studies", label: "Case Studies" },
     { href: "/blog", label: "Blog" },
     { href: "/faq", label: "FAQ" },
+    { href: "/contact", label: "Contact Us" },
   ],
   Services: [
     { href: "/services#custom-dataset-collection", label: "Data Collection" },
     { href: "/services#data-annotation-&-labeling", label: "Data Annotation" },
     { href: "/services#quality-assurance", label: "Quality Assurance" },
-    { href: "/contact", label: "Enterprise Consulting" },
+    { href: "/services#computer-vision", label: "Computer Vision" },
   ],
-  Industries: [
-    { href: "/#industries", label: "Healthcare AI" },
-    { href: "/#industries", label: "Computer Vision" },
-    { href: "/#industries", label: "Conversational AI" },
-    { href: "/#industries", label: "Autonomous Vehicles" },
-  ],
-  Legal: [
-    { href: "/privacy", label: "Privacy Policy" },
-    { href: "/terms", label: "Terms of Service" },
-    { href: "/contact", label: "Contact Us" },
+  Solutions: [
+    { href: "/#solutions", label: "Healthcare AI" },
+    { href: "/#solutions", label: "Physical AI" },
+    { href: "/#solutions", label: "Agentic AI" },
+    { href: "/#solutions", label: "Generative AI" },
   ],
 };
 
@@ -42,16 +38,16 @@ export default function Footer() {
           {/* Brand Column */}
           <div className={styles.brand}>
             <Link href="/" className={styles.logo}>
-              <Image src="/logo.png" alt="Dserve AI Logo" width={32} height={32} className={styles.logoIcon} />
+              <Image src="/logo.png" alt="Dserve AI Logo" width={36} height={36} className={styles.logoIcon} />
               <span className={styles.logoText}>
-                Dserve <span className={styles.logoAI}>AI</span>
+                Dserve<span className={styles.logoAI}>AI</span>
               </span>
             </Link>
             <p className={styles.tagline}>
-              Empowering AI with High-Quality Data. Trusted by the world&apos;s leading AI teams.
+              Bridging the gap between AI ambition and execution with reliable, scalable, and real-world data solutions.
             </p>
             <div className={styles.socialLinks}>
-              <a href="https://www.linkedin.com/company/106909852/" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/company/dserve-ai/" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="LinkedIn">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
                   <circle cx="4" cy="4" r="2"/>
@@ -59,9 +55,9 @@ export default function Footer() {
               </a>
             </div>
             <div className={styles.contactInfo}>
-              <a href="mailto:enterprise@dserveai.com" className={styles.contactItem}>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=connect@dserveai.com" target="_blank" rel="noopener noreferrer" className={styles.contactItem}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                enterprise@dserveai.com
+                connect@dserveai.com
               </a>
             </div>
           </div>
@@ -79,13 +75,34 @@ export default function Footer() {
               </ul>
             </div>
           ))}
+
+          {/* Global Presence */}
+          <div className={styles.linkGroup}>
+            <h4 className={styles.linkGroupTitle}>Global Presence</h4>
+            <div className={styles.radarLocations}>
+              {["Dubai", "Mumbai", "Ahmedabad"].map((city, i) => (
+                <div key={city} className={styles.radarLocation}>
+                  <div className={styles.radarDot}>
+                    <div className={styles.radarPing} style={{ animationDelay: `${i * 0.4}s` }} />
+                  </div>
+                  <span className={styles.radarCity}>{city}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Bottom Bar */}
         <div className={styles.bottomBar}>
-          <p className={styles.copyright}>
-            © {year} Dserve AI. All rights reserved.
-          </p>
+          <div className={styles.bottomLeft}>
+            <p className={styles.copyright}>
+              © {year} Dserve AI. All rights reserved.
+            </p>
+            <div className={styles.legalLinks}>
+              <Link href="/privacy">Privacy Policy</Link>
+              <Link href="/terms">Terms of Service</Link>
+            </div>
+          </div>
           <div className={styles.bottomBadges}>
             <span className="badge badge--green">HIPAA Compliant</span>
             <span className="badge badge--green">GDPR Compliant</span>

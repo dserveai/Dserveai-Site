@@ -80,6 +80,145 @@
   color: rgba(255,255,255,0.4);
 }
 
+/* ---- POC VALIDATION ENGINE ---- */
+.pocSection {
+  padding: 160px 0;
+  background: radial-gradient(circle at top, rgba(14,165,233,0.05) 0%, #040810 50%);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.pocHeader {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.pocTitle {
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: white;
+  margin-bottom: 24px;
+}
+
+.pocDesc {
+  font-size: 1.15rem;
+  color: rgba(255,255,255,0.5);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.pocGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 992px) {
+  .pocGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pocCard {
+  background: rgba(10, 15, 25, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 24px;
+  padding: 40px;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.pocCard:hover {
+  background: rgba(255,255,255,0.03);
+  border-color: rgba(255,255,255,0.15);
+  transform: translateY(-8px);
+}
+
+.pocCardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.pocIconBox {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+.pocCard:hover .pocIconBox {
+  transform: scale(1.1);
+}
+
+.pocStep {
+  font-size: 3rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.05);
+  line-height: 1;
+  transition: color 0.4s ease;
+}
+
+.pocCard:hover .pocStep {
+  color: rgba(255,255,255,0.2);
+}
+
+.pocCardTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 16px;
+}
+
+.pocCardDesc {
+  color: rgba(255,255,255,0.5);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  flex-grow: 1;
+}
+
+.pocMetrics {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.pocMetric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pocMetricValue {
+  font-family: monospace;
+  font-size: 1.1rem;
+  color: white;
+}
+
+.pocMetricLabel {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
 .entryTitle {
   font-family: 'Outfit', sans-serif;
   font-size: clamp(3rem, 4.5vw, 5.5rem);
@@ -97,6 +236,13 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.rotatingContainer {
+  display: inline-block;
+  min-height: 1.1em;
+  width: 100%;
+  vertical-align: top;
 }
 
 @keyframes fadeSlideUp {
@@ -295,6 +441,11 @@
   gap: 24px;
 }
 
+.scrollRevealWrap {
+  display: flex;
+  height: 100%;
+}
+
 .serviceCard {
   position: relative;
   border-radius: 28px;
@@ -392,6 +543,12 @@
   margin-bottom: 14px;
   line-height: 1.2;
   transition: color 0.3s;
+  /* Enforce exactly 2 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(1.2em * 2);
 }
 
 .serviceCard:hover .serviceTitle {
@@ -402,14 +559,20 @@
   font-size: 0.92rem;
   color: rgba(255,255,255,0.5);
   line-height: 1.65;
-  flex: 1;
   margin-bottom: 28px;
+  /* Enforce exactly 2 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(1.65em * 2);
 }
 
 .serviceTags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-top: auto;
 }
 
 .serviceTag {
@@ -429,8 +592,8 @@
   color: rgba(255,255,255,0.75);
 }
 
-/* ---- INDUSTRIES STRIP ---- */
-.industriesStrip {
+/* ---- SOLUTIONS STRIP ---- */
+.solutionsStrip {
   padding: 80px 0 100px;
   background: linear-gradient(180deg, transparent 0%, rgba(14,165,233,0.02) 50%, transparent 100%);
   border-top: 1px solid rgba(255,255,255,0.04);
@@ -760,18 +923,65 @@
   .serviceRail {
     grid-template-columns: repeat(2, 1fr);
   }
-  .industryScroll {
+  .solutionScroll {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .entryInner { gap: 40px; }
+  .entryPanel { min-height: auto; }
+  .entryInner { gap: 40px; padding-top: 130px; padding-bottom: 60px; }
+  .entryLeft { padding-top: 0; text-align: center; align-items: center; }
+  .entryTitle { font-size: clamp(2rem, 6vw, 3rem); }
+  .entryDesc { font-size: 1rem; text-align: center; }
+  .entryCtas { justify-content: center; flex-direction: column; align-items: stretch; }
+  .eyebrow { justify-content: center; }
   .serviceRail { grid-template-columns: 1fr; }
-  .industryScroll { grid-template-columns: 1fr 1fr; }
+  .solutionScroll { grid-template-columns: 1fr 1fr; }
   .processGrid { grid-template-columns: 1fr; }
   .processLeft { position: static; }
   .ctaInner { grid-template-columns: 1fr; padding: 40px; }
-  .ctaActions { flex-direction: row; }
+  .ctaActions { flex-direction: column; align-items: stretch; }
   .showroomHeader { flex-direction: column; align-items: flex-start; }
+  .floatingStats { grid-template-columns: 1fr 1fr; gap: 12px; }
+}
+
+@media (max-width: 480px) {
+  .entryInner { padding-top: 110px; padding-bottom: 40px; gap: 28px; }
+  .entryTitle { font-size: clamp(1.75rem, 7vw, 2.5rem); line-height: 1.1; }
+  .entryDesc { font-size: 0.9rem; }
+  .eyebrowText { font-size: 0.68rem; }
+  .solutionScroll { grid-template-columns: 1fr; }
+  .ctaInner { padding: 28px 16px; border-radius: 20px; }
+  .floatingStats { gap: 8px; grid-template-columns: 1fr; }
+  .serviceRail { gap: 16px; }
+}
+
+@media (hover: none) {
+  .serviceRail .card:hover,
+  .solutionScroll .card:hover,
+  .pocCard:hover,
+  .serviceCard:hover,
+  .bentoCard:hover,
+  .processStep:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .pocCard:hover .pocIconBox,
+  .pocCard:hover .pocStep,
+  .floatStat:hover::before,
+  .floatStat:hover::after,
+  .serviceCard:hover .serviceCardGlow,
+  .serviceCard:hover .serviceIcon,
+  .serviceCard:hover .serviceArrow,
+  .serviceCard:hover .serviceTitle,
+  .serviceCard:hover .serviceTag,
+  .bentoCard:hover::before,
+  .bentoCard:hover .bentoIcon,
+  .bentoCard:hover .bentoArrow,
+  .processStep:hover .processStepContent,
+  .processStep:hover .processStepNum {
+    transform: none;
+    opacity: inherit; /* Reset opacity effects */
+  }
 }

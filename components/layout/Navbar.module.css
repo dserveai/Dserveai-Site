@@ -63,18 +63,23 @@
 }
 
 .logoText {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.6rem;
-  font-weight: 800;
+  font-family: var(--font-nasalization), sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
   color: white;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .logoAI {
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.45em;
+  font-weight: 800;
+  position: relative;
+  top: -1.2em;
+  margin-left: 2px;
+  color: white;
+  letter-spacing: 0.05em;
 }
 
 /* Links */
@@ -307,4 +312,31 @@
 @media (max-width: 640px) {
   .navbar { padding: 0 16px; }
   .mobileMenu { padding: 20px 16px 28px; }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    top: 12px;
+    width: 94%;
+    height: 60px;
+    padding: 0 12px;
+  }
+  .logoText { font-size: 1.15rem; }
+  .logoIcon { width: 28px; height: 28px; }
+  .mobileMenu {
+    top: 72px;
+    padding: 16px 12px 24px;
+  }
+  .mobileLink {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+  }
+  .mobileCtas { gap: 8px; }
+}
+
+@media (hover: none) {
+  .logo:hover .logoIcon {
+    transform: none;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
+  }
 }

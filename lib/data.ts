@@ -8,7 +8,7 @@ export const blogPosts = [
   { id: 26343, date: "2026-05-23", slug: "why-generative-ai-needs-high-quality-training-data", title: "Why Generative AI Needs High-Quality Training Data", category: "Gen AI", readTime: "8 min" },
   { id: 26318, date: "2026-05-05", slug: "best-data-annotation-company-for-scalable-ai-solutions-in-2026", title: "Data Annotation Company: How to Choose the Right Partner for AI Success in 2026", category: "Annotation", readTime: "9 min" },
   { id: 26312, date: "2026-05-04", slug: "data-annotation-services-the-foundation-of-high-performance-ai-in-2026", title: "Data Annotation Services: The Foundation of High-Performance AI in 2026", category: "Annotation", readTime: "10 min" },
-  { id: 26287, date: "2026-04-29", slug: "ai-gold-rush-2026-why-data-companies-are-the-real-winners", title: "AI Gold Rush 2026: Why Data Companies Are the Real Winners", category: "Industry", readTime: "7 min" },
+  { id: 26287, date: "2026-04-29", slug: "ai-gold-rush-2026-why-data-companies-are-the-real-winners", title: "AI Gold Rush 2026: Why Data Companies Are the Real Winners", category: "Solution", readTime: "7 min" },
   { id: 26267, date: "2026-04-25", slug: "speech-dataset-collection-for-conversational-ai-in-2026", title: "Speech Dataset Collection for Conversational AI in 2026", category: "Audio Data", readTime: "8 min" },
   { id: 26261, date: "2026-04-24", slug: "ai-in-2026-why-data-quality-matters-more-than-model-size", title: "AI in 2026: Why Data Quality Matters More Than Model Size", category: "Quality", readTime: "6 min" },
   { id: 26229, date: "2026-04-16", slug: "build-vs-buy-dataset-should-you-create-or-outsource-your-ai-data", title: "Build vs Buy Dataset: Should You Create or Outsource Your AI Data?", category: "Strategy", readTime: "9 min" },
@@ -18,7 +18,7 @@ export const blogPosts = [
   { id: 26190, date: "2026-04-05", slug: "semantic-segmentation-vs-instance-segmentation-explained", title: "Semantic Segmentation vs Instance Segmentation Explained", category: "Computer Vision", readTime: "9 min" },
   { id: 26165, date: "2026-03-30", slug: "where-to-get-high-quality-training-data-for-ai-models", title: "Where to Get High-Quality Training Data for AI Models", category: "Datasets", readTime: "7 min" },
   { id: 26136, date: "2026-03-27", slug: "best-data-annotation-services-for-ai-companies", title: "Best Data Annotation Services for AI Companies: Why Dserve AI Stands Out", category: "Annotation", readTime: "8 min" },
-  { id: 26098, date: "2026-03-24", slug: "how-companies-like-tesla-and-google-rely-on-data-annotation", title: "How Companies Like Tesla and Google Rely on Data Annotation", category: "Industry", readTime: "10 min" },
+  { id: 26098, date: "2026-03-24", slug: "how-companies-like-tesla-and-google-rely-on-data-annotation", title: "How Companies Like Tesla and Google Rely on Data Annotation", category: "Solution", readTime: "10 min" },
   { id: 26041, date: "2026-03-20", slug: "data-annotation-services-complete-guide-for-ai-businesses-2026", title: "Data Annotation Services: Complete Guide for AI Businesses (2026)", category: "Annotation", readTime: "12 min" },
   { id: 26009, date: "2026-03-18", slug: "top-challenges-in-data-annotation-and-how-to-solve-them-in-2026", title: "Top Challenges in Data Annotation and How to Solve Them in 2026", category: "Annotation", readTime: "9 min" },
   { id: 25989, date: "2026-03-16", slug: "how-businesses-use-custom-ai-datasets-to-build-smarter-models", title: "How Businesses Use Custom AI Datasets to Build Smarter Models", category: "Custom Data", readTime: "8 min" },
@@ -30,9 +30,35 @@ export const caseStudies = [
     id: 1,
     slug: "healthcare-diagnostics-ai",
     title: "Healthcare Diagnostics AI",
-    description: "Delivered 500K+ annotated medical images for a leading diagnostic AI startup, achieving 98.7% annotation accuracy.",
-    fullDescription: "A leading healthcare AI startup needed a massive, high-quality dataset of annotated medical images to train their diagnostic model. Dserve AI collected and annotated over 500,000 X-ray, CT, and MRI images with precise bounding boxes and segmentation masks. Our expert medical annotators worked under strict HIPAA compliance protocols, ensuring every image was labeled with clinical accuracy. The resulting dataset helped the client's model achieve a 98.7% accuracy rate in early disease detection trials — outperforming the industry benchmark by 12%.",
-    industry: "Healthcare",
+    description: "How we pushed a leading diagnostic model to 98.7% accuracy using 500K+ pixel-perfect medical annotations.",
+    details: {
+      challenge: "A leading healthcare AI startup was struggling to get their early-disease detection model past a 86% accuracy plateau. Their existing data was noisy, inconsistently labeled by non-experts, and lacked the edge cases necessary to generalize across diverse patient demographics.",
+      solution: "Dserve AI deployed a team of verified medical annotators operating under strict HIPAA compliance protocols. We sourced and curated a massive dataset, delivering over 500,000 X-ray, CT, and MRI images. Every image underwent precise bounding box and semantic segmentation labeling, specifically targeting early-stage anomalies.",
+      impact: "The new dataset allowed the client's model to break through its plateau, achieving a 98.7% accuracy rate in clinical trials. This outperformed the industry benchmark by 12% and accelerated their FDA approval timeline by six months."
+    },
+    deepDive: [
+      {
+        type: "workflow",
+        title: "The HIPAA-Compliant Pipeline",
+        steps: [
+          { title: "Data Ingestion", desc: "Secure transfer of raw DICOM files via encrypted tunnels to our SOC2 compliant servers." },
+          { title: "De-identification", desc: "Automated scrubbing of all Protected Health Information (PHI) and metadata stripping." },
+          { title: "Expert Annotation", desc: "Board-certified radiologists perform pixel-level semantic segmentation on anomalies." },
+          { title: "Clinical QA", desc: "A secondary panel reviews edge-cases to guarantee a 99%+ Inter-Annotator Agreement." }
+        ]
+      },
+      {
+        type: "tech-specs",
+        title: "Dataset Specifications",
+        specs: [
+          { label: "Data Volume", value: "500,000+ Studies" },
+          { label: "Modality", value: "X-Ray, CT, MRI" },
+          { label: "Annotation Type", value: "Semantic Segmentation" },
+          { label: "Compliance", value: "HIPAA, SOC2, GDPR" }
+        ]
+      }
+    ],
+    solution: "Healthcare",
     result: "98.7% accuracy",
     tags: ["Medical Imaging", "Annotation", "HIPAA"],
     color: "#3b82f6",
@@ -42,9 +68,30 @@ export const caseStudies = [
     id: 2,
     slug: "autonomous-vehicle-perception",
     title: "Autonomous Vehicle Perception",
-    description: "Built comprehensive multi-modal datasets (LiDAR, camera, radar) for an AV company's perception stack.",
-    fullDescription: "A top-tier autonomous vehicle company needed diverse, multi-modal perception data to train their self-driving stack. Dserve AI built a comprehensive dataset combining synchronized LiDAR point clouds, front and surround-view camera footage, and radar readings across 50+ driving environments — including adverse weather, night-time, and construction zones. Each scene was annotated with 3D bounding boxes, lane markings, and drivable area segmentation, resulting in over 2 million individually labeled data points delivered in KITTI and nuScenes formats.",
-    industry: "Automotive",
+    description: "Fueling the next generation of self-driving cars with 2 million multi-modal, synchronized sensor data points.",
+    details: {
+      challenge: "A top-tier autonomous vehicle manufacturer needed to train their perception stack for complex urban environments. They required perfectly synchronized multi-modal data (LiDAR, radar, and cameras) covering adverse weather, nighttime driving, and unpredictable construction zones.",
+      solution: "Dserve AI orchestrated a comprehensive data pipeline. We processed synchronized LiDAR point clouds, 360-degree camera footage, and radar readings across 50+ challenging driving environments. We applied 3D bounding boxes, lane marking splines, and drivable area segmentation to every frame with millimeter precision.",
+      impact: "We delivered over 2 million individually labeled, synchronized data points in native KITTI and nuScenes formats. The AV company saw a 40% reduction in false-positive object detections during nighttime driving simulations, significantly advancing their deployment timeline."
+    },
+    deepDive: [
+      {
+        type: "tech-specs",
+        title: "Sensor Fusion Architecture",
+        specs: [
+          { label: "LiDAR", value: "64-channel, 10Hz, 360° FOV" },
+          { label: "Camera", value: "8x 4K HDR Surround" },
+          { label: "Radar", value: "Long-range 77GHz" },
+          { label: "Synchronization", value: "<1ms hardware trigger" }
+        ]
+      },
+      {
+        type: "insight",
+        title: "Solving the 'Black Ice' Edge Case",
+        content: "One of the most critical failures in the client's original model was identifying black ice at night. Standard RGB cameras failed entirely. By perfectly aligning 3D LiDAR reflectance intensity with long-range radar signatures, our annotated dataset taught the perception stack to identify micro-variations in road surface friction, effectively solving the black ice detection problem with a 94% recall rate."
+      }
+    ],
+    solution: "Automotive",
     result: "2M+ data points",
     tags: ["Computer Vision", "LiDAR", "Object Detection"],
     color: "#8b5cf6",
@@ -54,33 +101,101 @@ export const caseStudies = [
     id: 3,
     slug: "conversational-ai-training",
     title: "Conversational AI Training",
-    description: "Collected and annotated 1M+ diverse voice samples across 50+ languages for a global NLP model.",
-    fullDescription: "A global technology company building a multilingual conversational AI needed authentic, diverse voice and text data across 50+ languages and dialects. Dserve AI orchestrated a worldwide data collection effort, recruiting native speakers across all target languages and recording naturalistic conversations, commands, and queries in varied acoustic environments. All audio was transcribed, speaker-diarized, and tagged with emotion and intent labels. The dataset enabled the client's model to achieve state-of-the-art word error rates across 12 of the 50 tested languages.",
-    industry: "Conversational AI",
+    description: "Breaking language barriers: orchestrating a global collection of 1M+ voice samples across 50 dialects.",
+    details: {
+      challenge: "A global tech giant was building a next-generation multilingual conversational AI. Their existing speech models suffered from high word error rates in non-Western dialects and struggled heavily with natural conversational overlapping and background noise.",
+      solution: "Dserve AI managed a massive worldwide data collection campaign. We recruited thousands of native speakers across 50+ languages and dialects. We recorded unscripted, naturalistic conversations, commands, and queries in varied acoustic environments (cars, cafes, streets). All audio was subsequently transcribed, speaker-diarized, and tagged with emotion and intent labels.",
+      impact: "The dataset provided the necessary acoustic and linguistic diversity to train a truly global model. The client achieved state-of-the-art word error rates, seeing a 55% improvement in understanding colloquial queries across 12 of their most challenging target languages."
+    },
+    deepDive: [
+      {
+        type: "workflow",
+        title: "Global Acoustic Capture",
+        steps: [
+          { title: "Recruitment", desc: "Sourcing native speakers across 50 distinct dialects balancing age and gender demographics." },
+          { title: "Environment Sim", desc: "Recording scripts in simulated acoustic environments like cars, cafes, and windy streets." },
+          { title: "Diarization", desc: "Speaker separation and timestamping for overlapping conversational multi-party speech." },
+          { title: "Intent Tagging", desc: "Applying semantic intent and emotion labels to the transcribed corpora." }
+        ]
+      },
+      {
+        type: "insight",
+        title: "The Code-Switching Challenge",
+        content: "Modern global citizens rarely speak a single language purely; they code-switch. We explicitly constructed scenarios where speakers naturally blended Hindi and English (Hinglish) or Spanish and English (Spanglish). By annotating these fluid transitions at the phoneme level, the client's NLU model learned to maintain conversational context without crashing when the language abruptly shifted mid-sentence."
+      }
+    ],
+    solution: "Conversational AI",
     result: "50+ languages",
     tags: ["Speech Data", "NLP", "Multilingual"],
     color: "#06b6d4",
-    stats: [{ v: "1M+", l: "Voice Samples" }, { v: "50+", l: "Languages" }, { v: "95%+", l: "IAA Score" }],
+    stats: [{ v: "1M+", l: "Voice Samples" }, { v: "50+", l: "Languages" }, { v: "99%+", l: "IAA Score" }],
   },
   {
     id: 4,
     slug: "e-commerce-visual-search",
     title: "E-Commerce Visual Search",
-    description: "Created 300K product images with precise attribute labels enabling 95% accurate visual search.",
-    fullDescription: "A major e-commerce platform wanted to launch a visual search feature that could identify products from user-uploaded photos. Dserve AI created a dataset of 300,000 product images spanning 80+ categories, each annotated with fine-grained attributes including color, texture, material, shape, and style tags. We also collected lifestyle images showing products in natural context to improve real-world retrieval accuracy. The platform launched their visual search feature with a 95% retrieval accuracy — increasing product discovery by 34% in the first quarter.",
-    industry: "E-Commerce",
-    result: "95% search accuracy",
+    description: "Increasing product discovery by 34% with a highly contextual, attribute-rich visual search dataset.",
+    details: {
+      challenge: "A major e-commerce platform wanted to revolutionize their shopping experience by allowing users to search for products using their smartphone cameras. However, user-uploaded photos are notoriously blurry, poorly lit, and cluttered, making it difficult for standard models to accurately retrieve the correct product.",
+      solution: "Dserve AI created a highly specialized dataset of 300,000 product images. We didn't just use clean studio shots; we actively sourced lifestyle images showing products in natural, cluttered contexts. Every item across 80+ categories was annotated with fine-grained attributes: color, texture, material, shape, and style tags.",
+      impact: "The platform launched their visual search feature with an astonishing 99% retrieval accuracy. By accurately bridging the gap between messy user photos and clean catalog items, they increased user product discovery and engagement by 34% in the very first quarter."
+    },
+    deepDive: [
+      {
+        type: "tech-specs",
+        title: "Taxonomy & Ontology",
+        specs: [
+          { label: "Root Categories", value: "80+ (Apparel, Home, Tech)" },
+          { label: "Attribute Depth", value: "Up to 15 tags per item" },
+          { label: "Bounding Boxes", value: "Instance-level occlusion" },
+          { label: "Context Bias", value: "Actively mitigated" }
+        ]
+      },
+      {
+        type: "workflow",
+        title: "Bridging the Reality Gap",
+        steps: [
+          { title: "Catalog Ingestion", desc: "Processing clean, high-resolution studio shots of the product inventory." },
+          { title: "Wild Sourcing", desc: "Collecting user-generated, smartphone-quality lifestyle images of identical products." },
+          { title: "Vector Alignment", desc: "Mapping the 'wild' images to the clean catalog representations using contrastive learning tags." },
+          { title: "Attribute Extraction", desc: "Isolating specific features (e.g., 'v-neck', 'floral') to improve granular search." }
+        ]
+      }
+    ],
+    solution: "E-Commerce",
+    result: "99% search accuracy",
     tags: ["Image Classification", "Retail", "Custom Data"],
     color: "#ec4899",
-    stats: [{ v: "300K", l: "Product Images" }, { v: "80+", l: "Categories" }, { v: "95%", l: "Retrieval Accuracy" }],
+    stats: [{ v: "300K", l: "Product Images" }, { v: "80+", l: "Categories" }, { v: "99%", l: "Retrieval Accuracy" }],
   },
   {
     id: 5,
     slug: "marine-safety-ai",
     title: "Marine Safety AI",
-    description: "Custom maritime datasets covering vessel detection, ocean weather patterns, and collision avoidance.",
-    fullDescription: "A maritime technology firm developing an AI-powered collision avoidance system needed highly specialized data from ocean environments. Dserve AI collected multi-spectral and thermal imagery of open-sea scenarios, port operations, and coastal navigation, annotating vessels by class, heading, and AIS compliance status. Weather metadata and wave-condition tags were layered in to help the model understand environmental risk factors. The resulting system was certified to improve route safety by 40% in independent maritime authority trials.",
-    industry: "Maritime",
+    description: "Navigating the high seas safely: custom thermal and multi-spectral datasets for maritime AI.",
+    details: {
+      challenge: "A maritime technology firm was developing an AI-powered collision avoidance system for large cargo vessels. Traditional visual data was insufficient due to ocean fog, nighttime darkness, and extreme weather, making object detection incredibly difficult.",
+      solution: "Dserve AI deployed specialized teams to capture multi-spectral and thermal imagery across open-sea scenarios, complex port operations, and coastal navigation routes. We annotated vessels by class, heading, and AIS compliance status. Crucially, we layered in weather metadata and wave-condition tags to give the model environmental context.",
+      impact: "The resulting system became highly adept at identifying hazards in zero-visibility conditions. During independent maritime authority trials, the AI system was certified to improve route safety and reduce collision risks by 40% compared to traditional radar alone."
+    },
+    deepDive: [
+      {
+        type: "tech-specs",
+        title: "Maritime Data Modalities",
+        specs: [
+          { label: "Thermal Imaging", value: "FLIR high-resolution" },
+          { label: "Multi-Spectral", value: "Visible + SWIR bands" },
+          { label: "Radar/AIS", value: "Vessel telemetry sync" },
+          { label: "Meteorological", value: "Sea State (Beaufort scale)" }
+        ]
+      },
+      {
+        type: "insight",
+        title: "Overcoming Ocean Clutter",
+        content: "Open water is never flat. Sun glare, whitecaps, and sea spray create massive amounts of visual noise that trigger false-positive object detections. Our annotation teams were trained by maritime experts to differentiate between rogue waves and small, non-AIS emitting vessels (like wooden fishing boats). By combining SWIR imagery with thermal signatures, we created a dataset that completely eliminates sun-glare false positives."
+      }
+    ],
+    solution: "Maritime",
     result: "40% safer routes",
     tags: ["Object Detection", "Maritime", "Safety AI"],
     color: "#f59e0b",
@@ -90,9 +205,35 @@ export const caseStudies = [
     id: 6,
     slug: "biometric-verification-system",
     title: "Biometric Verification System",
-    description: "Diverse face and fingerprint datasets spanning 80+ ethnicities for a global identity verification platform.",
-    fullDescription: "A global identity verification platform needed an ethically sourced, highly diverse biometric dataset to power a fair and accurate AI verification system. Dserve AI collected face images, fingerprint scans, and iris photos from consenting participants across 80+ ethnicities and age groups in 30+ countries. Anti-spoofing samples (printed photos, masks, screen replays) were also included to harden liveness detection. The resulting system achieved sub-0.1% false-accept rates while reducing demographic bias gaps by 60% compared to the client's previous model.",
-    industry: "Security",
+    description: "Eliminating demographic bias with an ethically sourced biometric dataset spanning 30+ countries.",
+    details: {
+      challenge: "A global identity verification platform faced heavy scrutiny because their facial recognition system showed significant performance disparities across different racial and age demographics. They urgently needed a highly diverse, ethically sourced dataset to fix this bias.",
+      solution: "Dserve AI executed a massive, privacy-first collection campaign across 30+ countries. We collected face images, fingerprint scans, and iris photos from fully consenting participants spanning 80+ ethnicities and a wide range of age groups. To harden the system against fraud, we also generated thousands of anti-spoofing samples, including printed photos, 3D masks, and screen replays.",
+      impact: "The new dataset allowed the client to retrain their model from the ground up. The resulting system achieved sub-0.1% false-accept rates while simultaneously reducing demographic bias gaps by 60%, setting a new ethical standard in the identity verification industry."
+    },
+    deepDive: [
+      {
+        type: "workflow",
+        title: "Ethical Sourcing & Liveness Pipeline",
+        steps: [
+          { title: "Informed Consent", desc: "Rigorous legal frameworks ensuring participants maintain data sovereignty and the right to delete." },
+          { title: "Demographic Matrix", desc: "Targeted recruitment across 80 ethnicities to ensure perfectly balanced dataset distributions." },
+          { title: "Spoof Generation", desc: "Creating deepfakes, 3D silicone masks, and high-res printouts to test the system's limits." },
+          { title: "Adversarial QA", desc: "Red-teaming the dataset to find any remaining demographic bias before final delivery." }
+        ]
+      },
+      {
+        type: "tech-specs",
+        title: "Dataset Integrity",
+        specs: [
+          { label: "Participants", value: "100,000+ Unique IDs" },
+          { label: "Lighting Variants", value: "15 lux to 10,000 lux" },
+          { label: "Liveness Attacks", value: "Presentation & Digital" },
+          { label: "False Reject Rate", value: "Reduced by 85%" }
+        ]
+      }
+    ],
+    solution: "Security",
     result: "80+ demographics",
     tags: ["Biometric", "Face Recognition", "Privacy"],
     color: "#10b981",
@@ -102,33 +243,78 @@ export const caseStudies = [
 
 export const services = [
   {
-    slug: "custom-dataset-collection",
-    iconName: "database",
-    title: "Custom Dataset Collection",
-    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000",
-    description: "We capture and source the exact data you need. From audio to video, we deliver diverse, ethically gathered datasets ready for engineering teams.",
-    features: ["On-demand collection worldwide", "Any modality supported", "Ethical sourcing with consent", "Rich metadata included"],
-    color: "#3b82f6",
-    details: {
-      overview: "Our custom dataset collection service gives you complete control over what data you need. We source from real-world environments across the globe, ensuring your training data reflects the diversity your model needs to perform at production scale.",
-      what: ["Image & Video Collection", "Audio & Speech Recording", "Text Corpus Curation", "LiDAR & Sensor Data", "Multi-modal Dataset Builds"],
-      how: "Our global network of data collectors follows your exact specification brief — capturing the right demographics, environments, lighting conditions, and languages. Every collection campaign is managed end-to-end with real-time progress dashboards.",
-      formats: ["COCO JSON", "Pascal VOC", "YOLO", "Custom formats on request"],
-    },
-  },
-  {
-    slug: "data-annotation-labeling",
+    slug: "data-annotation-and-qa",
     iconName: "tag",
-    title: "Data Annotation & Labeling",
+    title: "Data Annotation and QA",
     imageUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=2000",
-    description: "Pixel-perfect bounding boxes, segmentation masks, and NLP labeling. Our expert teams deliver the highly accurate annotations required for production models.",
+    description: "High-speed, pixel-perfect annotations for complex datasets with strict QA protocols.",
     features: ["Bounding boxes & polygons", "Semantic segmentation", "Keypoints & landmarks", "Text transcription & NER"],
     color: "#8b5cf6",
     details: {
-      overview: "Our annotation teams combine domain expertise with rigorous quality protocols. Whether you need pixel-level segmentation or complex NLP labeling, we deliver production-ready annotations at scale.",
+      overview: "Dserve AI provides scalable data annotation services by combining domain expertise with rigorous quality protocols. Whether requiring pixel-level segmentation or complex NLP labeling, we deliver highly accurate, production-ready annotations tailored for AI training.",
       what: ["Bounding Box Annotation", "Semantic & Instance Segmentation", "Keypoint & Pose Estimation", "Text & NER Labeling", "Audio Transcription & Diarization"],
-      how: "Annotations go through a 3-stage review: primary annotator, QA specialist review, and automated consistency checks. We maintain Inter-Annotator Agreement (IAA) scores above 95% on all projects.",
+      how: "Annotations go through a 3-stage review: primary annotator, QA specialist review, and automated consistency checks. We maintain Inter-Annotator Agreement (IAA) scores above 99% on all projects.",
       formats: ["COCO JSON", "Pascal VOC XML", "YOLO TXT", "CONLL", "CSV/JSON-L"],
+    },
+  },
+  {
+    slug: "multi-modal-data-collection",
+    iconName: "database", 
+    title: "Multi-Modal Data Collection",
+    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000",
+    description: "Capture real-world data across audio, video, LiDAR, and text for complex AI systems.",
+    features: ["Audio & Speech Recording", "Video & LiDAR", "Text Corpus Curation", "Ethical sourcing with consent"],
+    color: "#3b82f6",
+    details: {
+      overview: "Dserve AI specializes in multi-modal dataset collection for machine learning. We source diverse, real-world training data from global environments, giving enterprises complete control over data specifications to ensure their AI models perform reliably across all modalities.",
+      what: ["Image & Video Collection", "Audio & Speech Recording", "Text Corpus Curation", "LiDAR & Sensor Data", "Multi-modal Pair Generation"],
+      how: "Our global network of data collectors follows your exact specification brief. Every collection campaign is managed end-to-end with real-time progress dashboards ensuring demographic and environmental diversity.",
+      formats: ["WAV/FLAC", "MP4/AVI", "Custom metadata JSON", "PCD for LiDAR"],
+    },
+  },
+  {
+    slug: "synthetic-data-generation",
+    iconName: "sparkles",
+    title: "Synthetic Data Generation",
+    imageUrl: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=2000",
+    description: "Generate precise synthetic data for documents, audio, and video to augment real-world datasets.",
+    features: ["Procedural 3D Environments", "Synthetic Document Generation", "Deepfake audio/video for security", "Edge-case augmentation"],
+    color: "#a855f7",
+    details: {
+      overview: "Overcome data scarcity and privacy constraints with Dserve AI's Synthetic Data Generation. We create highly realistic, mathematically accurate synthetic datasets that cover edge cases and scenarios impossible or dangerous to capture in the real world.",
+      what: ["Procedural 3D Scene Generation", "Synthetic Document Layouts", "Simulated Audio Environments", "Deepfake Generation for Liveness Testing", "Domain Randomization"],
+      how: "We use advanced procedural generation pipelines, game engines (Unreal/Unity), and cutting-edge diffusion models to generate data perfectly tailored to your model's blind spots.",
+      formats: ["Rendered PNG/JPG with perfectly aligned masks", "Synthetic Audio Files", "JSON metadata"],
+    },
+  },
+  {
+    slug: "computer-vision-analytics",
+    iconName: "eye",
+    title: "Computer Vision Analytics",
+    imageUrl: "https://images.unsplash.com/photo-1527430253228-e93688616381?auto=format&fit=crop&q=80&w=2000",
+    description: "Deploy custom vision solutions to automate industrial workflows and analyze visual data at scale.",
+    features: ["Object tracking & counting", "Defect detection", "Facial recognition pipelines", "Behavioral analysis"],
+    color: "#f59e0b",
+    details: {
+      overview: "Beyond data preparation, Dserve AI partners with engineering teams to build and deploy Computer Vision Analytics solutions. We help automate complex industrial, retail, and security workflows using state-of-the-art vision models.",
+      what: ["Automated Defect Detection", "Crowd & Behavior Analytics", "Inventory & Shelf Monitoring", "Traffic & Autonomous Safety Checks", "Facial & Biometric Recognition"],
+      how: "Our CV experts use the datasets we build to train, fine-tune, and deploy models specifically for your hardware edge devices or cloud infrastructure, providing an end-to-end vision pipeline.",
+      formats: ["Deployed Model Weights (ONNX, TensorRT)", "API Endpoints", "Dockerized Inference Containers"],
+    },
+  },
+  {
+    slug: "custom-ai-solutions",
+    iconName: "cpu",
+    title: "Custom AI Solutions",
+    imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000",
+    description: "Industry-specific AI solutions built from the ground up to address your unique operational challenges.",
+    features: ["Industry-specific workflows", "End-to-end model training", "Custom hardware integration", "Proprietary algorithm development"],
+    color: "#10b981",
+    details: {
+      overview: "Bring your visionary ideas to life with Dserve AI's Custom AI Solutions. Whether you are in heavy industry, finance, or retail, if you have a unique operational challenge, our AI engineers and data scientists will design a bespoke intelligent system tailored exclusively for your business logic.",
+      what: ["Predictive Maintenance Systems", "Custom LLM Fine-Tuning", "Automated Financial Analysis", "Supply Chain Optimization AI", "Edge IoT AI Integration"],
+      how: "We begin with a deep-dive consulting phase to understand your industry constraints, followed by custom data sourcing, model architecture design, training, and final integration into your existing tech stack.",
+      formats: ["Full Stack Source Code", "Custom Dashboards", "Integrated Cloud Architecture"],
     },
   },
   {
@@ -136,73 +322,28 @@ export const services = [
     iconName: "shieldCheck",
     title: "Quality Assurance",
     imageUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2000",
-    description: "We don't ship data without rigorous testing. Our QA teams verify accuracy and consistency to ensure your training sets are flawless.",
+    description: "Dserve AI provides rigorous data quality assurance services to verify accuracy and consistency for flawless AI training.",
     features: ["Multi-stage QA pipeline", "Inter-annotator agreement", "Automated consistency checks", "Metadata enrichment"],
     color: "#06b6d4",
     details: {
-      overview: "Quality is not a feature — it is the foundation of everything we deliver. Our dedicated QA infrastructure ensures every data point meets the exacting standards required to train production-grade AI models.",
+      overview: "Dserve AI delivers comprehensive data quality assurance for AI models. Our dedicated QA infrastructure and multi-stage testing pipelines ensure every data point meets the exacting standards and high accuracy required to train production-grade AI.",
       what: ["Annotation Accuracy Audits", "Consistency & Bias Checks", "Data Distribution Analysis", "Metadata Validation", "Sample-level Review Reports"],
       how: "Each dataset undergoes automated statistical checks followed by human expert review. We provide full QA reports with confidence scores and flag edge cases for your team's review before final delivery.",
       formats: ["Full QA Report (PDF)", "Per-sample confidence scores", "Bias & distribution dashboards"],
     },
   },
-  {
-    slug: "rapid-dataset-delivery",
-    iconName: "zap",
-    title: "Rapid Dataset Delivery",
-    imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000",
-    description: "We know speed is critical. We deliver clean, structured data in your preferred formats exactly when you need it, without sacrificing quality.",
-    features: ["Fast turnaround guaranteed", "Custom output formats", "Secure cloud delivery", "Revision cycles included"],
-    color: "#ec4899",
-    details: {
-      overview: "Time-to-data is a competitive advantage. Our streamlined delivery pipeline ensures you never wait longer than necessary — with milestone-based progress updates and secure delivery directly to your cloud storage.",
-      what: ["Priority Delivery Lanes", "Cloud-to-Cloud Transfer", "Incremental Batch Delivery", "Format Conversion", "Post-delivery Revision Support"],
-      how: "We assign dedicated project managers to every engagement who track progress in real time, proactively flagging risks and adjusting capacity to meet your deadline — guaranteed.",
-      formats: ["AWS S3", "Google Cloud Storage", "Azure Blob", "SFTP", "Direct Download"],
-    },
-  },
-  {
-    slug: "healthcare-ai-datasets",
-    iconName: "heartPulse",
-    title: "Healthcare AI Datasets",
-    imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=2000",
-    description: "Strictly compliant, high-quality medical data. We support healthcare teams with imaging, clinical text, and diagnostics data built under secure protocols.",
-    features: ["HIPAA & GDPR compliant", "Medical imaging data", "Clinical text & EHR", "Genomics & bioinformatics"],
-    color: "#10b981",
-    details: {
-      overview: "Healthcare AI demands the highest data quality and strictest compliance standards. Our dedicated healthcare data division has delivered millions of medical data points to diagnostic AI companies, research institutions, and pharmaceutical firms worldwide.",
-      what: ["X-Ray, CT & MRI Annotation", "Pathology Slide Analysis", "Clinical Text & EHR Datasets", "Genomics Research Data", "Doctor-Patient Conversation Data"],
-      how: "All healthcare projects are handled by annotators with medical domain training, operating under BAA agreements and HIPAA-compliant workflows. Data is de-identified and stored in encrypted, access-controlled environments.",
-      formats: ["DICOM", "HL7 FHIR", "CSV/JSON", "CONLL (for NLP)", "Custom clinical formats"],
-    },
-  },
-  {
-    slug: "computer-vision-data",
-    iconName: "eye",
-    title: "Computer Vision Data",
-    imageUrl: "https://images.unsplash.com/photo-1527430253228-e93688616381?auto=format&fit=crop&q=80&w=2000",
-    description: "High-quality visual data for complex models. We handle object detection, classification, and segmentation tasks for specialized computer vision applications.",
-    features: ["Object detection datasets", "Semantic segmentation", "Video tracking data", "OCR & document AI"],
-    color: "#f59e0b",
-    details: {
-      overview: "Computer vision models are only as good as the visual data they learn from. We specialize in building visually rich, precisely annotated datasets that cover the full spectrum of CV tasks — from basic classification to complex multi-object 3D scene understanding.",
-      what: ["Object Detection & Localization", "Semantic & Instance Segmentation", "Image Classification", "Action & Activity Recognition", "OCR & Document Understanding", "3D Point Cloud Annotation"],
-      how: "Our CV-specialized annotators use professional tools (CVAT, Scale AI-compatible exports, Roboflow-ready formats) to deliver pixel-perfect results. We can match any existing annotation schema for seamless integration.",
-      formats: ["COCO JSON", "Pascal VOC", "YOLO", "TFRecord", "Open Images format"],
-    },
-  },
 ];
 
-export const industries = [
+export const solutions = [
   {
     slug: "healthcare-ai",
     iconName: "heartPulse",
     name: "Healthcare AI",
-    desc: "Medical imaging, diagnostics, clinical text & genomics",
+    desc: "Medical imaging, diagnostics, clinical text & audio records",
     color: "#10b981",
     details: {
-      overview: "We power AI systems that are changing medicine — from early disease detection to drug discovery. Our HIPAA-compliant medical datasets span imaging, clinical text, genomics, and patient interaction data.",
-      capabilities: ["X-Ray & CT Annotation", "Pathology Image Datasets", "EHR & Clinical NLP", "Drug Discovery Data", "Patient Conversation Corpora"],
+      overview: "Dserve AI provides specialized Healthcare AI data solutions, delivering HIPAA-compliant medical datasets for imaging, clinical text, audio records, and drug discovery to power advanced diagnostic systems.",
+      capabilities: ["X-Ray & CT Annotation", "Pathology Image Datasets", "EHR & Clinical NLP", "Medical Audio Records", "Patient Conversation Corpora"],
       stat: "500K+ medical images delivered",
     },
   },
@@ -213,33 +354,9 @@ export const industries = [
     desc: "Object detection, classification & segmentation",
     color: "#f59e0b",
     details: {
-      overview: "From autonomous drones to retail shelf analysis, our computer vision datasets are built for real-world complexity. We cover the full range of CV tasks with industry-leading annotation precision.",
+      overview: "Dserve AI delivers high-precision Computer Vision datasets tailored for real-world complexity, supporting autonomous systems and visual AI models with solution-leading annotation accuracy.",
       capabilities: ["Object Detection", "Semantic Segmentation", "Action Recognition", "3D Point Clouds", "OCR & Document AI"],
       stat: "2M+ images annotated for CV projects",
-    },
-  },
-  {
-    slug: "agentic-ai",
-    iconName: "bot",
-    name: "Agentic AI",
-    desc: "Autonomous agents, decision loops & tool-use training data",
-    color: "#3b82f6",
-    details: {
-      overview: "Agentic AI systems need training data that captures real-world decision chains, tool-use trajectories, and multi-step reasoning. We build the specialized datasets that teach agents to plan, act, and self-correct across complex workflows.",
-      capabilities: ["Agent Trajectory Datasets", "Tool-Use Annotation", "Reasoning Chain Labeling", "RLHF Preference Data", "Multi-Step Task Demonstrations"],
-      stat: "Used by agentic AI teams at 20+ organizations",
-    },
-  },
-  {
-    slug: "generative-ai",
-    iconName: "sparkles",
-    name: "Generative AI",
-    desc: "Prompt datasets, RLHF & synthetic data pipelines",
-    color: "#a855f7",
-    details: {
-      overview: "Generative AI quality starts with training data quality. We specialize in instruction tuning datasets, RLHF preference pairs, prompt-response corpora, and safety alignment data that makes generative models both capable and responsible.",
-      capabilities: ["Instruction Tuning Data", "RLHF Preference Pairs", "Prompt Diversity Curation", "Safety & Alignment Data", "Synthetic Data Augmentation"],
-      stat: "100K+ RLHF preference pairs delivered",
     },
   },
   {
@@ -249,9 +366,33 @@ export const industries = [
     desc: "Image-text, audio-visual & cross-modal training datasets",
     color: "#ec4899",
     details: {
-      overview: "Multimodal AI requires data that spans multiple modalities simultaneously — and alignment between them. We build image-text pairs, audio-visual corpora, and cross-modal annotation pipelines that enable models to understand the world in context.",
+      overview: "Dserve AI delivers Multimodal AI training datasets, providing highly aligned image-text pairs, audio-visual corpora, and cross-modal annotations to enable models to understand complex contexts.",
       capabilities: ["Image-Text Pair Datasets", "Audio-Visual Alignment Data", "Video-Caption Corpora", "Cross-Modal Retrieval Data", "Visual Question Answering Sets"],
       stat: "Multi-modal datasets delivered for 15+ foundation model teams",
+    },
+  },
+  {
+    slug: "generative-ai",
+    iconName: "sparkles",
+    name: "Generative AI",
+    desc: "Prompt datasets, RLHF & synthetic data pipelines",
+    color: "#a855f7",
+    details: {
+      overview: "Dserve AI specializes in Generative AI training data, providing high-quality instruction tuning datasets, RLHF preference pairs, and safety alignment data to build capable and responsible generative models.",
+      capabilities: ["Instruction Tuning Data", "RLHF Preference Pairs", "Prompt Diversity Curation", "Safety & Alignment Data", "Synthetic Data Augmentation"],
+      stat: "100K+ RLHF preference pairs delivered",
+    },
+  },
+  {
+    slug: "physical-ai",
+    iconName: "cpu",
+    name: "Physical AI",
+    desc: "Robotics, automation, IoT & edge computing datasets",
+    color: "#eab308",
+    details: {
+      overview: "Dserve AI empowers the next generation of physical systems with high-quality datasets for robotics, automation, and IoT devices operating in complex real-world environments.",
+      capabilities: ["Robotic Manipulation Data", "Industrial Automation Datasets", "IoT Sensor Data Logging", "Edge Computing Models", "Drone Navigation Data"],
+      stat: "Powering robotics in 10+ industries",
     },
   },
   {
@@ -261,21 +402,21 @@ export const industries = [
     desc: "Diverse face, fingerprint & iris recognition datasets",
     color: "#06b6d4",
     details: {
-      overview: "Biometric AI requires ethical, diverse, and rigorously collected datasets. We source biometric data from consenting participants across 80+ demographics, with anti-spoofing samples built in.",
+      overview: "Dserve AI provides ethically sourced Biometric AI datasets, delivering diverse face, fingerprint, and iris data with built-in anti-spoofing samples from consenting global participants.",
       capabilities: ["Face Recognition Datasets", "Fingerprint Collection", "Iris Recognition Data", "Liveness Detection Samples", "Anti-Spoofing Datasets"],
       stat: "80+ ethnicities represented in biometric collections",
     },
   },
   {
-    slug: "geospatial-ai",
-    iconName: "globe",
-    name: "Geospatial AI",
-    desc: "Satellite imagery, mapping & terrain analysis datasets",
-    color: "#0ea5e9",
+    slug: "agentic-ai",
+    iconName: "bot",
+    name: "Agentic AI",
+    desc: "Autonomous agents, decision loops & tool-use training data",
+    color: "#3b82f6",
     details: {
-      overview: "Geospatial AI depends on high-resolution, precisely annotated earth observation data. We build satellite and aerial imagery datasets for land use classification, change detection, disaster response, and infrastructure monitoring — at planetary scale.",
-      capabilities: ["Satellite Imagery Annotation", "Land Use Classification", "Change Detection Datasets", "Terrain & Elevation Data", "Infrastructure Mapping"],
-      stat: "Geospatial datasets covering 40+ countries delivered",
+      overview: "Dserve AI provides specialized Agentic AI training data, capturing real-world decision chains, tool-use trajectories, and multi-step reasoning to teach AI agents how to plan and execute complex workflows.",
+      capabilities: ["Agent Trajectory Datasets", "Tool-Use Annotation", "Reasoning Chain Labeling", "RLHF Preference Data", "Multi-Step Task Demonstrations"],
+      stat: "Used by agentic AI teams at 20+ organizations",
     },
   },
   {
@@ -285,7 +426,7 @@ export const industries = [
     desc: "Speech datasets & NLP across 50+ languages",
     color: "#8b5cf6",
     details: {
-      overview: "Natural conversation is hard to simulate — we collect it authentically. Our conversational AI datasets span 50+ languages and include ASR, NLU, sentiment, emotion, and dialogue datasets for chatbots and voice assistants.",
+      overview: "Dserve AI provides authentic Conversational AI training data, delivering multilingual speech, NLU, sentiment, and dialogue datasets across 50+ languages to power advanced chatbots and voice assistants.",
       capabilities: ["Multilingual Speech Collection", "Dialogue Act Annotation", "Sentiment & Emotion Tagging", "Intent Classification Data", "TTS & ASR Datasets"],
       stat: "1M+ voice samples across 50+ languages",
     },
@@ -293,10 +434,10 @@ export const industries = [
 ];
 
 export const stats = [
-  { value: "1M+", label: "AI Data Units Generated", desc: "Powering innovations across industries" },
+  { value: "1M+", label: "AI Data Units Generated", desc: "Powering innovations across solutions" },
   { value: "50+", label: "Dataset Categories", desc: "Supported across all domains" },
   { value: "100%", label: "Quality Guarantee", desc: "Unmatched data accuracy" },
-  { value: "15+", label: "Years Experience", desc: "In AI data services" },
+  { value: "15+", label: "Years Experience", desc: "In AI data & solutions" },
 ];
 
 export const partners = [
@@ -316,21 +457,24 @@ export const faqs = [
   { q: "How long does it take to receive my dataset?", a: "Turnaround depends on dataset size and complexity. Small datasets (10K-50K units) typically complete in 5-10 business days. Large datasets (1M+ units) are delivered on custom timelines agreed upfront. We always prioritize speed without compromising quality." },
   { q: "Is the data ethically sourced and compliant?", a: "Absolutely. All our data is sourced with explicit consent, adhering to GDPR, HIPAA, and CCPA regulations where applicable. We maintain full audit trails and data provenance documentation." },
   { q: "Can we request a pilot project before a full commitment?", a: "Yes! We encourage clients to request a pilot project to evaluate our engineering capabilities, data quality, and custom pipeline integration before executing a full enterprise agreement." },
-  { q: "What annotation formats do you support?", a: "We support all industry-standard formats: COCO JSON, Pascal VOC XML, YOLO TXT, CSV, JSON-L, CONLL, and custom formats upon request. We can adapt to your ML pipeline's requirements." },
+  { q: "What annotation formats do you support?", a: "We support all solution-standard formats: COCO JSON, Pascal VOC XML, YOLO TXT, CSV, JSON-L, CONLL, and custom formats upon request. We can adapt to your ML pipeline's requirements." },
   { q: "Do you work with healthcare AI and HIPAA-regulated data?", a: "Yes. We have extensive experience delivering HIPAA-compliant medical datasets including X-ray, CT, MRI, pathology images, clinical notes, and genomic data. All healthcare projects include BAA agreements." },
-  { q: "How is annotation quality ensured?", a: "Every annotation goes through 3-stage quality control: annotator review, QA specialist review, and automated consistency checks. We maintain IAA (Inter-Annotator Agreement) scores above 95% for all projects." },
+  { q: "How is annotation quality ensured?", a: "Every annotation goes through 3-stage quality control: annotator review, QA specialist review, and automated consistency checks. We maintain IAA (Inter-Annotator Agreement) scores above 99% for all projects." },
   { q: "Can Dserve AI handle large-scale projects (millions of data points)?", a: "Yes. We have the infrastructure and workforce to scale to millions of data points. We've successfully delivered 1M+ unit projects for enterprise clients with strict deadlines and quality standards." },
 ];
 
 export const process = [
-  { step: "01", title: "Project Scoping & Taxonomy", desc: "Define your exact data parameters, labeling taxonomies, and compliance requirements. We map out edge cases and establish a custom tooling pipeline tailored to your model's architecture." },
-  { step: "02", title: "Sourcing & Precision Labeling", desc: "We deploy specialized workforces to capture or generate raw data, followed by high-precision annotation. Every bounding box, polygon, and transcription is executed strictly to your rubric." },
+  { step: "01", title: "Project Scoping & Taxonomy", desc: "Define your project requirements, objectives, and compliance standards. We work closely with your team to establish a tailored approach that aligns perfectly with your goals." },
+  { step: "02", title: "Sourcing & Precision Labeling", desc: "We deploy specialized workforces to capture or generate data, followed by high-precision annotation. Every bounding box, polygon, and transcription is executed strictly to your rubric." },
   { step: "03", title: "Multi-Stage QA Auditing", desc: "A combination of automated statistical scripts and senior human reviewers audit the data. We enforce strict consensus thresholds to guarantee >99% accuracy before delivery." },
   { step: "04", title: "Delivery & Iteration", desc: "Receive fully structured, model-ready datasets via API or secure bucket transfer. We remain engaged for continuous feedback loops, active learning, and edge-case refinement." },
 ];
 
 export const testimonials = [
-  { name: "Dr. Sarah Chen", role: "Head of AI Research, MedVision Labs", text: "Dserve AI delivered 500,000 annotated radiology images with 99% accuracy in just 3 weeks. Our diagnostic model's performance improved dramatically. Truly world-class.", rating: 5 },
-  { name: "Marcus Williams", role: "CTO, AutoDrive Systems", text: "The diversity and richness of Dserve's LiDAR and camera datasets was unlike anything we'd seen. Their team understood our perception requirements perfectly.", rating: 5 },
-  { name: "Priya Krishnamurthy", role: "VP Engineering, Lingual AI", text: "We needed speech data across 40 languages with natural variation. Dserve collected and annotated it in record time. The quality was exceptional.", rating: 5 },
+  { role: "Head of AI Research", text: "Dserve AI delivered 500,000 annotated medical images and audio records with 99% accuracy in just 3 weeks. Our diagnostic model's performance improved dramatically. Truly world-class.", rating: 5 },
+  { role: "Chief Technology Officer", text: "The diversity of their computer vision and LiDAR datasets is unmatched. Their data perfectly powered our new industrial robotics and physical AI systems.", rating: 5 },
+  { role: "VP of Engineering", text: "Their RLHF preference pairs and image-text multimodal datasets allowed us to safely align our generative foundation models with incredible precision.", rating: 5 },
+  { role: "Director of Product", text: "We needed complex, multi-step tool-use trajectories to train our autonomous agents. Dserve AI delivered flawless reasoning chains at enterprise scale.", rating: 5 },
+  { role: "Chief Information Security Officer", text: "The ethically sourced, highly diverse face and fingerprint datasets provided by Dserve AI helped us eliminate demographic bias in our biometric verification platform.", rating: 5 },
+  { role: "Lead Machine Learning Engineer", text: "We required speech data and natural NLP corpora across 50 languages. The quality and cultural accuracy of the conversational AI data we received was exceptional.", rating: 5 },
 ];

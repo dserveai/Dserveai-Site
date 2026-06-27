@@ -36,6 +36,31 @@ export default async function BlogPostPage(props: Props) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": post.title,
+            "datePublished": post.date,
+            "dateModified": post.date,
+            "author": {
+              "@type": "Organization",
+              "name": "Dserve AI",
+              "url": "https://dserveai.com"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Dserve AI",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://dserveai.com/logo.png"
+              }
+            }
+          })
+        }}
+      />
       <Navbar />
       <main style={{ paddingTop: "140px", paddingBottom: "80px", minHeight: "80vh" }}>
         <div className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
@@ -67,14 +92,29 @@ export default async function BlogPostPage(props: Props) {
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
-          <div style={{ marginTop: "64px", paddingTop: "40px", borderTop: "1px solid rgba(255,255,255,0.1)", textAlign: "center" }}>
-            <h3 style={{ color: "white", fontFamily: "'Outfit', sans-serif", fontSize: "1.5rem", marginBottom: "16px" }}>Ready to Build Smarter AI?</h3>
-            <p style={{ color: "rgba(255,255,255,0.6)", marginBottom: "32px" }}>
-              Our expert engineers are ready to design your custom data pipeline.
-            </p>
-            <Link href="/contact" className="btn btn--primary btn--lg">
-              Discuss Your Project →
-            </Link>
+          <div style={{ marginTop: "64px", paddingTop: "40px", borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+            <h3 style={{ color: "white", fontFamily: "'Outfit', sans-serif", fontSize: "1.5rem", marginBottom: "24px" }}>Related Posts</h3>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "24px", marginBottom: "48px" }}>
+              {postsData
+                .filter(p => p.slug !== post.slug)
+                .slice(0, 3)
+                .map(related => (
+                  <Link key={related.slug} href={`/blog/${related.slug}`} style={{ background: "rgba(255,255,255,0.02)", padding: "24px", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.05)", textDecoration: "none", transition: "all 0.3s" }} className="relatedCard">
+                    <div style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.4)", marginBottom: "8px", textTransform: "uppercase", letterSpacing: "1px" }}>{related.category}</div>
+                    <h4 style={{ color: "white", fontSize: "1.1rem", marginBottom: "0", lineHeight: 1.4 }}>{related.title}</h4>
+                  </Link>
+              ))}
+            </div>
+            
+            <div style={{ textAlign: "center", paddingTop: "40px", borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+              <h3 style={{ color: "white", fontFamily: "'Outfit', sans-serif", fontSize: "1.5rem", marginBottom: "16px" }}>Ready to Build Smarter AI?</h3>
+              <p style={{ color: "rgba(255,255,255,0.6)", marginBottom: "32px" }}>
+                Our expert engineers are ready to design your custom data pipeline.
+              </p>
+              <Link href="/contact" className="btn btn--primary btn--lg">
+                Discuss Your Project →
+              </Link>
+            </div>
           </div>
         </div>
       </main>
@@ -92,6 +132,7 @@ export default async function BlogPostPage(props: Props) {
         article pre { background: #0f172a; padding: 24px; border-radius: 12px; overflow-x: auto; margin: 32px 0; border: 1px solid rgba(255,255,255,0.1); }
         article code { font-family: monospace; background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
         article pre code { background: transparent; padding: 0; }
+        .relatedCard:hover { background: rgba(255,255,255,0.05) !important; border-color: rgba(99,179,255,0.3) !important; transform: translateY(-4px); }
       `}} />
       <Footer />
     </>

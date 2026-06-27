@@ -114,3 +114,26 @@
 .faqItem.open .faqContentInner {
   padding-bottom: 32px;
 }
+
+/* ── RESPONSIVE ────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero { padding: 140px 0 56px; }
+  .heroTitle { font-size: clamp(2rem, 6vw, 3rem); }
+  .faqSection { padding: 40px 0 80px; }
+  .faqButton { padding: 24px; font-size: 1.05rem; }
+  .faqContentInner { padding: 0 24px; font-size: 0.95rem; }
+  .faqItem.open .faqContentInner { padding-bottom: 24px; }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 110px 0 40px; }
+  .heroTitle { font-size: clamp(1.75rem, 7vw, 2.5rem); }
+  .heroDesc { font-size: 0.9rem; }
+  .faqSection { padding: 32px 0 60px; }
+  .faqContainer { gap: 12px; }
+  .faqItem { border-radius: 16px; }
+  .faqButton { padding: 20px 16px; font-size: 0.95rem; gap: 12px; }
+  .faqIcon { width: 28px; height: 28px; flex-shrink: 0; }
+  .faqContentInner { padding: 0 16px; font-size: 0.9rem; }
+  .faqItem.open .faqContentInner { padding-bottom: 20px; }
+}

@@ -1,0 +1,144 @@
+.container {
+  width: 100%; position: relative; min-height: 800px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 40px 0; margin: 60px 0;
+}
+
+/* =========================================
+   OMNI-SENSOR FUSION RIG
+========================================= */
+.fusionCore {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 500px; height: 500px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; z-index: 1;
+}
+
+/* Central Prism */
+.prism {
+  width: 120px; height: 120px;
+  background: rgba(10,15,25,0.9);
+  border: 2px solid rgba(255,255,255,0.1);
+  transform: rotate(45deg);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 20; transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.05);
+}
+.prismInner {
+  width: 60px; height: 60px; border: 1px dashed rgba(255,255,255,0.2);
+  transition: all 0.5s;
+}
+
+/* Sensor Nodes */
+.sensor {
+  position: absolute; width: 60px; height: 60px; border-radius: 50%;
+  background: rgba(10,15,25,0.9); border: 2px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.5); z-index: 30; transition: all 0.4s;
+}
+.sensor1 { transform: rotate(150deg) translate(180px) rotate(-150deg); }
+.sensor2 { transform: rotate(270deg) translate(180px) rotate(-270deg); }
+.sensor3 { transform: rotate(30deg) translate(180px) rotate(-30deg); }
+
+/* Data Beams */
+.beam {
+  position: absolute; height: 2px; background: linear-gradient(90deg, var(--c), transparent);
+  transform-origin: 0 50%; opacity: 0; transition: opacity 0.4s;
+  top: 50%; left: 50%; width: 150px;
+}
+.beam1 { transform: rotate(150deg) translate(30px); }
+.beam2 { transform: rotate(270deg) translate(30px); }
+.beam3 { transform: rotate(30deg) translate(30px); }
+
+/* Noise Particles (Mode 2) */
+.noiseParticle {
+  position: absolute; width: 6px; height: 6px; border-radius: 50%;
+  background: #ef4444; opacity: 0; transition: all 0.5s;
+}
+.np1 { top: 30%; left: 40%; }
+.np2 { top: 60%; left: 30%; }
+.np3 { top: 70%; left: 60%; }
+.np4 { top: 40%; left: 70%; }
+.np5 { top: 20%; left: 50%; }
+
+/* Output Rings (Mode 3) */
+.outputRing {
+  position: absolute; border: 2px solid #22c55e; border-radius: 50%;
+  top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0;
+  pointer-events: none;
+}
+
+/* =========================================
+   MODE ANIMATIONS
+========================================= */
+
+/* Mode 0: Sensor Activation */
+.mode-0 .sensor { border-color: var(--c); color: var(--c); box-shadow: 0 0 20px color-mix(in srgb, var(--c) 30%, transparent); }
+.mode-0 .sensor1 { animation: pulseSensor 1s infinite alternate; }
+.mode-0 .sensor2 { animation: pulseSensor 1s infinite alternate 0.3s; }
+.mode-0 .sensor3 { animation: pulseSensor 1s infinite alternate 0.6s; }
+@keyframes pulseSensor { 100% { transform: scale(1.15) rotate(150deg) translate(180px) rotate(-150deg); box-shadow: 0 0 30px var(--c); } }
+/* For generic scale without breaking transform matrix */
+.mode-0 .sensor1 { transform: rotate(150deg) translate(180px) rotate(-150deg) scale(1.1); }
+.mode-0 .sensor2 { transform: rotate(270deg) translate(180px) rotate(-270deg) scale(1.1); }
+.mode-0 .sensor3 { transform: rotate(30deg) translate(180px) rotate(-30deg) scale(1.1); }
+
+
+/* Mode 1: Data Fusion */
+.mode-1 .sensor { border-color: var(--c); color: var(--c); }
+.mode-1 .beam { opacity: 1; animation: shootBeam 1s infinite; }
+@keyframes shootBeam { 0% { background-position: 150px; } 100% { background-position: 0; } }
+.mode-1 .prism { transform: rotate(45deg) scale(1.2); border-color: var(--c); box-shadow: 0 0 60px var(--c); }
+.mode-1 .prismInner { transform: rotate(-90deg); border-style: solid; border-color: var(--c); background: color-mix(in srgb, var(--c) 20%, transparent); }
+
+/* Mode 2: Noise Cleansing */
+.mode-2 .prism { transform: rotate(225deg) scale(1.1); border-color: var(--c); }
+.mode-2 .noiseParticle { opacity: 1; animation: blastNoise 1s forwards; }
+@keyframes blastNoise { 
+  0% { transform: scale(1) translate(0,0); opacity: 1; }
+  100% { transform: scale(0) translate(100px, -100px); opacity: 0; }
+}
+.mode-2 .np1 { animation-delay: 0s; } .mode-2 .np2 { animation-delay: 0.1s; } .mode-2 .np3 { animation-delay: 0.2s; }
+
+/* Mode 3: Output */
+.mode-3 .prism { transform: rotate(405deg) scale(0.9); background: #22c55e; border-color: #22c55e; box-shadow: 0 0 80px rgba(34,197,94,0.6); border-radius: 50%; }
+.mode-3 .prismInner { border-color: #fff; background: rgba(255,255,255,0.2); border-radius: 50%; }
+.mode-3 .outputRing { animation: emitRing 2s infinite cubic-bezier(0.23, 1, 0.32, 1); }
+.mode-3 .outputRing:nth-child(1) { animation-delay: 0s; }
+.mode-3 .outputRing:nth-child(2) { animation-delay: 0.6s; }
+.mode-3 .outputRing:nth-child(3) { animation-delay: 1.2s; }
+@keyframes emitRing { 0% { width: 120px; height: 120px; opacity: 1; border-width: 4px; } 100% { width: 400px; height: 400px; opacity: 0; border-width: 1px; } }
+
+
+/* =========================================
+   STATIC SVG CONNECTOR LINES & CARDS
+========================================= */
+.svgLayer { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
+.connectorLine { fill: none; stroke: rgba(255,255,255,0.1); stroke-width: 2; stroke-dasharray: 6 6; transition: all 0.5s; }
+.connectorLineActive { stroke: var(--c); stroke-width: 3; stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawLine 1s forwards; filter: drop-shadow(0 0 8px var(--c)); }
+@keyframes drawLine { to { stroke-dashoffset: 0; } }
+
+.cardsWrapper { position: relative; z-index: 10; width: 100%; max-width: 1200px; display: flex; justify-content: space-between; align-items: stretch; }
+.col { display: flex; flex-direction: column; gap: 140px; width: 400px; }
+.card { background: rgba(10, 15, 25, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; position: relative; transition: all 0.4s; cursor: pointer; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+.card:hover { transform: translateY(-8px); background: rgba(15, 20, 35, 0.85); border-color: color-mix(in srgb, var(--c) 50%, transparent); box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 30px color-mix(in srgb, var(--c) 15%, transparent); }
+.cardConnectionPoint { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.2); top: 50%; transform: translateY(-50%); transition: all 0.4s; }
+.col:first-child .cardConnectionPoint { right: -6px; }
+.col:last-child .cardConnectionPoint { left: -6px; }
+.card:hover .cardConnectionPoint { background: var(--c); box-shadow: 0 0 15px var(--c); }
+.stepNum { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; font-weight: 800; color: var(--c); margin-bottom: 12px; }
+.stepTitle { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; color: white; margin-bottom: 12px; line-height: 1.2; letter-spacing: -0.02em; }
+.stepDesc { font-size: 1rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 16px; line-height: 1.6; }
+.stepDetail { font-size: 0.9rem; color: rgba(255, 255, 255, 0.5); line-height: 1.6; margin-bottom: 24px; }
+.stepTags { display: flex; flex-wrap: wrap; gap: 8px; }
+.stepTag { font-size: 0.75rem; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); font-weight: 600; }
+@media (max-width: 1024px) {
+  .cardsWrapper { flex-direction: column; align-items: center; gap: 40px; }
+  .col { width: 100%; gap: 40px; }
+  .fusionCore, .svgLayer { display: none; }
+}
+@media (max-width: 480px) {
+  .cardsWrapper { gap: 24px; }
+  .col { gap: 24px; }
+  .card { padding: 24px; border-radius: 16px; }
+  .stepTitle { font-size: 1.4rem; }
+}

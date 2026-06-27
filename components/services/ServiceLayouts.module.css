@@ -1,0 +1,94 @@
+.customSection {
+  padding: 100px 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.sectionHeader {
+  margin-bottom: 40px;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.grid4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.infoCard {
+  background: rgba(10, 15, 25, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 32px;
+  transition: all 0.3s;
+}
+.infoCard:hover {
+  background: rgba(255, 255, 255, 0.03);
+  transform: translateY(-4px);
+}
+
+.cardTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.cardDesc {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+}
+
+.featureList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.7);
+}
+
+.matrixTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.matrixTable th, .matrixTable td {
+  padding: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  text-align: left;
+}
+.matrixTable th {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.matrixTable td {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 1024px) {
+  .grid2, .grid3, .grid4 { grid-template-columns: 1fr; }
+}

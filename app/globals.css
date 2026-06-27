@@ -151,6 +151,19 @@ img {
   max-width: 100%;
 }
 
+video,
+iframe,
+svg {
+  max-width: 100%;
+}
+
+/* iOS Safari: prevent text size adjustment on orientation change */
+@supports (-webkit-touch-callout: none) {
+  body {
+    -webkit-text-size-adjust: 100%;
+  }
+}
+
 .container {
   max-width: 1280px;
   margin: 0 auto;
@@ -576,6 +589,86 @@ select.input {
   }
 }
 
+@media (max-width:480px) {
+  .container {
+    padding: 0 12px
+  }
+
+  .section {
+    padding: 56px 0
+  }
+
+  .section--sm {
+    padding: 48px 0
+  }
+
+  h1 {
+    font-size: clamp(1.75rem, 7vw, 2.5rem)
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 5.5vw, 2rem)
+  }
+
+  h3 {
+    font-size: clamp(1.25rem, 4vw, 1.75rem)
+  }
+
+  .btn {
+    padding: 11px 20px;
+    font-size: 0.875rem
+  }
+
+  .btn--lg {
+    padding: 12px 28px;
+    font-size: 0.95rem
+  }
+
+  .card {
+    padding: 20px;
+    border-radius: 16px
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em
+  }
+
+  .badge {
+    font-size: 0.7rem;
+    padding: 4px 10px
+  }
+
+  .tag {
+    font-size: 0.72rem;
+    padding: 5px 10px
+  }
+
+  .counter-value {
+    font-size: clamp(2.5rem, 10vw, 3.5rem)
+  }
+}
+
+/* ===== TOUCH DEVICE OVERRIDES ===== */
+@media (hover: none) {
+  .card:hover {
+    transform: none;
+    box-shadow: none
+  }
+
+  .card:hover::before {
+    opacity: 0
+  }
+
+  .btn--primary:hover {
+    transform: none
+  }
+
+  .btn--secondary:hover {
+    transform: none
+  }
+}
+
 .text-center {
   text-align: center
 }
@@ -650,4 +743,16 @@ select.input {
 
 .z-10 {
   z-index: 10
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

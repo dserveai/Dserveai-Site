@@ -320,7 +320,133 @@
   .ctaStripInner { flex-direction: column; align-items: flex-start; padding: 36px 32px; }
 }
 
-@media (max-width: 640px) {
-  .heroCtas { flex-direction: column; }
+@media (max-width: 768px) {
+  .heroInner { gap: 48px; padding-top: 130px; }
+  .heroCtas { flex-direction: column; align-items: stretch; }
   .ctaStripActions { width: 100%; }
+  .relatedSection { padding: 56px 0; }
 }
+
+@media (max-width: 480px) {
+  .heroInner { gap: 32px; padding-top: 110px; }
+  .heroTitle { font-size: clamp(1.75rem, 7vw, 2.25rem); }
+  .heroDesc { font-size: 0.9rem; }
+  .ctaStripInner { padding: 28px 16px; border-radius: 16px; }
+  .proofCard { padding: 24px; }
+  .proofValue { font-size: 2rem; }
+  .proofLabel { font-size: 0.85rem; }
+  .relatedLink { padding: 10px 18px; font-size: 0.85rem; }
+  .relatedSection { padding: 40px 0; }
+  .overviewTitle { font-size: 1.3rem; }
+  .overviewCard { padding: 24px 20px; border-radius: 16px; }
+}
+
+@media (hover: none) {
+  .backLink:hover,
+  .proofCard:hover,
+  .relatedLink:hover,
+  .relatedCard:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .relatedCard:hover::before {
+    opacity: 0;
+  }
+  .relatedCard:hover .relatedArrow {
+    transform: none;
+  }
+}
+
+.relatedSection {
+  padding: 80px 0;
+  border-top: 1px solid var(--border-subtle);
+  background: radial-gradient(circle at 50% 100%, rgba(255,255,255,0.02), transparent 70%);
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.relatedCard {
+  background: rgba(10, 15, 25, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.relatedCard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--hover-color);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.relatedCard:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.relatedCard:hover::before {
+  opacity: 1;
+}
+
+.relatedCardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.relatedIconWrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.relatedArrow {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.3);
+  transition: all 0.4s ease;
+}
+
+.relatedCard:hover .relatedArrow {
+  color: white;
+  transform: translateX(4px);
+}
+
+.relatedCardTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.relatedCardDesc {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+

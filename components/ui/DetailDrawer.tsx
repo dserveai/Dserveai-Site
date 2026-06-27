@@ -11,7 +11,7 @@ interface ServiceDetail {
   formats: string[];
 }
 
-interface IndustryDetail {
+interface SolutionDetail {
   overview: string;
   capabilities: string[];
   stat: string;
@@ -24,8 +24,8 @@ interface CaseStudyStat {
 
 type DrawerData =
   | { type: "service"; title: string; description: string; color: string; details: ServiceDetail; iconName: string }
-  | { type: "industry"; name: string; desc: string; color: string; details: IndustryDetail; iconName: string }
-  | { type: "caseStudy"; title: string; description: string; fullDescription: string; industry: string; result: string; tags: string[]; color: string; stats: CaseStudyStat[] };
+  | { type: "solution"; name: string; desc: string; color: string; details: SolutionDetail; iconName: string }
+  | { type: "caseStudy"; title: string; description: string; fullDescription: string; solution: string; result: string; tags: string[]; color: string; stats: CaseStudyStat[] };
 
 interface DetailDrawerProps {
   data: DrawerData | null;
@@ -66,7 +66,7 @@ export default function DetailDrawer({ data, onClose }: DetailDrawerProps) {
             {data.type === "caseStudy" ? (
               <>
                 <span className={styles.tag} style={{ background: `${data.color}20`, color: data.color, border: `1px solid ${data.color}40` }}>
-                  {data.industry}
+                  {data.solution}
                 </span>
                 <h2 className={styles.title}>{data.title}</h2>
                 <p className={styles.result} style={{ color: data.color }}>{data.result}</p>
@@ -82,7 +82,7 @@ export default function DetailDrawer({ data, onClose }: DetailDrawerProps) {
             ) : (
               <>
                 <span className={styles.tag} style={{ background: `${data.color}20`, color: data.color, border: `1px solid ${data.color}40` }}>
-                  Industry
+                  Solution
                 </span>
                 <h2 className={styles.title}>{data.name}</h2>
                 <p className={styles.subtitle}>{data.desc}</p>

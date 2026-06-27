@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import styles from "./ServiceVisualizer.module.css";
 
 /* ========================================================
-   INDUSTRY VISUALIZER: Reuses the 3-Panel logic from
-   ServiceVisualizer but genericizes it for any industry.
+   SOLUTION VISUALIZER: Reuses the 3-Panel logic from
+   ServiceVisualizer but genericizes it for any solution.
    ======================================================== */
 
 function ThreePanelFlow({
@@ -80,13 +80,13 @@ function usePhaseLoop(timings: number[]) {
   return phase;
 }
 
-export function GenericIndustryVisualizer({ 
+export function GenericSolutionVisualizer({ 
   color = "#3b82f6", 
-  industryName = "Industry",
+  solutionName = "Solution",
   capabilities = []
 }: { 
   color?: string;
-  industryName?: string;
+  solutionName?: string;
   capabilities?: string[];
 }) {
   const phase = usePhaseLoop([1200, 2000, 2000, 2500]);
@@ -125,7 +125,7 @@ export function GenericIndustryVisualizer({
     <div className={styles.vizCard}>
       <div className={styles.vizLabel} style={{ color }}>
         <span className={styles.vizLabelDot} style={{ background: color }} />
-        {industryName} Pipeline
+        {solutionName} Pipeline
       </div>
       <ThreePanelFlow color={color} phase={phase}
         inputPanel={
@@ -133,7 +133,7 @@ export function GenericIndustryVisualizer({
             <div className={styles.panelTitle}>Ingestion</div>
             <div className={styles.mockField}><span className={styles.mockFieldLabel}>Target</span><span className={styles.mockFieldVal}>Production Model</span></div>
             <div className={styles.mockField}><span className={styles.mockFieldLabel}>Volume</span><span className={styles.mockFieldVal}>High-Scale</span></div>
-            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Domain</span><span className={styles.mockFieldVal}>{industryName}</span></div>
+            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Domain</span><span className={styles.mockFieldVal}>{solutionName}</span></div>
           </div>
         }
         processPanel={

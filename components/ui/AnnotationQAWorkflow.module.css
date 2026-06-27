@@ -1,0 +1,162 @@
+.container {
+  width: 100%; position: relative; min-height: 800px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 40px 0; margin: 60px 0;
+}
+
+/* =========================================
+   CENTRAL LABELING MATRIX ENGINE
+========================================= */
+.centralMatrix {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 500px; height: 500px; border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.05);
+  background: radial-gradient(circle at center, color-mix(in srgb, var(--c) 15%, transparent) 0%, transparent 70%);
+  display: flex; align-items: center; justify-content: center; z-index: 1;
+}
+
+.matrixCore {
+  width: 320px; height: 320px; border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(10, 15, 25, 0.8); backdrop-filter: blur(10px);
+  position: relative; display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 0 30px color-mix(in srgb, var(--c) 20%, transparent);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.gridLines {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.3; transition: all 0.5s;
+}
+
+/* Data Points (Unstructured initially) */
+.dataPointsContainer {
+  position: absolute; inset: 0;
+}
+.dataPoint {
+  position: absolute; width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.dp1 { top: 20%; left: 15%; animation: floatDP 4s infinite alternate; }
+.dp2 { top: 70%; left: 30%; animation: floatDP 5s infinite alternate-reverse; }
+.dp3 { top: 40%; left: 80%; animation: floatDP 6s infinite alternate; }
+.dp4 { top: 80%; left: 70%; animation: floatDP 3s infinite alternate-reverse; }
+.dp5 { top: 10%; left: 60%; animation: floatDP 7s infinite alternate; }
+@keyframes floatDP { 0% { transform: translate(0, 0); } 100% { transform: translate(15px, 15px); } }
+
+/* Robotic Laser Scanner (Mode 1) */
+.scannerArm {
+  position: absolute; top: -10px; bottom: -10px; width: 2px;
+  background: var(--c); box-shadow: 0 0 15px var(--c);
+  left: -20px; opacity: 0; transition: opacity 0.3s;
+}
+.scannerBeam {
+  position: absolute; top: 0; bottom: 0; left: 0; width: 100px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--c) 40%, transparent), transparent);
+}
+
+/* Bounding Boxes (Snap in Mode 1) */
+.boundingBox {
+  position: absolute; border: 1px dashed var(--c);
+  background: color-mix(in srgb, var(--c) 10%, transparent);
+  opacity: 0; transition: all 0.3s; pointer-events: none;
+}
+.bb1 { top: 15%; left: 10%; width: 50px; height: 40px; }
+.bb2 { top: 65%; left: 25%; width: 40px; height: 60px; }
+.bb3 { top: 35%; left: 75%; width: 60px; height: 50px; }
+.bb4 { top: 75%; left: 65%; width: 45px; height: 45px; }
+.bb5 { top: 5%; left: 55%; width: 55px; height: 35px; }
+
+/* QA Tags (Mode 2) */
+.qaTag {
+  position: absolute; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: bold;
+  padding: 3px 6px; border-radius: 4px; opacity: 0; transition: all 0.4s;
+  transform: translateY(10px); z-index: 10;
+}
+.tagPass { background: #22c55e; color: #fff; box-shadow: 0 0 10px rgba(34, 197, 94, 0.4); }
+.tagWarn { background: #eab308; color: #fff; box-shadow: 0 0 10px rgba(234, 179, 8, 0.4); }
+
+/* =========================================
+   MODE ANIMATIONS
+========================================= */
+
+/* Mode 0: Data Ingestion (Cluster to Center) */
+.mode-0 .matrixCore { border-color: var(--c); box-shadow: 0 0 50px color-mix(in srgb, var(--c) 30%, transparent); }
+.mode-0 .dataPoint { animation: none; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--c); box-shadow: 0 0 10px var(--c); }
+.mode-0 .dp1 { margin-top: -10px; margin-left: -15px; }
+.mode-0 .dp2 { margin-top: 15px; margin-left: -10px; }
+.mode-0 .dp3 { margin-top: -5px; margin-left: 20px; }
+.mode-0 .dp4 { margin-top: 20px; margin-left: 15px; }
+.mode-0 .dp5 { margin-top: -20px; margin-left: 5px; }
+
+/* Mode 1: Labeling (Laser Sweep & Bounding Boxes) */
+.mode-1 .scannerArm { opacity: 1; animation: laserSweep 2s ease-in-out infinite alternate; }
+@keyframes laserSweep { 0% { left: -10%; } 100% { left: 110%; } }
+.mode-1 .boundingBox { opacity: 1; animation: snapBox 0.3s forwards; }
+.mode-1 .bb1 { animation-delay: 0.2s; }
+.mode-1 .bb2 { animation-delay: 0.5s; }
+.mode-1 .bb3 { animation-delay: 1.2s; }
+.mode-1 .bb4 { animation-delay: 1.5s; }
+.mode-1 .bb5 { animation-delay: 1.0s; }
+@keyframes snapBox { 0% { transform: scale(1.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+/* Mode 2: QA Review (Zoom, Inspect, Tags) */
+.mode-2 .matrixCore { transform: scale(1.3); border-color: #eab308; box-shadow: 0 0 40px rgba(234,179,8,0.3); }
+.mode-2 .boundingBox { opacity: 0.2; border-style: solid; }
+.mode-2 .bb3 { opacity: 1; border-color: #eab308; border-width: 2px; background: rgba(234,179,8,0.2); z-index: 5; }
+.mode-2 .bb3 .qaTag { opacity: 1; transform: translateY(-25px); }
+.mode-2 .bb1 { opacity: 1; border-color: #22c55e; }
+.mode-2 .bb1 .qaTag { opacity: 1; transform: translateY(-25px); }
+
+/* Mode 3: Delivery (Structured Grid Pulse) */
+.mode-3 .matrixCore { border-color: #22c55e; box-shadow: 0 0 80px rgba(34,197,94,0.5); }
+.mode-3 .gridLines { opacity: 1; background-size: 40px 40px; background-image: linear-gradient(#22c55e 1px, transparent 1px), linear-gradient(90deg, #22c55e 1px, transparent 1px); animation: gridPulse 2s infinite; }
+@keyframes gridPulse { 0% { opacity: 0.3; } 50% { opacity: 0.8; } 100% { opacity: 0.3; } }
+.mode-3 .dataPoint { animation: none; background: #22c55e; box-shadow: 0 0 15px #22c55e; border-radius: 0; width: 10px; height: 10px; }
+/* Align perfectly to the 40x40 grid */
+.mode-3 .dp1 { top: 40px; left: 40px; }
+.mode-3 .dp2 { top: 80px; left: 80px; }
+.mode-3 .dp3 { top: 120px; left: 160px; }
+.mode-3 .dp4 { top: 200px; left: 120px; }
+.mode-3 .dp5 { top: 160px; left: 240px; }
+.mode-3 .boundingBox { opacity: 0; }
+
+
+/* =========================================
+   STATIC SVG CONNECTOR LINES & CARDS
+========================================= */
+.svgLayer { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
+.connectorLine { fill: none; stroke: rgba(255,255,255,0.1); stroke-width: 2; stroke-dasharray: 6 6; transition: all 0.5s; }
+.connectorLineActive { stroke: var(--c); stroke-width: 3; stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawLine 1s forwards; filter: drop-shadow(0 0 8px var(--c)); }
+@keyframes drawLine { to { stroke-dashoffset: 0; } }
+
+.cardsWrapper { position: relative; z-index: 10; width: 100%; max-width: 1200px; display: flex; justify-content: space-between; align-items: stretch; }
+.col { display: flex; flex-direction: column; gap: 140px; width: 400px; }
+.card { background: rgba(10, 15, 25, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; position: relative; transition: all 0.4s; cursor: pointer; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+.card:hover { transform: translateY(-8px); background: rgba(15, 20, 35, 0.85); border-color: color-mix(in srgb, var(--c) 50%, transparent); box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 30px color-mix(in srgb, var(--c) 15%, transparent); }
+.cardConnectionPoint { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.2); top: 50%; transform: translateY(-50%); transition: all 0.4s; }
+.col:first-child .cardConnectionPoint { right: -6px; }
+.col:last-child .cardConnectionPoint { left: -6px; }
+.card:hover .cardConnectionPoint { background: var(--c); box-shadow: 0 0 15px var(--c); }
+.stepNum { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; font-weight: 800; color: var(--c); margin-bottom: 12px; }
+.stepTitle { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; color: white; margin-bottom: 12px; line-height: 1.2; letter-spacing: -0.02em; }
+.stepDesc { font-size: 1rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 16px; line-height: 1.6; }
+.stepDetail { font-size: 0.9rem; color: rgba(255, 255, 255, 0.5); line-height: 1.6; margin-bottom: 24px; }
+.stepTags { display: flex; flex-wrap: wrap; gap: 8px; }
+.stepTag { font-size: 0.75rem; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); font-weight: 600; }
+@media (max-width: 1024px) {
+  .cardsWrapper { flex-direction: column; align-items: center; gap: 40px; }
+  .col { width: 100%; gap: 40px; }
+  .centralMatrix, .svgLayer { display: none; }
+}
+@media (max-width: 480px) {
+  .cardsWrapper { gap: 24px; }
+  .col { gap: 24px; }
+  .card { padding: 24px; border-radius: 16px; }
+  .stepTitle { font-size: 1.4rem; }
+}

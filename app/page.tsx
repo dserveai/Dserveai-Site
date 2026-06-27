@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState, useCallback } from "react";
+import { ArrowRight, TrendingDown } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -10,7 +11,7 @@ import TiltCard from "@/components/ui/TiltCard";
 import { DynamicIcon, IconArrowDown, IconStar, IconShieldCheck } from "@/components/ui/Icons";
 import { partnerLogos } from "@/components/ui/PartnerLogos";
 import {
-  stats, services, industries, process as processSteps,
+  stats, services, solutions, process as processSteps,
   testimonials, blogPosts, caseStudies, partners,
 } from "@/lib/data";
 import styles from "./page.module.css";
@@ -18,8 +19,8 @@ import styles from "./page.module.css";
 // ─── Types ────────────────────────────────────────────────────────────────────
 type DrawerPayload =
   | { type: "service"; title: string; description: string; color: string; details: (typeof services)[0]["details"]; iconName: string }
-  | { type: "industry"; name: string; desc: string; color: string; details: (typeof industries)[0]["details"]; iconName: string }
-  | { type: "caseStudy"; title: string; description: string; fullDescription: string; industry: string; result: string; tags: string[]; color: string; stats: { v: string; l: string }[] };
+  | { type: "solution"; name: string; desc: string; color: string; details: (typeof solutions)[0]["details"]; iconName: string }
+  | { type: "caseStudy"; title: string; description: string; fullDescription: string; solution: string; result: string; tags: string[]; color: string; stats: { v: string; l: string }[] };
 
 // ─── Rotating Hero Text ───────────────────────────────────────────────────────
 function RotatingText() {
@@ -48,10 +49,10 @@ function HeroBg() {
 
 // ─── Video Tabs Data ──────────────────────────────────────────────────────────
 const videoTabs = [
-  { id: 0, title: "Data Annotation & Labeling", desc: "High-speed, pixel-perfect annotations for complex datasets.", video: "/videos/1.mp4" },
+  { id: 0, title: "Data Annotation and QA", desc: "High-speed, pixel-perfect annotations for complex datasets.", video: "/videos/1.mp4" },
   { id: 1, title: "Multi-Modal Data Collection", desc: "Capture real-world data across audio, video, LiDAR, and text.", video: "/videos/2.mp4" },
-  { id: 2, title: "Synthetic Data Generation", desc: "Generate millions of photorealistic edge-cases instantly.", video: "/videos/3.mp4" },
-  { id: 3, title: "Model Evaluation & QA", desc: "Human-in-the-loop RLHF to guarantee enterprise-grade accuracy.", video: "/videos/4.mp4" }
+  { id: 2, title: "Synthetic Data Generation", desc: "Generate precise synthetic data for documents, audio, and video.", video: "/videos/3.mp4" },
+  { id: 3, title: "Computer Vision Analytics", desc: "Deploy custom vision solutions to automate industrial workflows.", video: "/videos/4.mp4" }
 ];
 
 // ─── Main Component ───────────────────────────────────────────────────────────
@@ -106,18 +107,19 @@ export default function HomePage() {
         <section className={styles.hero}>
           <HeroBg />
           <div className={`container ${styles.heroContent}`}>
-            <h1 className={styles.heroTitle}>
+            <h1 className="sr-only">AI Data Annotation and Custom Dataset Collection Services</h1>
+            <h2 className={styles.heroTitle}>
               Fuel Your AI With<br />
               Data Built For<br />
               <div className={styles.rotatingContainer}>
                 <RotatingText />
               </div>
-            </h1>
+            </h2>
             <p className={styles.heroDesc}>
-              We provide highly accurate data annotation and collection to train your computer vision and machine learning models. Whether you are building autonomous systems or healthcare diagnostics, we ensure your data is perfectly structured and ready to scale.
+              Dserve AI is an AI Data & Solutions Company bridging the gap between AI ambition and execution. We provide the high-quality data, intelligent workflows, and custom solutions required to build reliable, scalable, and real-world AI systems across industries.
             </p>
             <div className={styles.heroCtas}>
-              <Link href="/services" className="btn btn--primary btn--lg">Explore Solutions →</Link>
+              <Link href="/services" className="btn btn--primary btn--lg">Explore Solutions <ArrowRight size={18} /></Link>
               <Link href="/case-studies" className="btn btn--secondary btn--lg">See Case Studies</Link>
             </div>
             <div className={styles.heroTrust}>
@@ -149,7 +151,7 @@ export default function HomePage() {
         {/* ── PARTNERS MARQUEE ──────────────────────────── */}
         <section className={styles.partnersSection}>
           <div className="container">
-            <p className={styles.partnersLabel}>Partnered with industry leaders</p>
+            <p className={styles.partnersLabel}>Partnered with solution leaders</p>
           </div>
           <div className={styles.marqueeWrapper}>
             <div className={styles.marqueeTrack}>
@@ -173,7 +175,7 @@ export default function HomePage() {
           <div className="container">
             <div className={styles.sectionHeader}>
               <span className="section-label">What We Do</span>
-              <h2>End-to-End AI Data<br /><span className="gradient-text">Services That Scale</span></h2>
+              <h2>End-to-End AI Data<br /><span className="gradient-text">Solutions That Scale</span></h2>
               <p className={styles.sectionDesc}>
                 Explore our full-stack capabilities with real-time workflow demonstrations.
               </p>
@@ -225,7 +227,7 @@ export default function HomePage() {
             </div>
             <div className={styles.processPipeline}>
               {processSteps.map(({ step, title, desc }, i) => (
-                <div key={step} className={styles.pipelineStep}>
+                <article key={step} className={styles.pipelineStep}>
                   <div className={styles.stepWatermark}>{step}</div>
                   <div className={styles.stepContent}>
                     <div className={styles.stepHeader}>
@@ -239,40 +241,42 @@ export default function HomePage() {
                     <h4 className={styles.stepTitle}>{title}</h4>
                     <p className={styles.stepDesc}>{desc}</p>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── INDUSTRIES ────────────────────────────────── */}
-        <section className={`section ${styles.industriesSection}`} id="industries">
+        {/* ── SOLUTIONS ────────────────────────────────── */}
+        <section className={`section ${styles.solutionsSection}`} id="solutions">
           <div className="container">
             <div className={styles.sectionHeader}>
-              <span className="section-label">Industries We Serve</span>
-              <h2>AI-Driven Data Solutions<br /><span className="gradient-text">For Every Industry</span></h2>
-              <p className={styles.sectionDesc}>Click any industry to see exactly what we deliver for it.</p>
+              <span className="section-label">Solutions We Provide</span>
+              <h2>AI-Driven Data Solutions<br /><span className="gradient-text">For Every Use Case</span></h2>
+              <p className={styles.sectionDesc}>Click any solution to see exactly what we deliver for it.</p>
             </div>
             <div className={styles.bentoGrid}>
-              {industries.map((ind, i) => (
+              {solutions.map((ind, i) => (
                 <ScrollReveal key={ind.name} delay={i * 50}>
-                  <Link href={`/industries/${ind.slug}`} style={{ textDecoration: 'none' }}>
-                    <TiltCard 
-                      className={styles.bentoCard}
-                      style={{ "--c": ind.color } as React.CSSProperties}
-                    >
-                    <div className={styles.bentoTop}>
-                      <div className={styles.bentoIcon}>
-                        <DynamicIcon name={ind.iconName} size={24} color={ind.color} />
+                  <article>
+                    <Link href={`/solutions/${ind.slug}`} style={{ textDecoration: 'none' }}>
+                      <TiltCard 
+                        className={styles.bentoCard}
+                        style={{ "--c": ind.color } as React.CSSProperties}
+                      >
+                      <div className={styles.bentoTop}>
+                        <div className={styles.bentoIcon}>
+                          <DynamicIcon name={ind.iconName} size={24} color={ind.color} />
+                        </div>
+                        <span className={styles.bentoArrow}>Explore →</span>
                       </div>
-                      <span className={styles.bentoArrow}>Explore →</span>
-                    </div>
-                    <div className={styles.bentoBottom}>
-                      <h4 className={styles.bentoName}>{ind.name}</h4>
-                      <p className={styles.bentoDesc}>{ind.desc}</p>
-                    </div>
-                    </TiltCard>
-                  </Link>
+                      <div className={styles.bentoBottom}>
+                        <h4 className={styles.bentoName}>{ind.name}</h4>
+                        <p className={styles.bentoDesc}>{ind.desc}</p>
+                      </div>
+                      </TiltCard>
+                    </Link>
+                  </article>
                 </ScrollReveal>
               ))}
             </div>
@@ -285,24 +289,22 @@ export default function HomePage() {
             <div className={styles.sectionHeaderRow}>
               <div>
                 <span className="section-label">Proven Results</span>
-                <h2>Case Studies That<br /><span className="gradient-text">Speak for Themselves</span></h2>
+                <h2>Real-World Success.<br /><span className="gradient-text">Proven Case Studies.</span></h2>
               </div>
-              <Link href="/case-studies" className="btn btn--secondary">View All Cases →</Link>
+              <Link href="/case-studies" className="btn btn--secondary">View All Cases <ArrowRight size={18} /></Link>
             </div>
             <div className={styles.caseMinimalGrid}>
               {caseStudies.map((cs, i) => (
                 <ScrollReveal key={cs.id} delay={i * 100}>
-                  <div 
+                  <Link 
+                    href={`/case-studies/${cs.slug}`}
                     className={styles.caseMinimalCard}
-                    onClick={() => setDrawer({ type: "caseStudy", ...cs })} 
-                    role="button"
-                    tabIndex={0}
-                    style={{ "--c": cs.color } as React.CSSProperties}
+                    style={{ "--c": cs.color, textDecoration: 'none', display: 'flex' } as React.CSSProperties}
                   >
                     <div className={styles.caseCardBg} />
                     <div className={styles.caseCardContent}>
                       <div className={styles.caseCardTop}>
-                        <span className={styles.caseMinimalIndustry}>{cs.industry}</span>
+                        <span className={styles.caseMinimalSolution}>{cs.solution}</span>
                         <div className={styles.caseMinimalMetric}>
                           {cs.result}
                         </div>
@@ -313,10 +315,10 @@ export default function HomePage() {
                       </div>
                       <div className={styles.caseCardBottom}>
                         <span className={styles.caseMinimalReadMore}>Read case study</span>
-                        <div className={styles.caseMinimalArrow}>→</div>
+                        <div className={styles.caseMinimalArrow}><ArrowRight size={18} /></div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </ScrollReveal>
               ))}
             </div>
@@ -331,10 +333,10 @@ export default function HomePage() {
               <span className="section-label">Client Stories</span>
               <h2>Voices of <span className="gradient-text">Success</span></h2>
             </div>
-            <div className={styles.testimonialsGrid}>
-              {testimonials.map(({ name, role, text, rating }, i) => (
-                <ScrollReveal key={name} delay={i * 100}>
-                  <div className={styles.testimonialPremiumCard}>
+            <div className={styles.testimonialsMarqueeWrapper}>
+              <div className={styles.testimonialsMarqueeTrack}>
+                {[...testimonials, ...testimonials].map(({ role, text, rating }, i) => (
+                  <div key={i} className={styles.testimonialPremiumCard}>
                     <div className={styles.testiQuoteMark}>"</div>
                     <div className={styles.testimonialContent}>
                       <div className={styles.testimonialStars}>
@@ -344,18 +346,14 @@ export default function HomePage() {
                       </div>
                       <p className={styles.testimonialText}>{text}</p>
                       <div className={styles.testimonialAuthorGroup}>
-                        <div className={styles.testimonialAvatarRing}>
-                          <div className={styles.testimonialAvatarPremium}>{name[0]}</div>
-                        </div>
                         <div className={styles.testiAuthorInfo}>
-                          <div className={styles.testimonialNamePremium}>{name}</div>
                           <div className={styles.testimonialRolePremium}>{role}</div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </ScrollReveal>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -366,9 +364,9 @@ export default function HomePage() {
             <div className={styles.sectionHeaderRow}>
               <div>
                 <span className="section-label">Latest Insights</span>
-                <h2>From Our <span className="gradient-text">Blog</span></h2>
+                <h2>Explore Our <span className="gradient-text">Blog</span></h2>
               </div>
-              <Link href="/blog" className="btn btn--secondary">View All Posts →</Link>
+              <Link href="/blog" className="btn btn--secondary">View All Posts <ArrowRight size={18} /></Link>
             </div>
             <div className={styles.blogPremiumGrid}>
               {blogPosts.slice(0, 6).map(({ slug, title, category, date, readTime }, i) => (
@@ -400,6 +398,7 @@ export default function HomePage() {
           <div className={styles.ctaBg} />
           <div className="container">
             <div className={styles.ctaBox}>
+              <div className={styles.ctaTopLine} />
               <div className={styles.ctaContent}>
                 <h2 className={styles.ctaTitle}>
                   Ready to Build<br />
@@ -411,7 +410,7 @@ export default function HomePage() {
                 <div className={styles.ctaCtas}>
                   <Link href="/contact" className={styles.ctaBtnPrimary}>
                     <span>Discuss Your Project</span>
-                    <div className={styles.ctaBtnArrow}>→</div>
+                    <div className={styles.ctaBtnArrow}><ArrowRight size={18} /></div>
                   </Link>
                   <Link href="/services" className={styles.ctaBtnSecondary}>Explore Services</Link>
                 </div>
@@ -436,6 +435,10 @@ export default function HomePage() {
                 <div className={styles.ctaCard2}>
                   <div className={styles.ctaCardIcon}><IconStar size={24} color="#f59e0b" /></div>
                   <div className={styles.ctaCardText}><strong>100%</strong><br />Quality guaranteed</div>
+                </div>
+                <div className={styles.ctaCard3}>
+                  <div className={styles.ctaCardIcon}><TrendingDown size={24} color="#10b981" /></div>
+                  <div className={styles.ctaCardText}><strong>Huge</strong><br />Cost savings</div>
                 </div>
               </div>
             </div>
