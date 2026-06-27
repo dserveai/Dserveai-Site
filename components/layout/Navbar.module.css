@@ -36,12 +36,17 @@
 }
 
 /* Logo */
-.logo {
+.logoWrapper {
+  flex: 1;
   display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: inline-flex;
   align-items: center;
   gap: 6px;
   text-decoration: none;
-  flex: 1;
 }
 
 .logoIcon {
@@ -87,7 +92,7 @@
   display: flex;
   align-items: center;
   list-style: none;
-  gap: 8px;
+  gap: 32px;
   justify-content: center;
   flex: none;
 }
@@ -95,7 +100,7 @@
 .link {
   display: flex;
   align-items: center;
-  padding: 8px 14px;
+  padding: 8px 0px;
   color: rgba(255, 255, 255, 0.65);
   font-family: 'Outfit', sans-serif;
   font-size: 1rem;
@@ -168,32 +173,56 @@
 }
 
 .dropdownInner {
-  background: rgba(10, 15, 25, 0.85);
+  position: relative;
+  background: linear-gradient(180deg, rgba(14, 20, 36, 0.95) 0%, rgba(8, 12, 22, 0.95) 100%);
   backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 16px;
   padding: 8px;
-  min-width: 260px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  min-width: 280px;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.6), 
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 10px 30px rgba(14, 165, 233, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
   display: flex;
   flex-direction: column;
   gap: 4px;
+  overflow: hidden;
+}
+
+.dropdownInner::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .dropdownLink {
+  position: relative;
+  z-index: 1;
   display: block;
-  padding: 10px 16px;
-  color: rgba(255,255,255,0.7);
+  padding: 12px 16px;
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   font-size: 0.95rem;
   border-radius: 10px;
-  transition: all 0.2s;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   white-space: nowrap;
+  border-left: 2px solid transparent;
+  background: transparent;
 }
 
 .dropdownLink:hover {
-  background: rgba(255,255,255,0.08);
+  background: linear-gradient(90deg, rgba(14, 165, 233, 0.1) 0%, rgba(14, 165, 233, 0.02) 100%);
   color: #fff;
+  border-left-color: #0ea5e9;
   transform: translateX(4px);
 }
 

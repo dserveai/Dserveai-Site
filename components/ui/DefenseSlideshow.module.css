@@ -1,0 +1,122 @@
+.slideshowContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.slideshowContainer.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slideVisible {
+  opacity: 1;
+  z-index: 2;
+}
+
+.slideImage {
+  object-fit: cover;
+  animation: slowZoom 15s linear infinite;
+  transform-origin: center center;
+}
+
+@keyframes slowZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.15); }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.hudBox {
+  position: absolute;
+  border: 1px solid rgba(14, 165, 233, 0.8);
+  box-shadow: 0 0 15px rgba(14, 165, 233, 0.3), inset 0 0 10px rgba(14, 165, 233, 0.2);
+  background: rgba(14, 165, 233, 0.05);
+  animation: pulseBox 2s infinite alternate;
+}
+
+@keyframes pulseBox {
+  from { border-color: rgba(14, 165, 233, 0.4); }
+  to { border-color: rgba(14, 165, 233, 1); }
+}
+
+.hudText {
+  position: absolute;
+  font-family: 'Inter', monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: white;
+  text-shadow: 0 0 8px rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.5);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.hudScanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(14, 165, 233, 0.5);
+  box-shadow: 0 0 10px rgba(14, 165, 233, 0.8);
+  animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+.logoOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  animation: fadeScaleUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.logoOverlay h2 {
+  font-family: var(--font-nasalization), sans-serif;
+  font-size: 2.5rem;
+  color: white;
+  letter-spacing: 0.05em;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(0,0,0,0.8);
+}
+
+@keyframes fadeScaleUp {
+  from { opacity: 0; transform: translate(-50%, -40%) scale(0.9); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}

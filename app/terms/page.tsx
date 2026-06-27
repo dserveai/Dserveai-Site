@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import styles from "../legal.module.css";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Terms of Service | Dserve AI",
@@ -11,38 +13,93 @@ export default function TermsPage() {
   return (
     <>
       <Navbar />
-      <main style={{ paddingTop: "140px", paddingBottom: "80px", minHeight: "80vh" }}>
-        <div className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
-          <h1 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 800, color: "white", marginBottom: "24px", lineHeight: 1.2 }}>
-            Terms of Service
-          </h1>
-          <p style={{ color: "rgba(255,255,255,0.5)", marginBottom: "48px" }}>Last Updated: June 2026</p>
-
-          <article style={{ color: "rgba(255,255,255,0.7)", fontSize: "1.05rem", lineHeight: 1.8 }}>
-            <h2 style={{ color: "white", fontSize: "1.5rem", marginBottom: "16px", marginTop: "32px", fontFamily: "'Outfit', sans-serif" }}>1. Acceptance of Terms</h2>
-            <p style={{ marginBottom: "24px" }}>
-              By accessing or using the Dserve AI website and our enterprise consulting services, you agree to comply with and be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.
+      <main className={styles.main}>
+        <section className={styles.legalHero}>
+          <div className={styles.heroGrid} />
+          <div className={styles.heroContent}>
+            <h1 className={styles.title}>Terms of Service</h1>
+            <p className={styles.subtitle}>
+              These terms govern your use of Dserve AI's website and outline the foundational agreements for our enterprise services.
             </p>
+          </div>
+        </section>
 
-            <h2 style={{ color: "white", fontSize: "1.5rem", marginBottom: "16px", marginTop: "32px", fontFamily: "'Outfit', sans-serif" }}>2. Description of Services</h2>
-            <p style={{ marginBottom: "24px" }}>
-              Dserve AI provides custom data pipelines, data annotation, and strategic AI consulting services ("Services"). The specifics of any enterprise engagement will be governed by a separate Master Services Agreement (MSA) or Statement of Work (SOW).
-            </p>
+        <div className={styles.layout}>
+          <aside className={styles.sidebar}>
+            <div className={styles.sidebarTitle}>On this page</div>
+            <nav className={styles.nav}>
+              <Link href="#acceptance" className={styles.navLink}>1. Acceptance of Terms</Link>
+              <Link href="#services" className={styles.navLink}>2. Enterprise Services</Link>
+              <Link href="#intellectual-property" className={styles.navLink}>3. Intellectual Property</Link>
+              <Link href="#data-usage" className={styles.navLink}>4. Client Data Usage</Link>
+              <Link href="#liability" className={styles.navLink}>5. Limitation of Liability</Link>
+              <Link href="#contact" className={styles.navLink}>6. Contact Us</Link>
+            </nav>
+          </aside>
 
-            <h2 style={{ color: "white", fontSize: "1.5rem", marginBottom: "16px", marginTop: "32px", fontFamily: "'Outfit', sans-serif" }}>3. Intellectual Property</h2>
-            <p style={{ marginBottom: "24px" }}>
-              All content on this website, including text, graphics, logos, and software, is the property of Dserve AI and is protected by intellectual property laws. You may not reproduce or distribute any content without our express written permission.
-            </p>
+          <article className={styles.content}>
+            <section id="acceptance">
+              <h2>1. Acceptance of Terms</h2>
+              <p>
+                By accessing or using the website (dserveai.com) and the services offered by Dserve AI ("Company", "we", "us"), you agree to be bound by these Terms of Service. If you disagree with any part of the terms, you must discontinue your use of our website immediately.
+              </p>
+            </section>
 
-            <h2 style={{ color: "white", fontSize: "1.5rem", marginBottom: "16px", marginTop: "32px", fontFamily: "'Outfit', sans-serif" }}>4. Limitation of Liability</h2>
-            <p style={{ marginBottom: "24px" }}>
-              To the maximum extent permitted by law, Dserve AI shall not be liable for any indirect, incidental, special, or consequential damages arising out of or related to your use of our website or services.
-            </p>
+            <section id="services">
+              <h2>2. Enterprise Services & MSAs</h2>
+              <p>
+                Dserve AI provides premium data pipelines, annotation services, and strategic AI consulting. Please note:
+              </p>
+              <ul>
+                <li>These Terms govern general website usage.</li>
+                <li>Specific commercial engagements (e.g., custom AI workflows, data generation) will be governed by a separate, mutually executed Master Services Agreement (MSA) and Statement of Work (SOW).</li>
+                <li>In the event of a conflict between these Terms and an executed MSA, the terms of the MSA shall take precedence.</li>
+              </ul>
+            </section>
 
-            <h2 style={{ color: "white", fontSize: "1.5rem", marginBottom: "16px", marginTop: "32px", fontFamily: "'Outfit', sans-serif" }}>5. Contact Us</h2>
-            <p style={{ marginBottom: "24px" }}>
-              If you have any questions regarding these Terms of Service, please contact us at <a href="mailto:connect@dserveai.com" style={{ color: "#0ea5e9" }}>connect@dserveai.com</a>.
-            </p>
+            <section id="intellectual-property">
+              <h2>3. Intellectual Property</h2>
+              <p>
+                The Dserve AI website and its original content, features, and functionality (including but not limited to design systems, text, graphics, and code) are owned by Dserve AI and are protected by international copyright, trademark, patent, and trade secret laws.
+              </p>
+              <p>
+                You may not reproduce, distribute, modify, create derivative works of, publicly display, or commercially exploit any of our proprietary content without our express written consent.
+              </p>
+            </section>
+
+            <section id="data-usage">
+              <h2>4. Client Data & Confidentiality</h2>
+              <p>
+                We understand that in the realm of AI, data is your most valuable asset. When you submit inquiries through our website:
+              </p>
+              <ul>
+                <li>Your submission is treated as confidential business information.</li>
+                <li>We will not use your company name or project details in our marketing materials or case studies without explicit prior approval.</li>
+                <li>Data submitted through contact forms is subject to our <Link href="/privacy">Privacy Policy</Link>.</li>
+              </ul>
+            </section>
+
+            <section id="liability">
+              <h2>5. Limitation of Liability</h2>
+              <p>
+                To the maximum extent permitted by applicable law, in no event shall Dserve AI, its directors, employees, partners, or agents, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from:
+              </p>
+              <ul>
+                <li>Your access to or use of or inability to access or use the website.</li>
+                <li>Any unauthorized access, use, or alteration of your transmissions or content.</li>
+                <li>Any bugs, viruses, or trojan horses transmitted to or through our website by any third party.</li>
+              </ul>
+            </section>
+
+            <section id="contact">
+              <h2>6. Contact Us</h2>
+              <p>
+                If you have any questions regarding these Terms of Service, please contact our legal department at:
+              </p>
+              <p>
+                <strong>Email:</strong> <a href="mailto:connect@dserveai.com">connect@dserveai.com</a>
+              </p>
+            </section>
           </article>
         </div>
       </main>

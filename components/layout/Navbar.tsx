@@ -10,8 +10,11 @@ const navLinks = [
     href: "/services", 
     label: "Services",
     dropdown: [
-      { href: "/services/data-annotation-labeling", label: "Data Annotation & Labeling" },
-      { href: "/services/custom-dataset-collection", label: "Custom Dataset Collection" },
+      { href: "/services/data-annotation-and-qa", label: "Data Annotation & QA" },
+      { href: "/services/multi-modal-data-collection", label: "Multi-Modal Data Collection" },
+      { href: "/services/synthetic-data-generation", label: "Synthetic Data Generation" },
+      { href: "/services/computer-vision-analytics", label: "Computer Vision Analytics" },
+      { href: "/services/custom-ai-solutions", label: "Custom AI Solutions" },
       { href: "/services/quality-assurance", label: "Quality Assurance" },
     ]
   },
@@ -23,6 +26,9 @@ const navLinks = [
       { href: "/case-studies/healthcare-diagnostics-ai", label: "Healthcare AI" },
       { href: "/case-studies/autonomous-vehicle-perception", label: "Autonomous Vehicles" },
       { href: "/case-studies/conversational-ai-training", label: "Conversational AI" },
+      { href: "/case-studies/e-commerce-visual-search", label: "E-Commerce Visual Search" },
+      { href: "/case-studies/marine-safety-ai", label: "Marine Safety AI" },
+      { href: "/case-studies/biometric-verification-system", label: "Biometric Verification System" },
     ]
   },
   { href: "/about", label: "About" },
@@ -43,12 +49,14 @@ export default function Navbar() {
     <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
       <nav className={styles.nav}>
         {/* Wordmark and Logo */}
-        <a href="/" className={styles.logo}>
-          <Image src="/logo.png" alt="Dserve AI Logo" width={36} height={36} className={styles.logoIcon} />
-          <span className={styles.logoText}>
-            Dserve<span className={styles.logoAI}>AI</span>
-          </span>
-        </a>
+        <div className={styles.logoWrapper}>
+          <a href="/" className={styles.logo}>
+            <Image src="/logo.png" alt="Dserve AI Logo" width={36} height={36} className={styles.logoIcon} />
+            <span className={styles.logoText}>
+              Dserve<span className={styles.logoAI}>AI</span>
+            </span>
+          </a>
+        </div>
 
         {/* Desktop Links */}
         <ul className={styles.links}>
