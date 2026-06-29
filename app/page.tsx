@@ -50,7 +50,7 @@ function HeroBg() {
 // ─── Video Tabs Data ──────────────────────────────────────────────────────────
 const videoTabs = [
   { id: 0, title: "Data Annotation and QA", desc: "High-speed, pixel-perfect annotations for complex datasets.", video: "/videos/1.mp4" },
-  { id: 1, title: "Multi-Modal Data Collection", desc: "Capture real-world data across audio, video, LiDAR, and text.", video: "/videos/2.mp4" },
+  { id: 1, title: "Multi-Modal Data Collection", desc: "Capture real-world data across DICOM, EHR, Biometric, Sensor, Egocentric Data, audio, video, LiDAR, and text.", video: "/videos/2.mp4" },
   { id: 2, title: "Synthetic Data Generation", desc: "Generate precise synthetic data for documents, audio, and video.", video: "/videos/3.mp4" },
   { id: 3, title: "Computer Vision Analytics", desc: "Deploy custom vision solutions to automate industrial workflows.", video: "/videos/4.mp4" }
 ];
@@ -120,7 +120,7 @@ export default function HomePage() {
             </p>
             <div className={styles.heroCtas}>
               <Link href="/services" className="btn btn--primary btn--lg">Explore Solutions <ArrowRight size={18} /></Link>
-              <Link href="/case-studies" className="btn btn--secondary btn--lg">See Case Studies</Link>
+              <Link href="/case-studies" className="btn btn--secondary btn--lg" style={{ justifyContent: 'center' }}>See Case Studies</Link>
             </div>
             <div className={styles.heroTrust}>
               <span className={styles.trustLabel}>Trusted by:</span>

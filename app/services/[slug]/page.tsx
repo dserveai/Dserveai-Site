@@ -65,7 +65,7 @@ const seoMeta: Record<string, { title: string; description: string; keywords: st
   },
   "multi-modal-data-collection": {
     title: "Multi-Modal Dataset Collection Services | Dserve AI",
-    description: "Dserve AI captures real-world training datasets across audio, video, LiDAR, and text for complex AI systems. Sourced from 30+ countries ethically.",
+    description: "Dserve AI captures real-world training datasets across DICOM, EHR, Biometric, Sensor, Egocentric Data, audio, video, LiDAR, and text for complex AI systems. Sourced from 30+ countries ethically.",
     keywords: "multi-modal dataset, data collection, audio recording, video datasets, LiDAR data collection, text corpus curation",
   },
   "synthetic-data-generation": {
@@ -105,14 +105,14 @@ const proofNumbers: Record<string, { value: string; label: string }[]> = {
     { value: "50+", label: "Dataset categories and specializations" },
   ],
   "synthetic-data-generation": [
-    { value: "100M+", label: "Synthetic assets generated per week" },
+    { value: "100M+", label: "Synthetic Documents/Images" },
     { value: "0", label: "Privacy or copyright risks attached" },
-    { value: "3D", label: "Unreal/Unity procedural environments" },
+    { value: "Docs", label: "Synthetic Document Generation" },
   ],
   "computer-vision-analytics": [
-    { value: "50ms", label: "Real-time edge inference latency" },
-    { value: "80+", label: "Object classes tracked seamlessly" },
-    { value: "24/7", label: "Continuous monitoring and analytics" },
+    { value: "+28%", label: "Average operational efficiency increase" },
+    { value: "-45%", label: "Reduction in defect rates/errors" },
+    { value: "$1.2M", label: "Average annual cost savings" },
   ],
   "custom-ai-solutions": [
     { value: "4-6 Wks", label: "Average time to initial model deployment" },
@@ -120,9 +120,9 @@ const proofNumbers: Record<string, { value: string; label: string }[]> = {
     { value: "End-to-End", label: "From strategy to cloud infrastructure" },
   ],
   "quality-assurance": [
-    { value: "99%+", label: "Final annotation accuracy rate delivered" },
-    { value: "100%", label: "Projects delivered with full QA reports" },
-    { value: "0", label: "Projects returned for quality failures" },
+    { value: "100%", label: "Strict ML Guideline Enforcement" },
+    { value: "Unlimited", label: "Vendors & Freelancers Managed" },
+    { value: "0", label: "Format Inconsistencies Delivered" },
   ],
 };
 
@@ -210,28 +210,28 @@ const stickyStepsData: Record<string, { num: string; title: string; desc: string
   ],
   "computer-vision-analytics": [
     {
-      num: "01", title: "Hardware & Edge Profiling",
-      desc: "We analyze your target hardware to design an architecture that meets latency requirements.",
-      detail: "Before training, we evaluate where the model will run: cloud GPUs, local servers, or edge devices like Jetson and Coral. We select architectures like YOLOv8-tiny or RT-DETR optimized specifically for your hardware constraints and required FPS.",
-      tags: ["Edge profiling", "Latency constraints", "Hardware optimization", "Architecture selection"],
+      num: "01", title: "Operational Audit",
+      desc: "We analyze your operations to identify the highest ROI automation opportunities.",
+      detail: "Before writing any code, we evaluate your workflows. We identify areas where human monitoring is a bottleneck—such as manual defect inspection, inventory counting, or safety compliance—and calculate the projected cost savings of automating those tasks with AI.",
+      tags: ["Workflow analysis", "Bottleneck identification", "Cost saving projections", "ROI calculation"],
     },
     {
-      num: "02", title: "Model Training & Fine-Tuning",
-      desc: "Models are trained on our expertly annotated datasets to achieve maximum precision and recall.",
-      detail: "Using transfer learning and custom datasets, our CV engineers train the models. We rigorously track metrics across epochs, aggressively fine-tuning hyperparameters to minimize false positives and handle occlusion seamlessly.",
-      tags: ["Transfer learning", "Hyperparameter tuning", "Precision metrics", "Occlusion handling"],
+      num: "02", title: "Custom AI Deployment",
+      desc: "We deploy vision algorithms trained specifically on your environment's data.",
+      detail: "Using your existing camera infrastructure, we deploy custom computer vision models. These models learn the exact specifications of your products, the layouts of your facilities, and the behaviors that matter to your business, operating with superhuman consistency.",
+      tags: ["Infrastructure integration", "Custom vision models", "Superhuman consistency", "Environment mapping"],
     },
     {
-      num: "03", title: "Pipeline Optimization (TensorRT/ONNX)",
-      desc: "The trained model is compiled and quantized for maximum inference speed.",
-      detail: "Raw PyTorch/TensorFlow models are converted to ONNX and compiled using TensorRT or OpenVINO. We apply INT8/FP16 quantization, drastically reducing memory footprint while maintaining 99% of original accuracy.",
-      tags: ["TensorRT compilation", "ONNX export", "INT8 Quantization", "Inference optimization"],
+      num: "03", title: "Automated Actionable Insights",
+      desc: "Raw video feeds are transformed into structured, actionable business telemetry.",
+      detail: "Pixels are converted into profit. The system automatically flags defects, tracks cycle times, or alerts managers to safety hazards in real-time. Instead of watching screens, your team receives structured data and instant alerts that drive immediate operational corrections.",
+      tags: ["Real-time alerts", "Structured telemetry", "Defect flagging", "Cycle time tracking"],
     },
     {
-      num: "04", title: "Deployment & Dashboarding",
-      desc: "We deploy the inference container and hook it up to custom analytics dashboards.",
-      detail: "The final solution is delivered as a Dockerized container. We build live streaming dashboards that parse the model's output in real time, tracking inventory counts, defect rates, and behavioral heatmaps.",
-      tags: ["Dockerized deployment", "Live analytics", "Heatmaps", "API Integration"],
+      num: "04", title: "Continuous ROI Optimization",
+      desc: "Live dashboards track efficiency gains and labor cost savings 24/7.",
+      detail: "We pipe the AI's telemetry directly into custom business intelligence dashboards. You can monitor efficiency increases, defect reductions, and labor cost savings in real-time, proving the exact ROI of your computer vision deployment.",
+      tags: ["Live dashboards", "Efficiency metrics", "Cost tracking", "ROI validation"],
     },
   ],
   "custom-ai-solutions": [
@@ -262,28 +262,28 @@ const stickyStepsData: Record<string, { num: string; title: string; desc: string
   ],
   "quality-assurance": [
     {
-      num: "01", title: "Dataset Intake Audit",
-      desc: "We ingest your dataset and run automated statistical scans before any human review begins.",
-      detail: "The first pass is fully automated. We scan for class imbalances, missing labels, duplicate assets, and annotation distribution anomalies. You receive an intake report within hours showing exactly where the risks are before we commit to the full QA timeline.",
-      tags: ["Class balance check", "Duplicate detection", "Distribution scan", "Intake report"],
+      num: "01", title: "Guideline Mastery",
+      desc: "We embed with your core ML team to master your precise labeling taxonomy and edge cases.",
+      detail: "Before we evaluate a single asset, our senior QA engineers work directly with your data scientists. We learn exactly how your model handles ambiguity, what constitutes an edge case, and exactly how the data must be formatted to ensure your pipeline doesn't break.",
+      tags: ["Taxonomy alignment", "Edge case mapping", "ML team collaboration", "Rulebook creation"],
     },
     {
-      num: "02", title: "Human Expert Review",
-      desc: "Senior QA specialists audit representative samples per class, flagging every error and ambiguity.",
-      detail: "Our QA engineers review a statistically valid sample per label class. Edge cases, ambiguous annotations, and systematic errors are flagged with full context so your annotation team can correct them. We don't just say 'wrong', we show exactly why.",
-      tags: ["Per-class sampling", "Edge case audit", "Error taxonomy", "Context-rich flags"],
+      num: "02", title: "Vendor Coordination",
+      desc: "We act as the central point of contact for all your disparate data vendors and freelancers.",
+      detail: "You no longer need to manage a chaotic web of Slack channels, conflicting delivery formats, and inconsistent quality standards from multiple sourcing partners. We distribute the strict guidelines, enforce the standards, and manage the feedback loop with every contributor.",
+      tags: ["Centralized communication", "Multi-vendor management", "Feedback loops", "Freelancer scaling"],
     },
     {
-      num: "03", title: "Bias & Consistency Analysis",
-      desc: "We measure Inter-Annotator Agreement, detect demographic bias, and validate label distributions.",
-      detail: "Using IAA metrics (Cohen's Kappa, Fleiss Kappa) we surface systematic disagreements between annotators. We also audit for demographic representation bias in the underlying data and check label distributions against your model's required class balance.",
-      tags: ["Cohen's Kappa", "Fleiss Kappa", "Demographic audit", "Class balance"],
+      num: "03", title: "Centralized Quality Gate",
+      desc: "Every batch of data from every vendor passes through our strict, unified QA pipeline.",
+      detail: "Incoming deliveries are aggressively audited. We run automated statistical checks (like distribution anomaly scans) followed by human expert review. We reject non-compliant batches back to the vendor for correction, ensuring no bad data ever touches your training environment.",
+      tags: ["Automated scans", "Expert arbitration", "Vendor rejections", "Unified QA gate"],
     },
     {
-      num: "04", title: "QA Report Delivery",
-      desc: "You receive a comprehensive QA report with per-class confidence scores, corrected annotations, and clear recommendations.",
-      detail: "The final deliverable includes a structured QA report (PDF + CSV) with per-class accuracy scores, IAA measurements, a list of corrected items, flagged edge cases requiring your team's decision, and a data quality improvement roadmap for future iterations.",
-      tags: ["PDF + CSV report", "Per-class scores", "IAA measurements", "Improvement roadmap"],
+      num: "04", title: "Uniform Delivery",
+      desc: "Disparate formats are normalized and delivered as a single, perfect dataset.",
+      detail: "Vendor A delivers CSVs, Vendor B delivers raw XML. We normalize everything into your required schema (e.g., Unified COCO JSON). You receive a single, perfectly formatted dataset along with a comprehensive QA report detailing the performance of each sourcing channel.",
+      tags: ["Format normalization", "Unified schema", "Consolidated reporting", "Single pipeline delivery"],
     },
   ],
 };
@@ -398,10 +398,7 @@ export default async function ServicePage(props: Props) {
               <p className={styles.heroDesc}>{service.description}</p>
 
               <div className={styles.heroCtas}>
-                <Link href="/contact" className="btn btn--primary btn--lg"
-                  style={{ background: service.color }}>
-                  Request a Pilot
-                </Link>
+
                 <a href="#how-it-works" className="btn btn--secondary btn--lg">
                   See How It Works
                 </a>
@@ -460,7 +457,7 @@ export default async function ServicePage(props: Props) {
                     style={{ background: service.color }}>
                     Start a Pilot Project
                   </Link>
-                  <Link href="/services" className="btn btn--secondary">
+                  <Link href="/services" className="btn btn--secondary btn--lg" style={{ justifyContent: 'center' }}>
                     View All Services
                   </Link>
                 </div>

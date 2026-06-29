@@ -10,36 +10,36 @@ import pageStyles from "@/app/services/[slug]/page.module.css";
 export default function CVAnalyticsPageContent({ service, steps, color }: any) {
   return (
     <>
-      {/* SECTION 1: HARDWARE & EDGE PROFILING */}
+      {/* SECTION 1: AUTOMATING OPERATIONS */}
       <section className={custom.customSection}>
         <div className="container">
           <ScrollReveal>
             <div className={custom.grid2} style={{ alignItems: 'center' }}>
               <div>
-                <span className={pageStyles.codePrefix} style={{ color }}>// hardware constraints</span>
-                <h2 className={pageStyles.overviewTitle}>Edge & Cloud Hardware Optimization</h2>
+                <span className={pageStyles.codePrefix} style={{ color }}>// efficiency multiplied</span>
+                <h2 className={pageStyles.overviewTitle}>Automating Operations with AI</h2>
                 <p className={pageStyles.overviewBody}>
-                  A highly accurate model is useless if it runs at 2 FPS on your factory floor. We profile your target deployment hardware before we even begin training, selecting architectures that meet your exact latency and throughput requirements.
+                  Human monitoring is expensive, error-prone, and doesn't scale. We deploy custom computer vision systems that watch your factory floor, retail space, or logistics hub 24/7. By automating visual inspections and safety checks, we drastically reduce manual labor costs and eliminate human error.
                 </p>
                 <ul className={custom.featureList} style={{ marginTop: '24px' }}>
-                  <li className={custom.featureItem}><Cpu size={20} color={color} /> Nvidia Jetson, Coral Edge TPU, & Intel OpenVINO</li>
-                  <li className={custom.featureItem}><CloudLightning size={20} color={color} /> Cloud GPU Clusters (A100/H100) for batch processing</li>
-                  <li className={custom.featureItem}><Activity size={20} color={color} /> INT8 & FP16 Quantization via TensorRT</li>
+                  <li className={custom.featureItem}><Activity size={20} color={color} /> 24/7 Automated Defect Detection</li>
+                  <li className={custom.featureItem}><Eye size={20} color={color} /> Real-time Safety & Compliance Monitoring</li>
+                  <li className={custom.featureItem}><Cpu size={20} color={color} /> Superhuman Consistency & Scalability</li>
                 </ul>
               </div>
               <div className={custom.infoCard} style={{ background: `linear-gradient(135deg, rgba(10,15,25,0.9), ${color}15)`, border: `1px solid ${color}40` }}>
-                <h3 className={custom.cardTitle}>Latency vs. Accuracy Tuning</h3>
+                <h3 className={custom.cardTitle}>Immediate Labor Savings</h3>
                 <p className={custom.cardDesc} style={{ marginBottom: '16px' }}>
-                  We don't just deploy heavy transformer models by default. Depending on the task, we might deploy a lightweight YOLOv8-tiny architecture perfectly quantized to run at 60 FPS on a Jetson Nano, maintaining 98% of the accuracy of a massive cloud model.
+                  Replace manual QA inspectors and security monitoring with tireless AI. Our systems catch defects that human eyes miss, operating at speeds that allow your production lines to run faster, resulting in immediate cost savings.
                 </p>
                 <div style={{ display: 'flex', gap: '20px', marginTop: '20px' }}>
                   <div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color }}>50ms</div>
-                    <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)' }}>Avg Edge Latency</div>
+                    <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color }}>$1.2M</div>
+                    <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)' }}>Avg. Annual Savings</div>
                   </div>
                   <div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color }}>99%</div>
-                    <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)' }}>Accuracy Retained (INT8)</div>
+                    <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color }}>-45%</div>
+                    <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)' }}>Defect Reduction</div>
                   </div>
                 </div>
               </div>
@@ -48,33 +48,33 @@ export default function CVAnalyticsPageContent({ service, steps, color }: any) {
         </div>
       </section>
 
-      {/* SECTION 2: MODEL ARCHITECTURES */}
+      {/* SECTION 2: ACTIONABLE INSIGHTS */}
       <section className={custom.customSection}>
         <div className="container">
           <ScrollReveal>
             <div className={custom.sectionHeader} style={{ textAlign: 'center' }}>
-              <span className={pageStyles.codePrefix} style={{ color }}>// architectures</span>
-              <h2 className={pageStyles.overviewTitle}>State-of-the-Art Vision Models</h2>
+              <span className={pageStyles.codePrefix} style={{ color }}>// data to dollars</span>
+              <h2 className={pageStyles.overviewTitle}>From Pixels to Actionable Insights</h2>
               <p className={pageStyles.overviewBody} style={{ maxWidth: '800px', margin: '0 auto' }}>
-                We deploy the most advanced computer vision architectures available, fine-tuned specifically on your proprietary data.
+                We don't just provide bounding boxes; we provide business telemetry. Raw video feeds are instantly converted into structured data that drives immediate operational decisions.
               </p>
             </div>
             
             <div className={custom.grid3}>
               <div className={custom.infoCard} style={{ borderColor: `${color}40`, padding: '32px' }}>
-                <Eye size={32} color={color} style={{ marginBottom: '16px' }} />
-                <h3 className={custom.cardTitle} style={{ fontSize: '1.2rem' }}>Object Detection & Tracking</h3>
-                <p className={custom.cardDesc}>YOLO series (v8/v10), RT-DETR, and DeepSORT algorithms deployed for high-speed tracking, counting, and trajectory prediction.</p>
+                <CloudLightning size={32} color={color} style={{ marginBottom: '16px' }} />
+                <h3 className={custom.cardTitle} style={{ fontSize: '1.2rem' }}>Predictive Maintenance</h3>
+                <p className={custom.cardDesc}>Identify wear and tear on machinery before it breaks. Prevent costly downtime by letting computer vision flag anomalies in real-time.</p>
+              </div>
+              <div className={custom.infoCard} style={{ borderColor: `${color}40`, padding: '32px' }}>
+                <Activity size={32} color={color} style={{ marginBottom: '16px' }} />
+                <h3 className={custom.cardTitle} style={{ fontSize: '1.2rem' }}>Workflow Optimization</h3>
+                <p className={custom.cardDesc}>Track employee movements and assembly line bottlenecks. Restructure your floor plan based on empirical data to boost throughput.</p>
               </div>
               <div className={custom.infoCard} style={{ borderColor: `${color}40`, padding: '32px' }}>
                 <Eye size={32} color={color} style={{ marginBottom: '16px' }} />
-                <h3 className={custom.cardTitle} style={{ fontSize: '1.2rem' }}>Semantic Segmentation</h3>
-                <p className={custom.cardDesc}>Mask R-CNN, Segment Anything Model (SAM), and U-Net architectures for pixel-perfect defect detection and medical imaging.</p>
-              </div>
-              <div className={custom.infoCard} style={{ borderColor: `${color}40`, padding: '32px' }}>
-                <Eye size={32} color={color} style={{ marginBottom: '16px' }} />
-                <h3 className={custom.cardTitle} style={{ fontSize: '1.2rem' }}>Action & Pose Recognition</h3>
-                <p className={custom.cardDesc}>OpenPose, MediaPipe, and custom action-recognition transformers for worker safety, ergonomics, and behavioral analysis.</p>
+                <h3 className={custom.cardTitle} style={{ fontSize: '1.2rem' }}>Inventory Automation</h3>
+                <p className={custom.cardDesc}>Automate stock counts and shelf-audits. Eliminate stockouts and manual counting errors with continuous visual scanning.</p>
               </div>
             </div>
           </ScrollReveal>
@@ -86,35 +86,35 @@ export default function CVAnalyticsPageContent({ service, steps, color }: any) {
         <div className="container">
           <div className={pageStyles.stickyHeader} style={{ textAlign: 'center', marginBottom: '40px' }}>
             <span className={pageStyles.codePrefix} style={{ color }}>// workflow</span>
-            <h2 className={pageStyles.overviewTitle}>The Real-Time Tracker Radar</h2>
+            <h2 className={pageStyles.overviewTitle}>The AI ROI Engine</h2>
             <p className={pageStyles.overviewBody} style={{ maxWidth: '700px', margin: '16px auto 0' }}>
-              Interact with the nodes below to explore how our deployed models detect, track, and aggregate insights in real-time.
+              Interact with the nodes below to see how our pipelines convert raw camera streams into direct business value.
             </p>
           </div>
           <InteractiveInfographic steps={steps} color={color} slug={service.slug} />
         </div>
       </section>
 
-      {/* SECTION 4: DASHBOARD INTEGRATION */}
+      {/* SECTION 4: ROI & DASHBOARDS */}
       <section className={custom.customSection}>
         <div className="container">
           <ScrollReveal>
             <div className={custom.sectionHeader}>
-              <span className={pageStyles.codePrefix} style={{ color }}>// insights</span>
-              <h2 className={pageStyles.overviewTitle}>Live Dashboard & BI Integration</h2>
+              <span className={pageStyles.codePrefix} style={{ color }}>// bottom line</span>
+              <h2 className={pageStyles.overviewTitle}>Tracking Efficiency & Higher ROI</h2>
               <p className={pageStyles.overviewBody} style={{ maxWidth: '800px' }}>
-                A model's predictions are only valuable if they drive business decisions. We don't just deliver an inference container; we build the pipelines that pipe telemetry directly into your BI tools.
+                If you can't measure it, you can't improve it. We build custom dashboards that pipe AI-driven metrics directly to your stakeholders, proving the exact ROI of your automation initiatives.
               </p>
             </div>
             
             <div className={custom.grid2}>
               <div className={custom.infoCard} style={{ borderColor: `${color}40` }}>
-                <h3 className={custom.cardTitle}>Custom UI Dashboards</h3>
-                <p className={custom.cardDesc}>We build bespoke, low-latency web dashboards (React/Next.js) that stream live camera feeds overlaid with bounding boxes, heatmaps, and real-time metric aggregates.</p>
+                <h3 className={custom.cardTitle}>Live KPI Dashboards</h3>
+                <p className={custom.cardDesc}>Watch your efficiency metrics improve in real-time. We build secure web dashboards that display defect rates, cycle times, and labor savings, driven by live computer vision telemetry.</p>
               </div>
               <div className={custom.infoCard} style={{ borderColor: `${color}40` }}>
-                <h3 className={custom.cardTitle}>BI & API Hookups</h3>
-                <p className={custom.cardDesc}>If you already use Tableau, PowerBI, or Grafana, we build the REST/GraphQL APIs and Kafka streaming pipelines to push model telemetry directly into your existing infrastructure.</p>
+                <h3 className={custom.cardTitle}>Direct BI Integration</h3>
+                <p className={custom.cardDesc}>We seamlessly integrate our AI endpoints with your existing Tableau, PowerBI, or ERP systems. Your executives get a unified view of how automation is driving higher ROI across the enterprise.</p>
               </div>
             </div>
           </ScrollReveal>

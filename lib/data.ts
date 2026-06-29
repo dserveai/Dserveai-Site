@@ -30,11 +30,11 @@ export const caseStudies = [
     id: 1,
     slug: "healthcare-diagnostics-ai",
     title: "Healthcare Diagnostics AI",
-    description: "How we pushed a leading diagnostic model to 98.7% accuracy using 500K+ pixel-perfect medical annotations.",
+    description: "How we pushed a leading diagnostic model to 99% quality using 50K pixel-perfect medical annotations.",
     details: {
       challenge: "A leading healthcare AI startup was struggling to get their early-disease detection model past a 86% accuracy plateau. Their existing data was noisy, inconsistently labeled by non-experts, and lacked the edge cases necessary to generalize across diverse patient demographics.",
-      solution: "Dserve AI deployed a team of verified medical annotators operating under strict HIPAA compliance protocols. We sourced and curated a massive dataset, delivering over 500,000 X-ray, CT, and MRI images. Every image underwent precise bounding box and semantic segmentation labeling, specifically targeting early-stage anomalies.",
-      impact: "The new dataset allowed the client's model to break through its plateau, achieving a 98.7% accuracy rate in clinical trials. This outperformed the industry benchmark by 12% and accelerated their FDA approval timeline by six months."
+      solution: "Dserve AI deployed a team of verified medical annotators operating under strict HIPAA compliance protocols. We sourced and curated a massive dataset, delivering over 50,000 X-ray, CT, and MRI images. Every image underwent precise bounding box and semantic segmentation labeling, specifically targeting early-stage anomalies.",
+      impact: "The new dataset allowed the client's model to break through its plateau, achieving a 99% accuracy rate in clinical trials. This outperformed the industry benchmark by 12% and accelerated their FDA approval timeline by six months."
     },
     deepDive: [
       {
@@ -59,20 +59,20 @@ export const caseStudies = [
       }
     ],
     solution: "Healthcare",
-    result: "98.7% accuracy",
+    result: "99% accuracy",
     tags: ["Medical Imaging", "Annotation", "HIPAA"],
     color: "#3b82f6",
-    stats: [{ v: "500K+", l: "Images Annotated" }, { v: "98.7%", l: "Accuracy Rate" }, { v: "3 Weeks", l: "Delivery Time" }],
+    stats: [{ v: "50K", l: "Images Annotated" }, { v: "99%", l: "Quality" }, { v: "3 Weeks", l: "Delivery Time" }],
   },
   {
     id: 2,
     slug: "autonomous-vehicle-perception",
     title: "Autonomous Vehicle Perception",
-    description: "Fueling the next generation of self-driving cars with 2 million multi-modal, synchronized sensor data points.",
+    description: "Fueling the next generation of self-driving cars with 200K+ multi-modal, synchronized sensor data points.",
     details: {
       challenge: "A top-tier autonomous vehicle manufacturer needed to train their perception stack for complex urban environments. They required perfectly synchronized multi-modal data (LiDAR, radar, and cameras) covering adverse weather, nighttime driving, and unpredictable construction zones.",
       solution: "Dserve AI orchestrated a comprehensive data pipeline. We processed synchronized LiDAR point clouds, 360-degree camera footage, and radar readings across 50+ challenging driving environments. We applied 3D bounding boxes, lane marking splines, and drivable area segmentation to every frame with millimeter precision.",
-      impact: "We delivered over 2 million individually labeled, synchronized data points in native KITTI and nuScenes formats. The AV company saw a 40% reduction in false-positive object detections during nighttime driving simulations, significantly advancing their deployment timeline."
+      impact: "We delivered over 200,000 individually labeled, synchronized data points in native KITTI and nuScenes formats. The AV company saw a 40% reduction in false-positive object detections during nighttime driving simulations, significantly advancing their deployment timeline."
     },
     deepDive: [
       {
@@ -92,19 +92,19 @@ export const caseStudies = [
       }
     ],
     solution: "Automotive",
-    result: "2M+ data points",
+    result: "200K+ data points",
     tags: ["Computer Vision", "LiDAR", "Object Detection"],
     color: "#8b5cf6",
-    stats: [{ v: "2M+", l: "Data Points" }, { v: "50+", l: "Environments" }, { v: "3 Formats", l: "Delivered In" }],
+    stats: [{ v: "200K+", l: "Data Points" }, { v: "50+", l: "Environments" }, { v: "3 Formats", l: "Delivered In" }],
   },
   {
     id: 3,
     slug: "conversational-ai-training",
     title: "Conversational AI Training",
-    description: "Breaking language barriers: orchestrating a global collection of 1M+ voice samples across 50 dialects.",
+    description: "Breaking language barriers: orchestrating a global collection of 1M+ voice samples across 25+ dialects.",
     details: {
       challenge: "A global tech giant was building a next-generation multilingual conversational AI. Their existing speech models suffered from high word error rates in non-Western dialects and struggled heavily with natural conversational overlapping and background noise.",
-      solution: "Dserve AI managed a massive worldwide data collection campaign. We recruited thousands of native speakers across 50+ languages and dialects. We recorded unscripted, naturalistic conversations, commands, and queries in varied acoustic environments (cars, cafes, streets). All audio was subsequently transcribed, speaker-diarized, and tagged with emotion and intent labels.",
+      solution: "Dserve AI managed a massive worldwide data collection campaign. We recruited thousands of native speakers across 25+ languages and dialects. We recorded unscripted, naturalistic conversations, commands, and queries in varied acoustic environments (cars, cafes, streets). All audio was subsequently transcribed, speaker-diarized, and tagged with emotion and intent labels.",
       impact: "The dataset provided the necessary acoustic and linguistic diversity to train a truly global model. The client achieved state-of-the-art word error rates, seeing a 55% improvement in understanding colloquial queries across 12 of their most challenging target languages."
     },
     deepDive: [
@@ -125,10 +125,10 @@ export const caseStudies = [
       }
     ],
     solution: "Conversational AI",
-    result: "50+ languages",
+    result: "25+ languages",
     tags: ["Speech Data", "NLP", "Multilingual"],
     color: "#06b6d4",
-    stats: [{ v: "1M+", l: "Voice Samples" }, { v: "50+", l: "Languages" }, { v: "99%+", l: "IAA Score" }],
+    stats: [{ v: "1M+", l: "Voice Samples" }, { v: "25+", l: "Languages" }, { v: "99%+", l: "IAA Score" }],
   },
   {
     id: 4,
@@ -205,10 +205,10 @@ export const caseStudies = [
     id: 6,
     slug: "biometric-verification-system",
     title: "Biometric Verification System",
-    description: "Eliminating demographic bias with an ethically sourced biometric dataset spanning 30+ countries.",
+    description: "Eliminating demographic bias with an ethically sourced biometric dataset spanning 10+ countries.",
     details: {
       challenge: "A global identity verification platform faced heavy scrutiny because their facial recognition system showed significant performance disparities across different racial and age demographics. They urgently needed a highly diverse, ethically sourced dataset to fix this bias.",
-      solution: "Dserve AI executed a massive, privacy-first collection campaign across 30+ countries. We collected face images, fingerprint scans, and iris photos from fully consenting participants spanning 80+ ethnicities and a wide range of age groups. To harden the system against fraud, we also generated thousands of anti-spoofing samples, including printed photos, 3D masks, and screen replays.",
+      solution: "Dserve AI executed a massive, privacy-first collection campaign across 10+ countries. We collected face images, fingerprint scans, and iris photos from fully consenting participants spanning 30+ demographics and a wide range of age groups. To harden the system against fraud, we also generated thousands of anti-spoofing samples, including printed photos, 3D masks, and screen replays.",
       impact: "The new dataset allowed the client to retrain their model from the ground up. The resulting system achieved sub-0.1% false-accept rates while simultaneously reducing demographic bias gaps by 60%, setting a new ethical standard in the identity verification industry."
     },
     deepDive: [
@@ -234,10 +234,10 @@ export const caseStudies = [
       }
     ],
     solution: "Security",
-    result: "80+ demographics",
+    result: "30+ demographics",
     tags: ["Biometric", "Face Recognition", "Privacy"],
     color: "#10b981",
-    stats: [{ v: "80+", l: "Ethnicities" }, { v: "30+", l: "Countries" }, { v: "<0.1%", l: "False Accept Rate" }],
+    stats: [{ v: "30+", l: "Demographics" }, { v: "10+", l: "Countries" }, { v: "<0.1%", l: "False Accept Rate" }],
   },
 ];
 
@@ -247,7 +247,7 @@ export const services = [
     iconName: "tag",
     title: "Data Annotation and QA",
     imageUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=2000",
-    description: "High-speed, pixel-perfect annotations for complex datasets with strict QA protocols.",
+    description: "Data Annotation Services by Dserve AI provide high-precision labeling for images, text, audio, and video to train machine learning models. As industry experts, we utilize human-in-the-loop workflows and strict quality assurance to deliver flawless datasets that accelerate AI deployment.",
     features: ["Bounding boxes & polygons", "Semantic segmentation", "Keypoints & landmarks", "Text transcription & NER"],
     color: "#8b5cf6",
     details: {
@@ -262,7 +262,7 @@ export const services = [
     iconName: "database", 
     title: "Multi-Modal Data Collection",
     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000",
-    description: "Capture real-world data across audio, video, LiDAR, and text for complex AI systems.",
+    description: "Multi-Modal Data Collection Services by Dserve AI capture diverse, real-world training data across audio, video, LiDAR, and text. We source highly ethical and compliant datasets globally, enabling your machine learning models to perform reliably across all modalities and edge cases.",
     features: ["Audio & Speech Recording", "Video & LiDAR", "Text Corpus Curation", "Ethical sourcing with consent"],
     color: "#3b82f6",
     details: {
@@ -277,7 +277,7 @@ export const services = [
     iconName: "sparkles",
     title: "Synthetic Data Generation",
     imageUrl: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=2000",
-    description: "Generate precise synthetic data for documents, audio, and video to augment real-world datasets.",
+    description: "Synthetic Data Generation Services by Dserve AI create mathematically accurate, photorealistic 3D and media environments to overcome data scarcity. We augment your real-world datasets with procedurally generated edge cases, ensuring robust AI model training without privacy constraints.",
     features: ["Procedural 3D Environments", "Synthetic Document Generation", "Deepfake audio/video for security", "Edge-case augmentation"],
     color: "#a855f7",
     details: {
@@ -292,7 +292,7 @@ export const services = [
     iconName: "eye",
     title: "Computer Vision Analytics",
     imageUrl: "https://images.unsplash.com/photo-1527430253228-e93688616381?auto=format&fit=crop&q=80&w=2000",
-    description: "Deploy custom vision solutions to automate industrial workflows and analyze visual data at scale.",
+    description: "Computer Vision Analytics Services by Dserve AI design and deploy custom vision solutions that automate complex industrial, retail, and security workflows. Our engineering team builds state-of-the-art vision models for object tracking, defect detection, and behavioral analysis at scale.",
     features: ["Object tracking & counting", "Defect detection", "Facial recognition pipelines", "Behavioral analysis"],
     color: "#f59e0b",
     details: {
@@ -307,7 +307,7 @@ export const services = [
     iconName: "cpu",
     title: "Custom AI Solutions",
     imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000",
-    description: "Industry-specific AI solutions built from the ground up to address your unique operational challenges.",
+    description: "Custom AI Solutions by Dserve AI engineer bespoke intelligent systems tailored exclusively to your business logic and industry constraints. From predictive maintenance to custom LLM fine-tuning, our data scientists build and integrate end-to-end AI architectures that drive operational efficiency.",
     features: ["Industry-specific workflows", "End-to-end model training", "Custom hardware integration", "Proprietary algorithm development"],
     color: "#10b981",
     details: {
@@ -322,14 +322,14 @@ export const services = [
     iconName: "shieldCheck",
     title: "Quality Assurance",
     imageUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2000",
-    description: "Dserve AI provides rigorous data quality assurance services to verify accuracy and consistency for flawless AI training.",
-    features: ["Multi-stage QA pipeline", "Inter-annotator agreement", "Automated consistency checks", "Metadata enrichment"],
+    description: "Data Quality Assurance Services by Dserve AI centralize your ML data pipeline by strictly enforcing taxonomy guidelines across all external vendors and freelancers. We act as your trusted gateway, auditing incoming data to guarantee perfect alignment and uniformity before it enters your model.",
+    features: ["Vendor coordination", "Guideline enforcement", "Format normalization", "Centralized data gateway"],
     color: "#06b6d4",
     details: {
-      overview: "Dserve AI delivers comprehensive data quality assurance for AI models. Our dedicated QA infrastructure and multi-stage testing pipelines ensure every data point meets the exacting standards and high accuracy required to train production-grade AI.",
-      what: ["Annotation Accuracy Audits", "Consistency & Bias Checks", "Data Distribution Analysis", "Metadata Validation", "Sample-level Review Reports"],
-      how: "Each dataset undergoes automated statistical checks followed by human expert review. We provide full QA reports with confidence scores and flag edge cases for your team's review before final delivery.",
-      formats: ["Full QA Report (PDF)", "Per-sample confidence scores", "Bias & distribution dashboards"],
+      overview: "Managing multiple data vendors and freelancers leads to chaotic, inconsistent datasets. Dserve AI acts as your centralized trusted partner. We master your ML guidelines and enforce them across all contributors, ensuring every piece of data is perfectly aligned before it enters your pipeline.",
+      what: ["Multi-Vendor QA Consolidation", "ML Guideline Enforcement", "Format Normalization", "Edge Case Arbitration", "Unified Delivery Pipelines"],
+      how: "First, we embed with your ML team to master the taxonomy. Then, we audit incoming deliveries from all your disparate sources, rejecting or fixing non-compliant data, and outputting a single, uniformly formatted dataset.",
+      formats: ["Unified COCO JSON", "Consolidated CSVs", "Vendor Quality Reports"],
     },
   },
 ];
@@ -465,16 +465,16 @@ export const faqs = [
 
 export const process = [
   { step: "01", title: "Project Scoping & Taxonomy", desc: "Define your project requirements, objectives, and compliance standards. We work closely with your team to establish a tailored approach that aligns perfectly with your goals." },
-  { step: "02", title: "Sourcing & Precision Labeling", desc: "We deploy specialized workforces to capture or generate data, followed by high-precision annotation. Every bounding box, polygon, and transcription is executed strictly to your rubric." },
-  { step: "03", title: "Multi-Stage QA Auditing", desc: "A combination of automated statistical scripts and senior human reviewers audit the data. We enforce strict consensus thresholds to guarantee >99% accuracy before delivery." },
+  { step: "02", title: "Multi-Stage QA Auditing", desc: "A combination of automated statistical scripts and senior human reviewers audit the data. We enforce strict consensus thresholds to guarantee >99% accuracy before delivery." },
+  { step: "03", title: "Sourcing & Precision Labeling", desc: "We deploy specialized workforces to capture or generate data, followed by high-precision annotation. Every bounding box, polygon, and transcription is executed strictly to your rubric." },
   { step: "04", title: "Delivery & Iteration", desc: "Receive fully structured, model-ready datasets via API or secure bucket transfer. We remain engaged for continuous feedback loops, active learning, and edge-case refinement." },
 ];
 
 export const testimonials = [
-  { role: "Head of AI Research", text: "Dserve AI delivered 500,000 annotated medical images and audio records with 99% accuracy in just 3 weeks. Our diagnostic model's performance improved dramatically. Truly world-class.", rating: 5 },
+  { role: "Head of AI", text: "Dserve AI delivered 50,000 annotated medical images and audio records with 99% accuracy in just 3 weeks. Our diagnostic model's performance improved dramatically. Truly world-class.", rating: 5 },
   { role: "Chief Technology Officer", text: "The diversity of their computer vision and LiDAR datasets is unmatched. Their data perfectly powered our new industrial robotics and physical AI systems.", rating: 5 },
   { role: "VP of Engineering", text: "Their RLHF preference pairs and image-text multimodal datasets allowed us to safely align our generative foundation models with incredible precision.", rating: 5 },
   { role: "Director of Product", text: "We needed complex, multi-step tool-use trajectories to train our autonomous agents. Dserve AI delivered flawless reasoning chains at enterprise scale.", rating: 5 },
   { role: "Chief Information Security Officer", text: "The ethically sourced, highly diverse face and fingerprint datasets provided by Dserve AI helped us eliminate demographic bias in our biometric verification platform.", rating: 5 },
-  { role: "Lead Machine Learning Engineer", text: "We required speech data and natural NLP corpora across 50 languages. The quality and cultural accuracy of the conversational AI data we received was exceptional.", rating: 5 },
+  { role: "Lead ML Engineer", text: "We required speech data and natural NLP corpora across 25+ languages. The quality and cultural accuracy of the conversational AI data we received was exceptional.", rating: 5 },
 ];

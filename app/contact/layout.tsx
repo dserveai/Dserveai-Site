@@ -1,8 +1,14 @@
-import type { Metadata } from "next";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Dserve AI | Custom Data Solutions for Enterprise",
-  description: "Get in touch with our AI data engineers to discuss your custom dataset collection, annotation, and machine learning requirements.",
+  title: "Contact Us | Request an AI Pilot Project - Dserve AI",
+  description: "Get in touch with Dserve AI. Outline your AI data and solution requirements, and our project management team will connect with you within 24 hours.",
+  openGraph: {
+    title: "Contact Us | Dserve AI",
+    description: "Get in touch with Dserve AI. Outline your AI data and solution requirements, and our project management team will connect with you within 24 hours.",
+    type: "website",
+    url: "https://dserveai.com/contact",
+  },
 };
 
 export default function ContactLayout({ children }: { children: React.ReactNode }) {

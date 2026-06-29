@@ -183,7 +183,7 @@ export default function AboutPage() {
                   Dserve AI was founded by a team of AI practitioners with first-hand experience navigating the end-to-end machine learning lifecycle. We spent years dealing with the hidden bottlenecks and complex data challenges that cause even the most sophisticated models to fail in production.
                 </p>
                 <p className={styles.bodyText}>
-                  Recognizing that the root cause almost always traced back to unstructured, inconsistent, or poorly aligned training data, we decided to solve the problem at its source. We built the comprehensive data infrastructure company we always wished we had.
+                  Recognizing that the root cause almost always traced back to unstructured, inconsistent, or poorly aligned training data, we decided to solve the problem at its source. We built the comprehensive data infrastructure & solution company we always wished we had.
                 </p>
                 <div className={styles.storyQuote}>
                   <span className={styles.quoteMark}>"</span>

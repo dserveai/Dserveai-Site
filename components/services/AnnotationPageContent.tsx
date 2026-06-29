@@ -24,8 +24,8 @@ export default function AnnotationPageContent({ service, steps, color }: any) {
             
             <div className={custom.grid3}>
               <div className={custom.infoCard} style={{ borderColor: `${color}40` }}>
-                <h3 className={custom.cardTitle}>CVAT & Labelbox</h3>
-                <p className={custom.cardDesc}>Native API integrations allowing our workforce to annotate directly within your active projects, ensuring real-time sync with your cloud storage.</p>
+                <h3 className={custom.cardTitle}>Industry-Standard Platforms</h3>
+                <p className={custom.cardDesc}>Seamless integration with leading annotation platforms, allowing our workforce to annotate directly within your active projects and ensuring real-time sync with your cloud storage.</p>
               </div>
               <div className={custom.infoCard} style={{ borderColor: `${color}40` }}>
                 <h3 className={custom.cardTitle}>Custom Internal Tools</h3>

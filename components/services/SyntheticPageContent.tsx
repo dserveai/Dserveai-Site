@@ -16,8 +16,8 @@ export default function SyntheticPageContent({ service, steps, color }: any) {
           <ScrollReveal>
             <div className={custom.grid2} style={{ alignItems: 'center' }}>
               <div>
-                <span className={pageStyles.codePrefix} style={{ color }}>// graphics engine</span>
-                <h2 className={pageStyles.overviewTitle}>Unreal & Unity 3D Rendering</h2>
+                <span className={pageStyles.codePrefix} style={{ color }}>// document generation</span>
+                <h2 className={pageStyles.overviewTitle}>Synthetic Document Generation</h2>
                 <p className={pageStyles.overviewBody}>
                   We leverage advanced game engines to build photorealistic digital twins of your target environments. From complex factory floors to dynamic street intersections, we simulate the physics and lighting perfectly.
                 </p>
@@ -83,7 +83,7 @@ export default function SyntheticPageContent({ service, steps, color }: any) {
         <div className="container">
           <div className={pageStyles.stickyHeader} style={{ textAlign: 'center', marginBottom: '40px' }}>
             <span className={pageStyles.codePrefix} style={{ color }}>// workflow</span>
-            <h2 className={pageStyles.overviewTitle}>The Procedural Geometry Engine</h2>
+            <h2 className={pageStyles.overviewTitle}>Synthetic Data Generation Pipeline</h2>
             <p className={pageStyles.overviewBody} style={{ maxWidth: '700px', margin: '16px auto 0' }}>
               Interact with the nodes below to see how we seed parameters, render 3D meshes, and output validated synthetic datasets.
             </p>

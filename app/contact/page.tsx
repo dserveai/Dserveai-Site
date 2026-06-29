@@ -146,7 +146,7 @@ export default function ContactPage() {
               <h1 className="sr-only">Contact Our AI Data Annotation Experts</h1>
               <h2 className={styles.heroTitle}>Engineer Your Custom<br /><span className="gradient-text">Data Pipeline</span></h2>
               <p className={styles.heroDesc}>
-                Tell us about your model requirements. Our engineering team will respond within 24 hours with a tailored architecture and pilot proposal.
+                Tell us about your model requirements. Our project management team will get back to you to understand the requirement in detail within 24 hours.
               </p>
             </ScrollReveal>
           </div>
@@ -159,8 +159,8 @@ export default function ContactPage() {
               {/* Form */}
               <ScrollReveal delay={100}>
                 <div className={styles.formWrap}>
-                  <h2 className={styles.formTitle}>Request a Pilot Project</h2>
-                  <p className={styles.formDesc}>Detail your data needs, and we&apos;ll design a scalable pipeline optimized for your AI architecture.</p>
+                  <h2 className={styles.formTitle}>Request Summary</h2>
+                  <p className={styles.formDesc}>Outline your AI data and solution requirements below. Our project management team will connect with you within 24 hours to discuss the details.</p>
                   <form className={styles.form} onSubmit={handleSubmit}>
                     {submitted ? (
                       <div style={{ textAlign: 'center', padding: '40px 20px', background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.2)', borderRadius: '16px' }}>

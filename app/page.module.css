@@ -100,8 +100,9 @@
 
 .rotatingContainer {
   display: inline-block;
-  min-height: 1.3em; /* Locks the height for the 3rd line exactly */
+  min-height: 1.4em; /* Increased to fix cut-off descender */
   width: 100%;
+  padding-bottom: 0.1em;
 }
 
 .rotatingWord {
@@ -111,6 +112,7 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: wordIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  padding-bottom: 0.1em;
 }
 
 @keyframes wordIn {

@@ -237,40 +237,38 @@ export function AnnotationVisualizer({ color = "#8b5cf6" }: { color?: string }) 
 
 /* ---- 3. QUALITY ASSURANCE ---- */
 export function QAVisualizer({ color = "#06b6d4" }: { color?: string }) {
-  const phase = usePhaseLoop([1200, 2200, 2200, 2800]);
+  const phase = usePhaseLoop([1200, 2000, 2000, 2500]);
   const [processCount, setProcessCount] = useState(0);
   const [outputCount, setOutputCount] = useState(0);
 
   useEffect(() => {
-    if (phase === 1) { setProcessCount(0); setOutputCount(0); let i = 0; const t = setInterval(() => { i++; setProcessCount(i); if (i >= 6) clearInterval(t); }, 280); return () => clearInterval(t); }
-    if (phase === 2) { setOutputCount(0); let i = 0; const t = setInterval(() => { i++; setOutputCount(i); if (i >= 6) clearInterval(t); }, 260); return () => clearInterval(t); }
+    if (phase === 1) { setProcessCount(0); setOutputCount(0); let i = 0; const t = setInterval(() => { i++; setProcessCount(i); if (i >= 4) clearInterval(t); }, 300); return () => clearInterval(t); }
+    if (phase === 2) { setOutputCount(0); let i = 0; const t = setInterval(() => { i++; setOutputCount(i); if (i >= 4) clearInterval(t); }, 350); return () => clearInterval(t); }
     if (phase === 0) { setProcessCount(0); setOutputCount(0); }
   }, [phase]);
 
-  const checks = ["Annotation Accuracy", "Consistency Check", "Bias Scan", "Distribution Analysis", "Edge Case Audit", "Format Validation"];
+  const checks = ["Guideline Alignment Check", "Cross-Vendor Consistency", "Format Normalization", "Edge Case Arbitration"];
   const results = [
-    { name: "Annotation Accuracy", score: "99.2%", status: "Pass", s: "#10b981" },
-    { name: "Consistency", score: "98.8%", status: "Pass", s: "#10b981" },
-    { name: "Bias Scan", score: "Clear", status: "Pass", s: "#10b981" },
-    { name: "Distribution", score: "97.5%", status: "Pass", s: "#10b981" },
-    { name: "Edge Cases", score: "14 flagged", status: "Review", s: "#f59e0b" },
-    { name: "Format Valid.", score: "100%", status: "Pass", s: "#10b981" },
+    { name: "Guideline Sync", score: "100%", status: "Pass", s: "#10b981" },
+    { name: "Format Schema", score: "Unified", status: "Pass", s: "#10b981" },
+    { name: "Vendor Errors", score: "Filtered", status: "Pass", s: "#10b981" },
+    { name: "Edge Cases", score: "Resolved", status: "Pass", s: "#10b981" },
   ];
 
   return (
     <div className={styles.vizCard}>
       <div className={styles.vizLabel} style={{ color }}>
         <span className={styles.vizLabelDot} style={{ background: color }} />
-        QA Audit Pipeline
+        Central QA Gateway
       </div>
       <ThreePanelFlow color={color} phase={phase}
         inputPanel={
           <div className={styles.panelBody}>
-            <div className={styles.panelTitle}>Dataset Submitted</div>
-            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Annotations</span><span className={styles.mockFieldVal}>1.2M labels</span></div>
-            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Asset types</span><span className={styles.mockFieldVal}>Image, Text</span></div>
-            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Client</span><span className={styles.mockFieldVal}>MedVision Labs</span></div>
-            <div className={styles.mockField}><span className={styles.mockFieldLabel}>SLA</span><span className={styles.mockFieldVal}>72-hour QA</span></div>
+            <div className={styles.panelTitle}>Multi-Source Ingestion</div>
+            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Source A</span><span className={styles.mockFieldVal}>Freelancer Pool (XML)</span></div>
+            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Source B</span><span className={styles.mockFieldVal}>Agency Vendor (CSV)</span></div>
+            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Volume</span><span className={styles.mockFieldVal}>1.2M Mixed Assets</span></div>
+            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Target</span><span className={styles.mockFieldVal}>Unified COCO JSON</span></div>
           </div>
         }
         processPanel={
@@ -286,7 +284,7 @@ export function QAVisualizer({ color = "#06b6d4" }: { color?: string }) {
         }
         outputPanel={
           <div className={styles.panelBody}>
-            <div className={styles.panelTitle}>QA Results</div>
+            <div className={styles.panelTitle}>Unified Delivery</div>
             {results.slice(0, outputCount).map((r, i) => (
               <div key={i} className={styles.outputRow}>
                 <span className={styles.outputLabel}>{r.name}</span>
@@ -294,9 +292,9 @@ export function QAVisualizer({ color = "#06b6d4" }: { color?: string }) {
                 <span className={styles.outputVal} style={{ color: r.s }}>{r.score}</span>
               </div>
             ))}
-            {outputCount >= 6 && (
+            {outputCount >= 4 && (
               <div className={styles.outputSummary} style={{ borderColor: `${color}30`, background: `${color}08` }}>
-                <span style={{ color }}>✓</span> Dataset approved for delivery
+                <span style={{ color }}>✓</span> Perfect Unified Dataset Ready
               </div>
             )}
           </div>
@@ -453,39 +451,38 @@ export function ComputerVisionVisualizer({ color = "#f59e0b" }: { color?: string
   const [outputCount, setOutputCount] = useState(0);
 
   useEffect(() => {
-    if (phase === 1) { setProcessCount(0); setOutputCount(0); let i = 0; const t = setInterval(() => { i++; setProcessCount(i); if (i >= 6) clearInterval(t); }, 280); return () => clearInterval(t); }
-    if (phase === 2) { setOutputCount(0); let i = 0; const t = setInterval(() => { i++; setOutputCount(i); if (i >= 5) clearInterval(t); }, 300); return () => clearInterval(t); }
+    if (phase === 1) { setProcessCount(0); setOutputCount(0); let i = 0; const t = setInterval(() => { i++; setProcessCount(i); if (i >= 5) clearInterval(t); }, 300); return () => clearInterval(t); }
+    if (phase === 2) { setOutputCount(0); let i = 0; const t = setInterval(() => { i++; setOutputCount(i); if (i >= 4) clearInterval(t); }, 350); return () => clearInterval(t); }
     if (phase === 0) { setProcessCount(0); setOutputCount(0); }
   }, [phase]);
 
-  const tasks = ["Object detection boxes", "Instance segmentation", "Semantic segmentation", "Keypoint annotation", "OCR + text regions", "3D point cloud labels"];
-  const classes = [
-    { name: "Vehicles", count: "128,400 boxes", conf: "98.2%", s: "#10b981" },
-    { name: "Pedestrians", count: "84,200 masks", conf: "96.8%", s: "#10b981" },
-    { name: "Traffic Signs", count: "18,600 boxes", conf: "99.1%", s: "#10b981" },
-    { name: "Lane Lines", count: "42,000 polygons", conf: "97.5%", s: "#10b981" },
-    { name: "Cyclists", count: "9,400 boxes", conf: "94.2%", s: "#f59e0b" },
+  const tasks = ["Ingesting live camera feeds", "Real-time object tracking", "Defect detection algorithms", "Behavioral analysis", "Aggregating business insights"];
+  const metrics = [
+    { name: "Operational Efficiency", count: "", conf: "+28%", s: "#10b981" },
+    { name: "Defect Reduction", count: "", conf: "-45%", s: "#10b981" },
+    { name: "Labor Cost Savings", count: "", conf: "$1.2M/yr", s: "#10b981" },
+    { name: "Projected ROI", count: "", conf: "340%", s: "#f59e0b" },
   ];
 
   return (
     <div className={styles.vizCard}>
       <div className={styles.vizLabel} style={{ color }}>
         <span className={styles.vizLabelDot} style={{ background: color }} />
-        CV Annotation Engine
+        Vision Analytics Engine
       </div>
       <ThreePanelFlow color={color} phase={phase}
         inputPanel={
           <div className={styles.panelBody}>
-            <div className={styles.panelTitle}>Scene Dataset</div>
-            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Asset type</span><span className={styles.mockFieldVal}>Images + Video</span></div>
-            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Volume</span><span className={styles.mockFieldVal}>280,000 frames</span></div>
-            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Classes</span><span className={styles.mockFieldVal}>18 object classes</span></div>
-            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Output</span><span className={styles.mockFieldVal}>COCO JSON</span></div>
+            <div className={styles.panelTitle}>Live Video Feeds</div>
+            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Asset type</span><span className={styles.mockFieldVal}>Factory Cameras</span></div>
+            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Volume</span><span className={styles.mockFieldVal}>24/7 Streaming</span></div>
+            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Resolution</span><span className={styles.mockFieldVal}>4K Ultra HD</span></div>
+            <div className={styles.mockField}><span className={styles.mockFieldLabel}>Latency</span><span className={styles.mockFieldVal}>&lt; 50ms</span></div>
           </div>
         }
         processPanel={
           <div className={styles.panelBody}>
-            <div className={styles.panelTitle}>Annotation Tasks</div>
+            <div className={styles.panelTitle}>AI Analytics Pipeline</div>
             {tasks.slice(0, processCount).map((t, i) => (
               <div key={i} className={styles.checkRow}>
                 <span className={styles.checkDot} style={{ background: color }} />
@@ -496,16 +493,16 @@ export function ComputerVisionVisualizer({ color = "#f59e0b" }: { color?: string
         }
         outputPanel={
           <div className={styles.panelBody}>
-            <div className={styles.panelTitle}>Class Results</div>
-            {classes.slice(0, outputCount).map((c, i) => (
+            <div className={styles.panelTitle}>Business Impact</div>
+            {metrics.slice(0, outputCount).map((c, i) => (
               <div key={i} className={styles.outputRow}>
                 <span className={styles.outputLabel}>{c.name}</span>
                 <span className={styles.outputVal} style={{ color: c.s }}>{c.conf}</span>
               </div>
             ))}
-            {outputCount >= 5 && (
+            {outputCount >= 4 && (
               <div className={styles.outputSummary} style={{ borderColor: `${color}30`, background: `${color}08` }}>
-                <span style={{ color }}>✓</span> 283K annotated frames ready
+                <span style={{ color }}>✓</span> ROI Targets Achieved
               </div>
             )}
           </div>

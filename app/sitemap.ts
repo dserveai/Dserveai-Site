@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { blogPosts, caseStudies, services, solutions } from '@/lib/data';
+import { services } from '@/lib/data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://dserveai.com';
@@ -7,46 +7,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
     '',
     '/about',
-    '/services',
-    '/solutions',
+    '/contact',
     '/case-studies',
+    '/services',
     '/blog',
     '/faq',
-    '/contact',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: new Date().toISOString(),
+    lastModified: new Date().toISOString().split('T')[0],
     changeFrequency: 'weekly' as const,
     priority: route === '' ? 1 : 0.8,
   }));
 
-  const blogUrls = blogPosts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date).toISOString(),
+  const servicePages = services.map((service) => ({
+    url: `${baseUrl}/services/${service.slug}`,
+    lastModified: new Date().toISOString().split('T')[0],
     changeFrequency: 'monthly' as const,
-    priority: 0.7,
+    priority: 0.9,
   }));
 
-  const caseStudyUrls = caseStudies.map((cs) => ({
-    url: `${baseUrl}/case-studies/${cs.slug}`,
-    lastModified: new Date().toISOString(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }));
-
-  const serviceUrls = services.map((s) => ({
-    url: `${baseUrl}/services/${s.slug}`,
-    lastModified: new Date().toISOString(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.8,
-  }));
-
-  const solutionUrls = solutions.map((i) => ({
-    url: `${baseUrl}/solutions/${i.slug}`,
-    lastModified: new Date().toISOString(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.8,
-  }));
-
-  return [...staticPages, ...serviceUrls, ...solutionUrls, ...caseStudyUrls, ...blogUrls];
+  return [...staticPages, ...servicePages];
 }

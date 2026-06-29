@@ -18,15 +18,15 @@ export default function MultiModalPageContent({ service, steps, color }: any) {
               <span className={pageStyles.codePrefix} style={{ color }}>// multi-modal</span>
               <h2 className={pageStyles.overviewTitle}>Comprehensive Modality Coverage</h2>
               <p className={pageStyles.overviewBody} style={{ maxWidth: '800px' }}>
-                Modern foundation models require vast, diverse, and perfectly aligned multi-modal inputs. We capture synchronized data streams across all major sensor types.
+                Modern foundation models require vast, diverse, and perfectly aligned multi-modal inputs. We capture synchronized data streams across all major sensor types including DICOM, EHR, Biometric, Sensor, and Egocentric Data.
               </p>
             </div>
             
             <div className={custom.grid4}>
               <div className={custom.infoCard} style={{ borderColor: `${color}40`, padding: '24px' }}>
                 <FileAudio size={32} color={color} style={{ marginBottom: '16px' }} />
-                <h3 className={custom.cardTitle} style={{ fontSize: '1.2rem' }}>Audio & Speech</h3>
-                <p className={custom.cardDesc}>Wake words, conversational corpora, and acoustic environments recorded across 100+ native dialects and languages.</p>
+                <h3 className={custom.cardTitle} style={{ fontSize: '1.2rem' }}>Dicom & EHR</h3>
+                <p className={custom.cardDesc}>HIPAA-compliant medical imaging, de-identified patient records, and clinical diagnostic histories.</p>
               </div>
               <div className={custom.infoCard} style={{ borderColor: `${color}40`, padding: '24px' }}>
                 <Video size={32} color={color} style={{ marginBottom: '16px' }} />
@@ -40,8 +40,8 @@ export default function MultiModalPageContent({ service, steps, color }: any) {
               </div>
               <div className={custom.infoCard} style={{ borderColor: `${color}40`, padding: '24px' }}>
                 <FileText size={32} color={color} style={{ marginBottom: '16px' }} />
-                <h3 className={custom.cardTitle} style={{ fontSize: '1.2rem' }}>Text & NLP</h3>
-                <p className={custom.cardDesc}>Domain-specific document curation, handwriting collection, and multilingual parallel corpora for LLM pre-training.</p>
+                <h3 className={custom.cardTitle} style={{ fontSize: '1.2rem' }}>Text & Audio</h3>
+                <p className={custom.cardDesc}>Domain-specific document curation, handwriting collection, and multilingual conversational corpora for model pre-training.</p>
               </div>
             </div>
           </ScrollReveal>
@@ -53,7 +53,7 @@ export default function MultiModalPageContent({ service, steps, color }: any) {
         <div className="container">
           <div className={pageStyles.stickyHeader} style={{ textAlign: 'center', marginBottom: '40px' }}>
             <span className={pageStyles.codePrefix} style={{ color }}>// workflow</span>
-            <h2 className={pageStyles.overviewTitle}>The Omni-Sensor Fusion Rig</h2>
+            <h2 className={pageStyles.overviewTitle}>End-to-End Multi-Modal Collection</h2>
             <p className={pageStyles.overviewBody} style={{ maxWidth: '700px', margin: '16px auto 0' }}>
               Interact with the nodes below to explore our end-to-end data collection and fusion pipeline.
             </p>
@@ -116,12 +116,12 @@ export default function MultiModalPageContent({ service, steps, color }: any) {
               <tbody>
                 <tr>
                   <td>North America</td>
-                  <td>Video, LiDAR, Speech</td>
+                  <td>Video, LiDAR, Speech, Sensor, Egocentric Data</td>
                   <td>Autonomous driving (urban/highway), retail shelf, smart home.</td>
                 </tr>
                 <tr>
                   <td>Europe (EU)</td>
-                  <td>Speech, Text, Image</td>
+                  <td>Speech, Text, Image, DICOM, EHR</td>
                   <td>GDPR-compliant facial datasets, multilingual NLP corpora.</td>
                 </tr>
                 <tr>
@@ -131,7 +131,7 @@ export default function MultiModalPageContent({ service, steps, color }: any) {
                 </tr>
                 <tr>
                   <td>LATAM / MENA</td>
-                  <td>Image, Speech</td>
+                  <td>Image, Speech, Biometric</td>
                   <td>Diverse demographic capture, low-resource language corpora.</td>
                 </tr>
               </tbody>

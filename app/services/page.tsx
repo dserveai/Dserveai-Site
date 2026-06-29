@@ -236,7 +236,7 @@ export default function ServicesPage() {
                   </div>
                   <h3 className={styles.pocCardTitle}>Secure Ingestion</h3>
                   <p className={styles.pocCardDesc}>
-                    You provide a 5% subset of your data. It is ingested into our SOC2-compliant, air-gapped sandbox environment where it is profiled and encrypted at rest.
+                    You provide a subset of your data. It is ingested into our highly secure, air-gapped sandbox environment where it is profiled and encrypted at rest.
                   </p>
                   <div className={styles.pocMetrics}>
                     <div className={styles.pocMetric}>
@@ -244,8 +244,8 @@ export default function ServicesPage() {
                       <span className={styles.pocMetricLabel}>Encryption</span>
                     </div>
                     <div className={styles.pocMetric}>
-                      <span className={styles.pocMetricValue}>SOC2 Type II</span>
-                      <span className={styles.pocMetricLabel}>Compliance</span>
+                      <span className={styles.pocMetricValue}>Enterprise</span>
+                      <span className={styles.pocMetricLabel}>Security</span>
                     </div>
                   </div>
                 </div>
@@ -262,7 +262,7 @@ export default function ServicesPage() {
                   </div>
                   <h3 className={styles.pocCardTitle}>Ontology Hardening</h3>
                   <p className={styles.pocCardDesc}>
-                    Our ML engineers review your existing labeling guidelines. We convert any ambiguous instructions into deterministic, mathematically verifiable rules.
+                    Our Project Manager reviews your existing labeling guidelines. We convert any ambiguous instructions into deterministic, mathematically verifiable rules.
                   </p>
                   <div className={styles.pocMetrics}>
                     <div className={styles.pocMetric}>
@@ -270,8 +270,8 @@ export default function ServicesPage() {
                       <span className={styles.pocMetricLabel}>Logic Gates</span>
                     </div>
                     <div className={styles.pocMetric}>
-                      <span className={styles.pocMetricValue}>Senior SME</span>
-                      <span className={styles.pocMetricLabel}>Reviewers</span>
+                      <span className={styles.pocMetricValue}>Project</span>
+                      <span className={styles.pocMetricLabel}>Manager</span>
                     </div>
                   </div>
                 </div>
@@ -288,12 +288,12 @@ export default function ServicesPage() {
                   </div>
                   <h3 className={styles.pocCardTitle}>Inference & Audit</h3>
                   <p className={styles.pocCardDesc}>
-                    We execute the sprint in 72 hours. The final dataset is delivered alongside an Inter-Annotator Agreement (IAA) audit proving we hit the required accuracy.
+                    We execute the sprint in 72 hours. The final dataset is delivered alongside a quality audit proving we hit the required accuracy.
                   </p>
                   <div className={styles.pocMetrics}>
                     <div className={styles.pocMetric}>
                       <span className={styles.pocMetricValue} style={{ color: "#10b981" }}>&gt;99%</span>
-                      <span className={styles.pocMetricLabel}>IAA Guarantee</span>
+                      <span className={styles.pocMetricLabel}>Accuracy Guarantee</span>
                     </div>
                     <div className={styles.pocMetric}>
                       <span className={styles.pocMetricValue}>72 Hours</span>
@@ -325,7 +325,7 @@ export default function ServicesPage() {
                 </div>
                 <div className={styles.ctaActions}>
                   <Link href="/contact" className="btn btn--primary btn--lg">Start a Pilot Project <ArrowRight size={18} /></Link>
-                  <Link href="/case-studies" className="btn btn--secondary btn--lg">See Case Studies</Link>
+                  <Link href="/case-studies" className="btn btn--secondary btn--lg" style={{ justifyContent: 'center' }}>See Case Studies</Link>
                 </div>
               </div>
             </ScrollReveal>

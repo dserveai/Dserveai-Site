@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dserve AI Banner</title>
+  <style>
+    @font-face {
+      font-family: 'Nasalization';
+      src: url('/fonts/nasalization.otf') format('opentype');
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .banner {
+      width: 1600px;
+      height: 400px;
+      background-color: #000000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+    }
+    .logo {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      margin-top: -6px;
+    }
+    .text {
+      font-family: 'Nasalization', sans-serif;
+      font-size: 56px;
+      color: #ffffff;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+    .ai-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.45em;
+      font-weight: 800;
+      position: relative;
+      top: -1.2em;
+      margin-left: 4px;
+      color: white;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <img src="./logo.png" alt="Logo" class="logo" />
+    <h1 class="text">Dserve<span class="ai-text">AI</span></h1>
+  </div>
+</body>
+</html>
