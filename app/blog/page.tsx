@@ -6,6 +6,8 @@ import { ArrowUpRight } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Pagination from "@/components/ui/Pagination";
+import SchemaScript from "@/components/seo/SchemaScript";
+import { generateCollectionPage, generateBreadcrumbList } from "@/lib/schema";
 import styles from "./page.module.css";
 import postsData from "@/lib/posts_data.json";
 
@@ -36,7 +38,20 @@ export default function BlogPage() {
   };
 
   return (
-    <div className={styles.pageWrapper}>
+    <>
+      <SchemaScript 
+        schema={[
+          generateCollectionPage({
+            title: "Blog | Dserve AI",
+            description: "Read our latest articles and insights on AI data.",
+            path: "/blog"
+          }),
+          generateBreadcrumbList([
+            { name: "Blog", path: "/blog" }
+          ])
+        ]}
+      />
+      <div className={styles.pageWrapper}>
       <Navbar />
       
       <main className={styles.main}>
@@ -105,5 +120,6 @@ export default function BlogPage() {
       </main>
       <Footer />
     </div>
+    </>
   );
 }

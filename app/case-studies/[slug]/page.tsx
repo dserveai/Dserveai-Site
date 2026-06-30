@@ -6,6 +6,8 @@ import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { caseStudies } from "@/lib/data";
+import SchemaScript from "@/components/seo/SchemaScript";
+import { generateArticle, generateBreadcrumbList } from "@/lib/schema";
 import styles from "./page.module.css";
 import * as motion from "framer-motion/client";
 
@@ -20,6 +22,19 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   return {
     title: `${caseStudy.title} | Dserve AI Case Studies`,
     description: caseStudy.description,
+    openGraph: {
+      title: `${caseStudy.title} | Dserve AI Case Studies`,
+      description: caseStudy.description,
+      type: "article",
+      url: `https://dserveai.com/case-studies/${params.slug}`,
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: caseStudy.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${caseStudy.title} | Dserve AI Case Studies`,
+      description: caseStudy.description,
+      images: ["/og-image.jpg"],
+    },
   };
 }
 
@@ -40,8 +55,24 @@ export default async function CaseStudyPage(props: Props) {
     .slice(0, 3);
 
   return (
-    <div className={styles.pageWrapper}>
-      <Navbar />
+    <>
+      <SchemaScript 
+        schema={[
+          generateArticle({
+            title: caseStudy.title,
+            date: new Date().toISOString(),
+            image: `/case-studies/${caseStudy.slug}.png`,
+            path: `/case-studies/${caseStudy.slug}`,
+            isTech: true
+          }),
+          generateBreadcrumbList([
+            { name: "Case Studies", path: "/case-studies" },
+            { name: caseStudy.title, path: `/case-studies/${caseStudy.slug}` }
+          ])
+        ]}
+      />
+      <div className={styles.pageWrapper}>
+        <Navbar />
       
       {/* Immersive Hero */}
       <section className={styles.hero}>
@@ -222,5 +253,6 @@ export default async function CaseStudyPage(props: Props) {
 
       <Footer />
     </div>
+    </>
   );
 }

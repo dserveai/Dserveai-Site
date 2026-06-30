@@ -7,6 +7,8 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import LogoOrb from "@/components/ui/LogoOrb";
 import ScrollRevealText from "@/components/ui/ScrollRevealText";
+import SchemaScript from "@/components/seo/SchemaScript";
+import { generateAboutPage, generateBreadcrumbList } from "@/lib/schema";
 import styles from "./page.module.css";
 
 function RotatingText() {
@@ -99,8 +101,17 @@ export default function AboutPage() {
   };
 
   return (
-    <div className={styles.page}>
-      <Navbar />
+    <>
+      <SchemaScript 
+        schema={[
+          generateAboutPage(),
+          generateBreadcrumbList([
+            { name: "About Us", path: "/about" }
+          ])
+        ]}
+      />
+      <div className={styles.page}>
+        <Navbar />
       <main>
 
         {/* ── HERO ────────────────────────────────────── */}
@@ -322,5 +333,6 @@ export default function AboutPage() {
       </main>
       <Footer />
     </div>
+    </>
   );
 }

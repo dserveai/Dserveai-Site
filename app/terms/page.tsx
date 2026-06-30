@@ -3,15 +3,42 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import styles from "../legal.module.css";
 import Link from "next/link";
+import SchemaScript from "@/components/seo/SchemaScript";
+import { generateWebPage, generateBreadcrumbList } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Terms of Service | Dserve AI",
   description: "Read the Dserve AI Terms of Service governing the use of our website and enterprise AI data services.",
+  alternates: { canonical: "https://dserveai.com/terms" },
+  openGraph: {
+    title: "Terms of Service | Dserve AI",
+    description: "Read the Dserve AI Terms of Service governing the use of our website and enterprise AI data services.",
+    type: "website",
+    url: "https://dserveai.com/terms",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Terms of Service" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms of Service | Dserve AI",
+    description: "Read the Dserve AI Terms of Service governing the use of our website and enterprise AI data services.",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export default function TermsPage() {
   return (
     <>
+      <SchemaScript 
+        schema={[
+          generateWebPage({
+            title: "Terms of Service | Dserve AI",
+            path: "/terms"
+          }),
+          generateBreadcrumbList([
+            { name: "Terms of Service", path: "/terms" }
+          ])
+        ]}
+      />
       <Navbar />
       <main className={styles.main}>
         <section className={styles.legalHero}>

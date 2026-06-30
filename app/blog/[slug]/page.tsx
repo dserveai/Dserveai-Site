@@ -4,6 +4,8 @@ import { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import postsData from "@/lib/posts_data.json";
+import SchemaScript from "@/components/seo/SchemaScript";
+import { generateArticle, generateBreadcrumbList } from "@/lib/schema";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -19,6 +21,19 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   return {
     title: `${post.title} | Dserve AI Blog`,
     description,
+    openGraph: {
+      title: `${post.title} | Dserve AI Blog`,
+      description,
+      type: "article",
+      url: `https://dserveai.com/blog/${params.slug}`,
+      images: [{ url: post.image || "/og-image.jpg", width: 1200, height: 630, alt: post.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${post.title} | Dserve AI Blog`,
+      description,
+      images: [post.image || "/og-image.jpg"],
+    },
   };
 }
 
@@ -36,30 +51,19 @@ export default async function BlogPostPage(props: Props) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": post.title,
-            "datePublished": post.date,
-            "dateModified": post.date,
-            "author": {
-              "@type": "Organization",
-              "name": "Dserve AI",
-              "url": "https://dserveai.com"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Dserve AI",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://dserveai.com/logo.png"
-              }
-            }
-          })
-        }}
+      <SchemaScript 
+        schema={[
+          generateArticle({
+            title: post.title,
+            date: post.date,
+            image: post.image,
+            path: `/blog/${post.slug}`
+          }),
+          generateBreadcrumbList([
+            { name: "Blog", path: "/blog" },
+            { name: post.title, path: `/blog/${post.slug}` }
+          ])
+        ]}
       />
       <Navbar />
       <main style={{ paddingTop: "140px", paddingBottom: "80px", minHeight: "80vh" }}>

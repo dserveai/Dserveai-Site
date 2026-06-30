@@ -3,15 +3,42 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import styles from "../legal.module.css";
 import Link from "next/link";
+import SchemaScript from "@/components/seo/SchemaScript";
+import { generateWebPage, generateBreadcrumbList } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Dserve AI",
   description: "Read the Dserve AI Privacy Policy to understand how we protect your data and comply with global standards like GDPR and HIPAA.",
+  alternates: { canonical: "https://dserveai.com/privacy" },
+  openGraph: {
+    title: "Privacy Policy | Dserve AI",
+    description: "Read the Dserve AI Privacy Policy to understand how we protect your data and comply with global standards like GDPR and HIPAA.",
+    type: "website",
+    url: "https://dserveai.com/privacy",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Privacy Policy" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy | Dserve AI",
+    description: "Read the Dserve AI Privacy Policy to understand how we protect your data and comply with global standards like GDPR and HIPAA.",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export default function PrivacyPage() {
   return (
     <>
+      <SchemaScript 
+        schema={[
+          generateWebPage({
+            title: "Privacy Policy | Dserve AI",
+            path: "/privacy"
+          }),
+          generateBreadcrumbList([
+            { name: "Privacy Policy", path: "/privacy" }
+          ])
+        ]}
+      />
       <Navbar />
       <main className={styles.main}>
         <section className={styles.legalHero}>

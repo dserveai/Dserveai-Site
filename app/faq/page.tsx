@@ -6,6 +6,8 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import styles from "./page.module.css";
 import { faqs } from "@/lib/data";
+import SchemaScript from "@/components/seo/SchemaScript";
+import { generateFAQPage, generateBreadcrumbList } from "@/lib/schema";
 
 export default function FAQPage() {
   // Store the index of the currently open FAQ. Null means all are closed.
@@ -17,22 +19,13 @@ export default function FAQPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqs.map(faq => ({
-              "@type": "Question",
-              "name": faq.q,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.a
-              }
-            }))
-          })
-        }}
+      <SchemaScript 
+        schema={[
+          generateFAQPage(faqs),
+          generateBreadcrumbList([
+            { name: "FAQ", path: "/faq" }
+          ])
+        ]}
       />
       <Navbar />
       <main>

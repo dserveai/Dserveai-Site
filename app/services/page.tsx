@@ -9,6 +9,8 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import TiltCard from "@/components/ui/TiltCard";
 import InteractiveCanvas from "@/components/ui/InteractiveCanvas";
 import RotatingServiceText from "@/components/ui/RotatingServiceText";
+import SchemaScript from "@/components/seo/SchemaScript";
+import { generateCollectionPage, generateBreadcrumbList } from "@/lib/schema";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -26,33 +28,17 @@ const statsData = [
 export default function ServicesPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "serviceType": "AI Data Annotation and Collection",
-            "provider": {
-              "@type": "Organization",
-              "name": "Dserve AI",
-              "url": "https://dserveai.com"
-            },
-            "areaServed": {
-              "@type": "Place",
-              "name": "Worldwide"
-            },
-            "hasOfferCatalog": {
-              "@type": "OfferCatalog",
-              "name": "AI Data Services",
-              "itemListElement": services.map(s => ({
-                "@type": "OfferCatalog",
-                "name": s.title,
-                "description": s.description
-              }))
-            }
-          })
-        }}
+      <SchemaScript 
+        schema={[
+          generateCollectionPage({
+            title: "Services | Custom AI Data Pipelines | Dserve AI",
+            description: "End-to-end AI data services: custom dataset collection, precision annotation, quality assurance, and enterprise consulting.",
+            path: "/services"
+          }),
+          generateBreadcrumbList([
+            { name: "Services", path: "/services" }
+          ])
+        ]}
       />
       <Navbar />
       <main>

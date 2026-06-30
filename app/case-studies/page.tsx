@@ -8,6 +8,8 @@ import { motion, useAnimation, useInView } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { caseStudies } from "@/lib/data";
+import SchemaScript from "@/components/seo/SchemaScript";
+import { generateCollectionPage, generateBreadcrumbList } from "@/lib/schema";
 import styles from "./page.module.css";
 
 const containerVariants = {
@@ -28,7 +30,20 @@ export default function CaseStudiesPage() {
   const bentoItems = caseStudies.slice(1);
 
   return (
-    <div className={styles.pageWrapper}>
+    <>
+      <SchemaScript 
+        schema={[
+          generateCollectionPage({
+            title: "Case Studies | Dserve AI",
+            description: "Read about how our AI data pipelines power the world's leading technology innovators.",
+            path: "/case-studies"
+          }),
+          generateBreadcrumbList([
+            { name: "Case Studies", path: "/case-studies" }
+          ])
+        ]}
+      />
+      <div className={styles.pageWrapper}>
       <Navbar />
       
       {/* Ambient Orbs */}
@@ -194,5 +209,6 @@ export default function CaseStudiesPage() {
         </div>
       </main>
     </div>
+    </>
   );
 }

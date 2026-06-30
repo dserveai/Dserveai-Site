@@ -15,6 +15,8 @@ import {
   testimonials, blogPosts, caseStudies, partners,
 } from "@/lib/data";
 import styles from "./page.module.css";
+import SchemaScript from "@/components/seo/SchemaScript";
+import { generateHomepageGraph } from "@/lib/schema";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 type DrawerPayload =
@@ -99,6 +101,7 @@ export default function HomePage() {
 
   return (
     <>
+      <SchemaScript schema={generateHomepageGraph()} />
       <Navbar />
       <DetailDrawer data={drawer} onClose={closeDrawer} />
       <main>

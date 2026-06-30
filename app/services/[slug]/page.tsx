@@ -4,6 +4,16 @@ import { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { services } from "@/lib/data";
+import { 
+  DataAnnotationIcon, 
+  MultiModalIcon, 
+  SyntheticIcon, 
+  CVIcon, 
+  CustomAIIcon, 
+  QAIcon 
+} from "./icons";
+import SchemaScript from "@/components/seo/SchemaScript";
+import { generateService, generateBreadcrumbList } from "@/lib/schema";
 import { DynamicIcon } from "@/components/ui/Icons";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import {
@@ -340,26 +350,18 @@ export default async function ServicePage(props: Props) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": service.title,
-            "description": service.description,
-            "provider": {
-              "@type": "Organization",
-              "name": "Dserve AI",
-              "url": "https://dserveai.com"
-            },
-            "areaServed": {
-              "@type": "Place",
-              "name": "Worldwide"
-            },
-            "serviceType": "AI Data Annotation and Collection"
-          })
-        }}
+      <SchemaScript 
+        schema={[
+          generateService({
+            name: service.title,
+            description: service.description,
+            path: `/services/${service.slug}`
+          }),
+          generateBreadcrumbList([
+            { name: "Services", path: "/services" },
+            { name: service.title, path: `/services/${service.slug}` }
+          ])
+        ]}
       />
       <Navbar />
       <main>

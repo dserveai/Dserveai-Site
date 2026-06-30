@@ -8,5 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       disallow: ['/api/'],
     },
     sitemap: 'https://dserveai.com/sitemap.xml',
+    host: 'https://dserveai.com',
   };
 }

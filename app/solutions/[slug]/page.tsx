@@ -7,6 +7,8 @@ import { solutions } from "@/lib/data";
 import { DynamicIcon } from "@/components/ui/Icons";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import LiveDashboard from "@/components/ui/LiveDashboard";
+import SchemaScript from "@/components/seo/SchemaScript";
+import { generateService, generateBreadcrumbList } from "@/lib/schema";
 import styles from "./page.module.css";
 
 // Import bespoke custom content blocks
@@ -165,26 +167,18 @@ export default async function SolutionPage(props: Props) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": `AI Data Pipelines for ${solution.name}`,
-            "description": solution.details.overview,
-            "provider": {
-              "@type": "Organization",
-              "name": "Dserve AI",
-              "url": "https://dserveai.com"
-            },
-            "areaServed": {
-              "@type": "Place",
-              "name": "Worldwide"
-            },
-            "serviceType": `Data Annotation for ${solution.name}`
-          })
-        }}
+      <SchemaScript 
+        schema={[
+          generateService({
+            name: `AI Data Pipelines for ${solution.name}`,
+            description: solution.details.overview,
+            path: `/solutions/${solution.slug}`
+          }),
+          generateBreadcrumbList([
+            { name: "Solutions", path: "/solutions" },
+            { name: solution.name, path: `/solutions/${solution.slug}` }
+          ])
+        ]}
       />
       <Navbar />
       <main>

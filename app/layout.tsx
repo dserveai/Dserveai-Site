@@ -50,33 +50,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <link rel="icon" href="/favicon.ico" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "Dserve AI",
-              "url": "https://dserveai.com",
-              "logo": "https://dserveai.com/logo.png",
-              "description": "Premium AI training datasets, data annotation, and collection services for cutting-edge AI development.",
-              "sameAs": [
-                "https://www.linkedin.com/company/106909852/"
-              ]
-            })
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": "Dserve AI",
-              "url": "https://dserveai.com"
-            })
-          }}
-        />
       </head>
       <body>{children}</body>
     </html>
