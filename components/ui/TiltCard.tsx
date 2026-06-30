@@ -18,7 +18,6 @@ export default function TiltCard({
   style,
   intensity = 8,
   onClick,
-  as: Tag = "div",
   "aria-label": ariaLabel,
 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);

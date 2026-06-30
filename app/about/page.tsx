@@ -97,6 +97,7 @@ export default function AboutPage() {
   }, []);
 
   const setRef = (i: number) => (el: HTMLElement | null) => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps, react-hooks/rules-of-hooks, react-hooks/refs
     sectionRefs.current[i] = el;
   };
 

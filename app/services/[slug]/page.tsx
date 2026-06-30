@@ -4,14 +4,6 @@ import { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { services } from "@/lib/data";
-import { 
-  DataAnnotationIcon, 
-  MultiModalIcon, 
-  SyntheticIcon, 
-  CVIcon, 
-  CustomAIIcon, 
-  QAIcon 
-} from "./icons";
 import SchemaScript from "@/components/seo/SchemaScript";
 import { generateService, generateBreadcrumbList } from "@/lib/schema";
 import { DynamicIcon } from "@/components/ui/Icons";
@@ -20,8 +12,6 @@ import {
   CollectionVisualizer,
   AnnotationVisualizer,
   QAVisualizer,
-  DeliveryVisualizer,
-  HealthcareVisualizer,
   ComputerVisionVisualizer,
   SyntheticVisualizer,
   CustomAIVisualizer,

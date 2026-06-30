@@ -8,7 +8,7 @@ import DetailDrawer from "@/components/ui/DetailDrawer";
 import ParticleField from "@/components/ui/ParticleField";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import TiltCard from "@/components/ui/TiltCard";
-import { DynamicIcon, IconArrowDown, IconStar, IconShieldCheck } from "@/components/ui/Icons";
+import { DynamicIcon, IconStar } from "@/components/ui/Icons";
 import { partnerLogos } from "@/components/ui/PartnerLogos";
 import {
   stats, services, solutions, process as processSteps,
@@ -25,14 +25,15 @@ type DrawerPayload =
   | { type: "caseStudy"; title: string; description: string; fullDescription: string; solution: string; result: string; tags: string[]; color: string; stats: { v: string; l: string }[] };
 
 // ─── Rotating Hero Text ───────────────────────────────────────────────────────
+const heroWords = ["Precision", "Diversity", "Scale", "Quality", "Speed"];
+
 function RotatingText() {
-  const words = ["Precision", "Diversity", "Scale", "Quality", "Speed"];
   const [idx, setIdx] = useState(0);
   useEffect(() => {
-    const t = setInterval(() => setIdx(i => (i + 1) % words.length), 2500);
+    const t = setInterval(() => setIdx(i => (i + 1) % heroWords.length), 2500);
     return () => clearInterval(t);
   }, []);
-  return <span className={styles.rotatingWord} key={idx}>{words[idx]}</span>;
+  return <span className={styles.rotatingWord} key={idx}>{heroWords[idx]}</span>;
 }
 
 // ─── Hero Background ──────────────────────────────────────────────────────────
@@ -87,7 +88,7 @@ export default function HomePage() {
       
       if (isVideoVisible && idx === activeVideoTab) {
         // Only play the active video when the section is in view
-        video.play().catch(err => console.log("Video auto-play prevented:", err));
+        video.play().catch(() => {});
       } else {
         // Pause all other videos and the active one if scrolled out of view
         video.pause();

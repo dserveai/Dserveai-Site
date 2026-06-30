@@ -2,8 +2,9 @@
 import { useEffect, useState } from "react";
 import styles from "./RotatingServiceText.module.css";
 
+const words = ["Generative AI.", "Physical AI.", "Agentic AI.", "Healthcare AI.", "Vision AI."];
+
 export default function RotatingServiceText() {
-  const words = ["Generative AI.", "Physical AI.", "Agentic AI.", "Healthcare AI.", "Vision AI."];
   const [idx, setIdx] = useState(0);
   
   useEffect(() => {

@@ -56,7 +56,6 @@ export default function LidarTopographyMatrix() {
       
       const arr = [];
       const totalWidth = COLS * SPACING;
-      const totalDepth = ROWS * SPACING;
       
       for (let r = 0; r < ROWS; r++) {
         for (let c = 0; c < COLS; c++) {

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Database, Code2, Zap, ShieldCheck } from "lucide-react";
+import { ArrowRight, Database, Code2, ShieldCheck } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { services, solutions, process } from "@/lib/data";
+import { services, solutions } from "@/lib/data";
 import { DynamicIcon } from "@/components/ui/Icons";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import TiltCard from "@/components/ui/TiltCard";

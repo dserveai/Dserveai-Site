@@ -2,7 +2,7 @@ import React from "react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Activity, Crosshair, UserCheck, ShieldPlus } from "lucide-react";
 
-export default function HealthcarePageContent({ solution, color }: { solution: any, color: string }) {
+export default function HealthcarePageContent({ color }: { solution?: any, color: string }) {
   return (
     <section style={{ padding: "100px 0", background: `radial-gradient(circle at right, ${color}10, transparent 40%)` }}>
       <div className="container">

@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const { Jimp } = require('jimp');
+const fs = require('fs');
 
 async function main() {
   try {

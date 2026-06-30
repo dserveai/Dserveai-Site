@@ -1,4 +1,6 @@
 // Official brand logos as inline SVGs — clean monochrome versions for dark background
+import Image from 'next/image';
+
 interface LogoProps {
   height?: number;
   className?: string;
@@ -6,19 +8,19 @@ interface LogoProps {
 
 export function AWSLogo({ height = 28, className }: LogoProps) {
   return (
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS" height={height} className={className} style={{ filter: 'brightness(0) invert(1) opacity(0.85)', objectFit: 'contain' }} />
+    <Image src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS" width={100} height={height} className={className} style={{ filter: 'brightness(0) invert(1) opacity(0.85)', objectFit: 'contain' }} unoptimized />
   );
 }
 
 export function GoogleLogo({ height = 24, className }: LogoProps) {
   return (
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" height={height} className={className} style={{ objectFit: 'contain' }} />
+    <Image src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" width={80} height={height} className={className} style={{ objectFit: 'contain' }} unoptimized />
   );
 }
 
 export function MicrosoftLogo({ height = 24, className }: LogoProps) {
   return (
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" height={height} className={className} style={{ objectFit: 'contain' }} />
+    <Image src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" width={100} height={height} className={className} style={{ objectFit: 'contain' }} unoptimized />
   );
 }
 
@@ -63,13 +65,13 @@ export function PolytopeNetworksLogo({ height = 24, className }: LogoProps) {
 
 export function OpenAILogo({ height = 24, className }: LogoProps) {
   return (
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg" alt="OpenAI" height={height} className={className} style={{ filter: 'brightness(0) invert(1) opacity(0.9)', objectFit: 'contain' }} />
+    <Image src="https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg" alt="OpenAI" width={100} height={height} className={className} style={{ filter: 'brightness(0) invert(1) opacity(0.9)', objectFit: 'contain' }} unoptimized />
   );
 }
 
 export function MetaLogo({ height = 24, className }: LogoProps) {
   return (
-    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta" height={height} className={className} style={{ filter: 'brightness(0) invert(1) opacity(0.85)', objectFit: 'contain' }} />
+    <Image src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta" width={100} height={height} className={className} style={{ filter: 'brightness(0) invert(1) opacity(0.85)', objectFit: 'contain' }} unoptimized />
   );
 }
 

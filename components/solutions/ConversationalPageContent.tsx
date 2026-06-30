@@ -2,7 +2,7 @@ import React from "react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Mic2, Globe2, MessageSquareText, AudioLines } from "lucide-react";
 
-export default function ConversationalPageContent({ solution, color }: { solution: any, color: string }) {
+export default function ConversationalPageContent({ color }: { solution?: any, color: string }) {
   return (
     <section style={{ padding: "100px 0", background: "#040810" }}>
       <div className="container">

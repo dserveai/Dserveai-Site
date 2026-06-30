@@ -79,6 +79,7 @@ function usePhaseLoop(timings: number[]) {
     };
     const t = run();
     return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return phase;
 }

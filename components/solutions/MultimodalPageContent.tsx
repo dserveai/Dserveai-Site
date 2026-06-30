@@ -2,7 +2,7 @@ import React from "react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { FileVideo, PenTool, ClipboardCheck, Video } from "lucide-react";
 
-export default function MultimodalPageContent({ solution, color }: { solution: any, color: string }) {
+export default function MultimodalPageContent({ color }: { solution?: any, color: string }) {
   return (
     <section style={{ padding: "100px 0", background: "#040810" }}>
       <div className="container">

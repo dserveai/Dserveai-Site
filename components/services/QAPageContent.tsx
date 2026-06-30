@@ -3,7 +3,7 @@
 import React from "react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import InteractiveInfographic from "@/components/ui/InteractiveInfographic";
-import { Search, AlertTriangle, CheckCircle, BarChart3, Users, BookOpen, Layers } from "lucide-react";
+import { Search, AlertTriangle, CheckCircle, Users, BookOpen } from "lucide-react";
 import custom from "./ServiceLayouts.module.css";
 import pageStyles from "@/app/services/[slug]/page.module.css";
 

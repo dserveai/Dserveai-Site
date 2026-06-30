@@ -2,7 +2,7 @@ import React from "react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Sparkles, ArrowRightLeft, FileCode2 } from "lucide-react";
 
-export default function GenAIPageContent({ solution, color }: { solution: any, color: string }) {
+export default function GenAIPageContent({ color }: { solution?: any, color: string }) {
   return (
     <section style={{ padding: "100px 0", background: "#040810", overflow: "hidden", position: "relative" }}>
       <div style={{ position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", width: "100%", height: "400px", background: `radial-gradient(ellipse at top, ${color}20, transparent 70%)` }} />

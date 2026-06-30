@@ -2,7 +2,7 @@ import React from "react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Bot, Network, GitPullRequest } from "lucide-react";
 
-export default function AgenticPageContent({ solution, color }: { solution: any, color: string }) {
+export default function AgenticPageContent({ color }: { solution?: any, color: string }) {
   return (
     <section style={{ padding: "120px 0", background: "#040810", position: "relative" }}>
       <div className="container">

@@ -1,8 +1,8 @@
 import React from "react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { Eye, BoxSelect, BarChart3, Target } from "lucide-react";
+import { BoxSelect, BarChart3, Target } from "lucide-react";
 
-export default function CVPageContent({ solution, color }: { solution: any, color: string }) {
+export default function CVPageContent({ color }: { solution?: any, color: string }) {
   return (
     <section style={{ padding: "100px 0", background: `linear-gradient(to bottom, #040810, ${color}10, #040810)` }}>
       <div className="container">

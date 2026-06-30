@@ -2,7 +2,7 @@ import React from "react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { ScanFace, Fingerprint, ShieldAlert, Users, Video } from "lucide-react";
 
-export default function BiometricsPageContent({ solution, color }: { solution: any, color: string }) {
+export default function BiometricsPageContent({ color }: { solution?: any, color: string }) {
   return (
     <section style={{ padding: "100px 0", background: "#040810", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
       <div className="container">

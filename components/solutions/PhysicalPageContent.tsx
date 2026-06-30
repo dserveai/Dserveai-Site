@@ -2,7 +2,7 @@ import React from "react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Factory, Drone, Radio, HardDrive } from "lucide-react";
 
-export default function PhysicalPageContent({ solution, color }: { solution: any, color: string }) {
+export default function PhysicalPageContent({ color }: { solution?: any, color: string }) {
   return (
     <section style={{ padding: "100px 0", background: "#040810", position: "relative" }}>
       <div className="container">
