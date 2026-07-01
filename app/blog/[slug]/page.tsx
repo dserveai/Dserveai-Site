@@ -21,6 +21,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   return {
     title: `${post.title} | Dserve AI Blog`,
     description,
+    alternates: { canonical: `https://dserveai.com/blog/${params.slug}` },
     openGraph: {
       title: `${post.title} | Dserve AI Blog`,
       description,
@@ -66,7 +67,7 @@ export default async function BlogPostPage(props: Props) {
         ]}
       />
       <Navbar />
-      <main style={{ paddingTop: "140px", paddingBottom: "80px", minHeight: "80vh" }}>
+      <main id="main" style={{ paddingTop: "140px", paddingBottom: "80px", minHeight: "80vh" }}>
         <div className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
           <Link href="/blog" style={{ color: "#0ea5e9", textDecoration: "none", marginBottom: "32px", display: "inline-block", fontWeight: 600 }}>
             ← Back to Blog

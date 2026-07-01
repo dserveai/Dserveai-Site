@@ -306,6 +306,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     title,
     description,
     keywords: seo?.keywords ?? `${service.title.toLowerCase()}, ai training data, data annotation, dserve ai`,
+    alternates: { canonical: `https://dserveai.com/services/${params.slug}` },
     openGraph: {
       title,
       description,
@@ -354,7 +355,7 @@ export default async function ServicePage(props: Props) {
         ]}
       />
       <Navbar />
-      <main>
+      <main id="main">
 
         {/* ============================================================
             HERO — Left text / Right animated 3-panel visualizer

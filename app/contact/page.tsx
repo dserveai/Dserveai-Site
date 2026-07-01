@@ -143,7 +143,7 @@ export default function ContactPage() {
         ]}
       />
       <Navbar />
-      <main>
+      <main id="main">
         {/* Hero */}
         <section className={styles.hero}>
           <div className={styles.heroBg} />

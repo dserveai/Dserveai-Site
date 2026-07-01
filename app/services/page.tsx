@@ -42,7 +42,7 @@ export default function ServicesPage() {
         ]}
       />
       <Navbar />
-      <main>
+      <main id="main">
 
         {/* ============================================
             ENTRY PANEL — Unified Fullscreen Hero

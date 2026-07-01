@@ -113,7 +113,7 @@ export default function AboutPage() {
       />
       <div className={styles.page}>
         <Navbar />
-      <main>
+      <main id="main">
 
         {/* ── HERO ────────────────────────────────────── */}
         <section className={styles.hero}>

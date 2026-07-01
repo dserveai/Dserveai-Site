@@ -22,6 +22,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   return {
     title: `${caseStudy.title} | Dserve AI Case Studies`,
     description: caseStudy.description,
+    alternates: { canonical: `https://dserveai.com/case-studies/${params.slug}` },
     openGraph: {
       title: `${caseStudy.title} | Dserve AI Case Studies`,
       description: caseStudy.description,
@@ -74,7 +75,7 @@ export default async function CaseStudyPage(props: Props) {
       <div className={styles.pageWrapper}>
         <Navbar />
       
-      <main>
+      <main id="main">
       {/* Immersive Hero */}
       <section className={styles.hero}>
         <Image 

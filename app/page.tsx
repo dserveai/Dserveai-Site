@@ -105,7 +105,7 @@ export default function HomePage() {
       <SchemaScript schema={generateHomepageGraph()} />
       <Navbar />
       <DetailDrawer data={drawer} onClose={closeDrawer} />
-      <main>
+      <main id="main">
 
         {/* ── HERO ──────────────────────────────────────── */}
         <header className={styles.hero}>
@@ -209,6 +209,7 @@ export default function HomePage() {
                       muted
                       loop
                       playsInline
+                      preload="none"
                       className={`${styles.videoElement} ${activeVideoTab === tab.id ? styles.activeVideo : ''}`}
                     />
                   ))}
@@ -242,7 +243,7 @@ export default function HomePage() {
                         </div>
                       )}
                     </div>
-                    <h4 className={styles.stepTitle}>{title}</h4>
+                    <h3 className={styles.stepTitle}>{title}</h3>
                     <p className={styles.stepDesc}>{desc}</p>
                   </div>
                 </article>
@@ -275,7 +276,7 @@ export default function HomePage() {
                         <span className={styles.bentoArrow}>Explore →</span>
                       </div>
                       <div className={styles.bentoBottom}>
-                        <h4 className={styles.bentoName}>{ind.name}</h4>
+                        <h3 className={styles.bentoName}>{ind.name}</h3>
                         <p className={styles.bentoDesc}>{ind.desc}</p>
                       </div>
                       </TiltCard>
@@ -315,7 +316,7 @@ export default function HomePage() {
                           </div>
                         </div>
                         <div className={styles.caseCardMiddle}>
-                          <h4 className={styles.caseMinimalTitle}>{cs.title}</h4>
+                          <h3 className={styles.caseMinimalTitle}>{cs.title}</h3>
                           <p className={styles.caseMinimalDesc}>{cs.description}</p>
                         </div>
                         <div className={styles.caseCardBottom}>
@@ -385,7 +386,7 @@ export default function HomePage() {
                           <span className={styles.blogCategory}>{category}</span>
                           <span className={styles.blogReadTime}>{readTime} read</span>
                         </div>
-                        <h4 className={styles.blogPremiumTitle}>{title}</h4>
+                        <h3 className={styles.blogPremiumTitle}>{title}</h3>
                         <div className={styles.blogPremiumFooter}>
                           <span className={styles.blogDate}>{new Date(date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
                           <div className={styles.blogPremiumArrow}>

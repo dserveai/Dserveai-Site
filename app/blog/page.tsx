@@ -54,7 +54,7 @@ export default function BlogPage() {
       <div className={styles.pageWrapper}>
       <Navbar />
       
-      <main className={styles.main}>
+      <main id="main" className={styles.main}>
         {/* Enterprise Minimalist Header */}
         <header className={styles.header}>
           <div className="container">

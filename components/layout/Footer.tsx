@@ -71,7 +71,7 @@ export default function Footer() {
           {/* Link Columns */}
           {Object.entries(footerLinks).map(([section, links]) => (
             <div key={section} className={styles.linkGroup}>
-              <h4 className={styles.linkGroupTitle}>{section}</h4>
+              <h3 className={styles.linkGroupTitle}>{section}</h3>
               <ul className={styles.linkList}>
                 {links.map(({ href, label }) => (
                   <li key={label}>
@@ -84,7 +84,7 @@ export default function Footer() {
 
           {/* Global Presence */}
           <div className={styles.linkGroup}>
-            <h4 className={styles.linkGroupTitle}>Global Presence</h4>
+            <h3 className={styles.linkGroupTitle}>Global Presence</h3>
             <div className={styles.radarLocations}>
               {["Dubai", "Mumbai", "Ahmedabad"].map((city, i) => (
                 <div key={city} className={styles.radarLocation}>

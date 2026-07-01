@@ -51,7 +51,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body>{children}</body>
+      <body>
+        <style dangerouslySetInnerHTML={{__html: `
+          .skip-link { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
+          .skip-link:focus { position: absolute; top: 0; left: 0; padding: 1rem; background: #0ea5e9; color: #fff; z-index: 9999; width: auto; height: auto; clip: auto; }
+        `}} />
+        <a href="#main" className="skip-link">Skip to main content</a>
+        {children}
+      </body>
     </html>
   );
 }

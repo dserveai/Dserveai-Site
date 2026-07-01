@@ -28,7 +28,7 @@ export default function FAQPage() {
         ]}
       />
       <Navbar />
-      <main>
+      <main id="main">
         {/* Minimalist Hero */}
         <section className={styles.hero}>
           <div className="container">

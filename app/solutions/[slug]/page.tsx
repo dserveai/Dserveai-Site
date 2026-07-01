@@ -134,6 +134,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     title,
     description,
     keywords: `${solution.name.toLowerCase()} ai, ${solution.name.toLowerCase()} training data, ai data pipelines for ${solution.name.toLowerCase()}`,
+    alternates: { canonical: `https://dserveai.com/solutions/${params.slug}` },
     openGraph: {
       title,
       description,
@@ -181,7 +182,7 @@ export default async function SolutionPage(props: Props) {
         ]}
       />
       <Navbar />
-      <main>
+      <main id="main">
 
         {/* ============================================================
             1. IMMERSIVE SCROLL-JACKING HERO

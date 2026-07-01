@@ -51,7 +51,7 @@ export default function CaseStudiesPage() {
       <div className={styles.ambientOrb2} />
       <div className={styles.ambientOrb3} />
 
-      <main className={styles.main}>
+      <main id="main" className={styles.main}>
         {/* Immersive Hero */}
         <section className={styles.hero}>
           <div className={styles.heroBg} />

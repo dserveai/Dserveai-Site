@@ -40,7 +40,7 @@ export default function TermsPage() {
         ]}
       />
       <Navbar />
-      <main className={styles.main}>
+      <main id="main" className={styles.main}>
         <section className={styles.legalHero}>
           <div className={styles.heroGrid} />
           <div className={styles.heroContent}>
