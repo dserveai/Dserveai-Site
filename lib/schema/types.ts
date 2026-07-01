@@ -17,6 +17,7 @@ export interface OrganizationSchema extends BaseEntity {
   sameAs?: string[];
   contactPoint?: any[];
   address?: any[];
+  hasOfferCatalog?: { "@id": string };
 }
 
 export interface WebSiteSchema extends BaseEntity {

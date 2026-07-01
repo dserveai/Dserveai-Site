@@ -10,7 +10,7 @@ import TiltCard from "@/components/ui/TiltCard";
 import InteractiveCanvas from "@/components/ui/InteractiveCanvas";
 import RotatingServiceText from "@/components/ui/RotatingServiceText";
 import SchemaScript from "@/components/seo/SchemaScript";
-import { generateCollectionPage, generateBreadcrumbList } from "@/lib/schema";
+import { generateCollectionPage, generateBreadcrumbList, generateServiceItemList } from "@/lib/schema";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -37,7 +37,8 @@ export default function ServicesPage() {
           }),
           generateBreadcrumbList([
             { name: "Services", path: "/services" }
-          ])
+          ]),
+          generateServiceItemList(services)
         ]}
       />
       <Navbar />
@@ -47,7 +48,7 @@ export default function ServicesPage() {
             ENTRY PANEL — Unified Fullscreen Hero
             Canvas behind EVERYTHING, text + stats float
         ============================================= */}
-        <section className={styles.entryPanel}>
+        <header className={styles.entryPanel}>
 
           {/* Full-width canvas — spans the entire hero, including text side */}
           <div className={styles.canvasWrap}>
@@ -94,7 +95,7 @@ export default function ServicesPage() {
             </div>
 
           </div>
-        </section>
+        </header>
 
         {/* ============================================
             SERVICES SHOWCASE — Card Grid
@@ -170,23 +171,25 @@ export default function ServicesPage() {
             <div className={styles.bentoGrid}>
               {solutions.map((ind, i) => (
                 <ScrollReveal key={ind.name} delay={i * 40}>
-                  <Link href={`/solutions/${ind.slug}`} style={{ textDecoration: 'none' }}>
-                    <TiltCard 
-                      className={styles.bentoCard}
-                      style={{ "--c": ind.color } as React.CSSProperties}
-                    >
-                      <div className={styles.bentoTop}>
-                        <div className={styles.bentoIcon}>
-                          <DynamicIcon name={ind.iconName} size={24} color={ind.color} />
+                  <article>
+                    <Link href={`/solutions/${ind.slug}`} style={{ textDecoration: 'none' }}>
+                      <TiltCard 
+                        className={styles.bentoCard}
+                        style={{ "--c": ind.color } as React.CSSProperties}
+                      >
+                        <div className={styles.bentoTop}>
+                          <div className={styles.bentoIcon}>
+                            <DynamicIcon name={ind.iconName} size={24} color={ind.color} />
+                          </div>
+                          <span className={styles.bentoArrow}>Explore <ArrowRight size={14} /></span>
                         </div>
-                        <span className={styles.bentoArrow}>Explore <ArrowRight size={14} /></span>
-                      </div>
-                      <div className={styles.bentoBottom}>
-                        <h4 className={styles.bentoName}>{ind.name}</h4>
-                        <p className={styles.bentoDesc}>{ind.desc}</p>
-                      </div>
-                    </TiltCard>
-                  </Link>
+                        <div className={styles.bentoBottom}>
+                          <h4 className={styles.bentoName}>{ind.name}</h4>
+                          <p className={styles.bentoDesc}>{ind.desc}</p>
+                        </div>
+                      </TiltCard>
+                    </Link>
+                  </article>
                 </ScrollReveal>
               ))}
             </div>
@@ -213,7 +216,7 @@ export default function ServicesPage() {
               
               {/* Step 1 */}
               <ScrollReveal delay={0}>
-                <div className={styles.pocCard}>
+                <article className={styles.pocCard}>
                   <div className={styles.pocCardTop}>
                     <div className={styles.pocIconBox} style={{ color: "#0ea5e9" }}>
                       <Database size={28} />
@@ -234,12 +237,12 @@ export default function ServicesPage() {
                       <span className={styles.pocMetricLabel}>Security</span>
                     </div>
                   </div>
-                </div>
+                </article>
               </ScrollReveal>
 
               {/* Step 2 */}
               <ScrollReveal delay={100}>
-                <div className={styles.pocCard}>
+                <article className={styles.pocCard}>
                   <div className={styles.pocCardTop}>
                     <div className={styles.pocIconBox} style={{ color: "#8b5cf6", borderColor: "rgba(139,92,246,0.3)", background: "rgba(139,92,246,0.05)" }}>
                       <Code2 size={28} />
@@ -260,12 +263,12 @@ export default function ServicesPage() {
                       <span className={styles.pocMetricLabel}>Manager</span>
                     </div>
                   </div>
-                </div>
+                </article>
               </ScrollReveal>
 
               {/* Step 3 */}
               <ScrollReveal delay={200}>
-                <div className={styles.pocCard}>
+                <article className={styles.pocCard}>
                   <div className={styles.pocCardTop}>
                     <div className={styles.pocIconBox} style={{ color: "#10b981", borderColor: "rgba(16,185,129,0.3)", background: "rgba(16,185,129,0.05)" }}>
                       <ShieldCheck size={28} />
@@ -286,7 +289,7 @@ export default function ServicesPage() {
                       <span className={styles.pocMetricLabel}>Turnaround</span>
                     </div>
                   </div>
-                </div>
+                </article>
               </ScrollReveal>
 
             </div>

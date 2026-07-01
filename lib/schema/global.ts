@@ -23,7 +23,8 @@ export function generateOrganization(): OrganizationSchema & { "@context": "http
       { "@type": "PostalAddress", addressLocality: "Ahmedabad", addressCountry: "IN" },
       { "@type": "PostalAddress", addressLocality: "Mumbai", addressCountry: "IN" },
       { "@type": "PostalAddress", addressLocality: "Dubai", addressCountry: "AE" }
-    ]
+    ],
+    hasOfferCatalog: { "@id": `${SITE_URL}/services/#itemList` }
   };
 }
 

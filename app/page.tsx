@@ -108,7 +108,7 @@ export default function HomePage() {
       <main>
 
         {/* ── HERO ──────────────────────────────────────── */}
-        <section className={styles.hero}>
+        <header className={styles.hero}>
           <HeroBg />
           <div className={`container ${styles.heroContent}`}>
             <h1 className="sr-only">AI Data Annotation and Custom Dataset Collection Services</h1>
@@ -133,7 +133,7 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-        </section>
+        </header>
 
         {/* ── STATS ─────────────────────────────────────── */}
         <section className={styles.statsSection}>
@@ -141,11 +141,11 @@ export default function HomePage() {
           <div className="container">
             <div className={styles.statsGrid}>
               {stats.map(({ value, label, desc }) => (
-                <div key={label} className={styles.statItem}>
+                <article key={label} className={styles.statItem}>
                   <div className={styles.statValue}>{value}</div>
                   <div className={styles.statLabel}>{label}</div>
                   <div className={styles.statDesc}>{desc}</div>
-                </div>
+                </article>
               ))}
             </div>
           </div>
@@ -300,29 +300,31 @@ export default function HomePage() {
             <div className={styles.caseMinimalGrid}>
               {caseStudies.map((cs, i) => (
                 <ScrollReveal key={cs.id} delay={i * 100}>
-                  <Link 
-                    href={`/case-studies/${cs.slug}`}
-                    className={styles.caseMinimalCard}
-                    style={{ "--c": cs.color, textDecoration: 'none', display: 'flex' } as React.CSSProperties}
-                  >
-                    <div className={styles.caseCardBg} />
-                    <div className={styles.caseCardContent}>
-                      <div className={styles.caseCardTop}>
-                        <span className={styles.caseMinimalSolution}>{cs.solution}</span>
-                        <div className={styles.caseMinimalMetric}>
-                          {cs.result}
+                  <article>
+                    <Link 
+                      href={`/case-studies/${cs.slug}`}
+                      className={styles.caseMinimalCard}
+                      style={{ "--c": cs.color, textDecoration: 'none', display: 'flex' } as React.CSSProperties}
+                    >
+                      <div className={styles.caseCardBg} />
+                      <div className={styles.caseCardContent}>
+                        <div className={styles.caseCardTop}>
+                          <span className={styles.caseMinimalSolution}>{cs.solution}</span>
+                          <div className={styles.caseMinimalMetric}>
+                            {cs.result}
+                          </div>
+                        </div>
+                        <div className={styles.caseCardMiddle}>
+                          <h4 className={styles.caseMinimalTitle}>{cs.title}</h4>
+                          <p className={styles.caseMinimalDesc}>{cs.description}</p>
+                        </div>
+                        <div className={styles.caseCardBottom}>
+                          <span className={styles.caseMinimalReadMore}>Read case study</span>
+                          <div className={styles.caseMinimalArrow}><ArrowRight size={18} /></div>
                         </div>
                       </div>
-                      <div className={styles.caseCardMiddle}>
-                        <h4 className={styles.caseMinimalTitle}>{cs.title}</h4>
-                        <p className={styles.caseMinimalDesc}>{cs.description}</p>
-                      </div>
-                      <div className={styles.caseCardBottom}>
-                        <span className={styles.caseMinimalReadMore}>Read case study</span>
-                        <div className={styles.caseMinimalArrow}><ArrowRight size={18} /></div>
-                      </div>
-                    </div>
-                  </Link>
+                    </Link>
+                  </article>
                 </ScrollReveal>
               ))}
             </div>
@@ -340,7 +342,7 @@ export default function HomePage() {
             <div className={styles.testimonialsMarqueeWrapper}>
               <div className={styles.testimonialsMarqueeTrack}>
                 {[...testimonials, ...testimonials].map(({ role, text, rating }, i) => (
-                  <div key={i} className={styles.testimonialPremiumCard}>
+                  <article key={i} className={styles.testimonialPremiumCard}>
                     <div className={styles.testiQuoteMark}>"</div>
                     <div className={styles.testimonialContent}>
                       <div className={styles.testimonialStars}>
@@ -355,7 +357,7 @@ export default function HomePage() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </article>
                 ))}
               </div>
             </div>
@@ -375,22 +377,24 @@ export default function HomePage() {
             <div className={styles.blogPremiumGrid}>
               {blogPosts.slice(0, 6).map(({ slug, title, category, date, readTime }, i) => (
                 <ScrollReveal key={slug} delay={i * 100}>
-                  <Link href={`/blog/${slug}`} className={styles.blogPremiumCard}>
-                    <div className={styles.blogCardGlow} />
-                    <div className={styles.blogContentWrapper}>
-                      <div className={styles.blogMeta}>
-                        <span className={styles.blogCategory}>{category}</span>
-                        <span className={styles.blogReadTime}>{readTime} read</span>
-                      </div>
-                      <h4 className={styles.blogPremiumTitle}>{title}</h4>
-                      <div className={styles.blogPremiumFooter}>
-                        <span className={styles.blogDate}>{new Date(date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
-                        <div className={styles.blogPremiumArrow}>
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  <article>
+                    <Link href={`/blog/${slug}`} className={styles.blogPremiumCard}>
+                      <div className={styles.blogCardGlow} />
+                      <div className={styles.blogContentWrapper}>
+                        <div className={styles.blogMeta}>
+                          <span className={styles.blogCategory}>{category}</span>
+                          <span className={styles.blogReadTime}>{readTime} read</span>
+                        </div>
+                        <h4 className={styles.blogPremiumTitle}>{title}</h4>
+                        <div className={styles.blogPremiumFooter}>
+                          <span className={styles.blogDate}>{new Date(date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
+                          <div className={styles.blogPremiumArrow}>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Link>
+                    </Link>
+                  </article>
                 </ScrollReveal>
               ))}
             </div>

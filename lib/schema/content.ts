@@ -46,3 +46,22 @@ export function generateFAQPage(faqs: { q: string; a: string }[]) {
     }))
   };
 }
+
+export function generateServiceItemList(services: { title: string; description: string; slug: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": `${SITE_URL}/services/#itemList`,
+    "name": "Dserve AI Core Services",
+    "itemListElement": services.map((svc, idx) => ({
+      "@type": "ListItem",
+      "position": idx + 1,
+      "item": {
+        "@type": "Service",
+        "name": svc.title,
+        "description": svc.description,
+        "url": `${SITE_URL}/services/${svc.slug}`
+      }
+    }))
+  };
+}
