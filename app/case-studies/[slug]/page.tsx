@@ -74,6 +74,7 @@ export default async function CaseStudyPage(props: Props) {
       <div className={styles.pageWrapper}>
         <Navbar />
       
+      <main>
       {/* Immersive Hero */}
       <section className={styles.hero}>
         <Image 
@@ -250,6 +251,8 @@ export default async function CaseStudyPage(props: Props) {
           </div>
         </div>
       </section>
+
+      </main>
 
       <Footer />
     </div>

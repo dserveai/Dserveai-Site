@@ -10,7 +10,7 @@ export default function SchemaScript({ schema }: SchemaScriptProps) {
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(schema)
+        __html: JSON.stringify(schema).replace(/</g, '\\u003c')
       }}
     />
   );
