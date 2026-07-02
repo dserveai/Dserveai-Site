@@ -126,11 +126,7 @@ export default function HomePage() {
               <Link href="/services" className="btn btn--primary btn--lg">Explore Solutions <ArrowRight size={18} /></Link>
               <Link href="/case-studies" className="btn btn--secondary btn--lg" style={{ justifyContent: 'center' }}>See Case Studies</Link>
             </div>
-            <div className={styles.heroTrust}>
-              <span className={styles.trustLabel}>Trusted by:</span>
-              {partners.slice(0, 6).map(p => (
-                <span key={p.name} className={styles.trustName}>{p.name}</span>
-              ))}
+            <div className={styles.heroTrust} style={{ minHeight: '32px' }}>
             </div>
           </div>
         </header>
