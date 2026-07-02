@@ -292,7 +292,7 @@ export default function ContactPage() {
                     {[
                       "Custom pilot projects",
                       "Dedicated project management",
-                      "HIPAA, SOC2 & GDPR compliant",
+                      "HIPAA & GDPR compliant",
                       ">99% QA accuracy threshold",
                       "Custom API integrations",
                       "Global 24/7 delivery teams",

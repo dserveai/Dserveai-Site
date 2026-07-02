@@ -107,7 +107,7 @@ export default function PrivacyPage() {
               <ul>
                 <li>End-to-end AES-256 encryption for data at rest and TLS 1.3 for data in transit.</li>
                 <li>Role-Based Access Control (RBAC) ensuring our annotators and engineers only access data on a strict need-to-know basis.</li>
-                <li>Regular third-party penetration testing and SOC 2 Type II compliant data centers.</li>
+                <li>Regular third-party penetration testing and compliant data centers.</li>
               </ul>
             </section>
 

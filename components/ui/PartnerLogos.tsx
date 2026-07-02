@@ -75,6 +75,30 @@ export function MetaLogo({ height = 24, className }: LogoProps) {
   );
 }
 
+export function LabelxAILogo({ height = 24, className }: LogoProps) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }} className={className}>
+      <svg height={height} viewBox="0 0 30 30" fill="none">
+        <rect width="30" height="30" rx="6" fill="#1e40af" />
+        <path d="M9 9 L21 21 M21 9 L9 21" stroke="white" strokeWidth="3" strokeLinecap="round" />
+      </svg>
+      <span style={{ fontFamily: "'Inter', 'Arial', sans-serif", fontSize: '18px', fontWeight: 'bold', color: 'white', letterSpacing: '-0.5px' }}>LabelX AI</span>
+    </div>
+  );
+}
+
+export function InfigonFuturesLogo({ height = 24, className }: LogoProps) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }} className={className}>
+      <svg height={height} viewBox="0 0 40 30" fill="none">
+        <circle cx="12" cy="15" r="7" stroke="#0ea5e9" strokeWidth="3" />
+        <circle cx="28" cy="15" r="7" stroke="#0ea5e9" strokeWidth="3" />
+      </svg>
+      <span style={{ fontFamily: "'Inter', 'Arial', sans-serif", fontSize: '18px', fontWeight: '800', color: 'white', letterSpacing: '0.2px' }}>Infigon</span>
+    </div>
+  );
+}
+
 export const partnerLogos: Record<string, React.ComponentType<LogoProps>> = {
   AWS: AWSLogo,
   Google: GoogleLogo,
@@ -85,4 +109,6 @@ export const partnerLogos: Record<string, React.ComponentType<LogoProps>> = {
   OpenAI: OpenAILogo,
   Meta: MetaLogo,
   Polytope: PolytopeNetworksLogo,
+  "LabelX AI": LabelxAILogo,
+  "Infigon Futures": InfigonFuturesLogo,
 };

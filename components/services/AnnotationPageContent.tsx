@@ -66,7 +66,7 @@ export default function AnnotationPageContent({ service, steps, color }: any) {
                   Your raw data is your competitive advantage. We enforce strict physical and digital security protocols to ensure zero data leakage, IP theft, or compliance violations.
                 </p>
                 <ul className={custom.featureList} style={{ marginTop: '24px' }}>
-                  <li className={custom.featureItem}><Shield size={20} color={color} /> SOC2 Type II & GDPR Compliant Infrastructure</li>
+                  <li className={custom.featureItem}><Shield size={20} color={color} /> GDPR Compliant Infrastructure</li>
                   <li className={custom.featureItem}><Lock size={20} color={color} /> Automated PII/PHI Blurring Before Human Review</li>
                   <li className={custom.featureItem}><Server size={20} color={color} /> Isolated VPCs with No Internet Access for Annotators</li>
                   <li className={custom.featureItem}><CheckCircle2 size={20} color={color} /> Clean-Room Facilities with Biometric Access Control</li>

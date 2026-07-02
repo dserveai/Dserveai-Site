@@ -41,7 +41,7 @@ export const caseStudies = [
         type: "workflow",
         title: "The HIPAA-Compliant Pipeline",
         steps: [
-          { title: "Data Ingestion", desc: "Secure transfer of raw DICOM files via encrypted tunnels to our SOC2 compliant servers." },
+          { title: "Data Ingestion", desc: "Secure transfer of raw DICOM files via encrypted tunnels to our compliant servers." },
           { title: "De-identification", desc: "Automated scrubbing of all Protected Health Information (PHI) and metadata stripping." },
           { title: "Expert Annotation", desc: "Board-certified radiologists perform pixel-level semantic segmentation on anomalies." },
           { title: "Clinical QA", desc: "A secondary panel reviews edge-cases to guarantee a 99%+ Inter-Annotator Agreement." }
@@ -54,7 +54,7 @@ export const caseStudies = [
           { label: "Data Volume", value: "500,000+ Studies" },
           { label: "Modality", value: "X-Ray, CT, MRI" },
           { label: "Annotation Type", value: "Semantic Segmentation" },
-          { label: "Compliance", value: "HIPAA, SOC2, GDPR" }
+          { label: "Compliance", value: "HIPAA, GDPR" }
         ]
       }
     ],
@@ -445,16 +445,15 @@ export const partners = [
   { name: "Google", abbr: "Google" },
   { name: "Microsoft", abbr: "MSFT" },
   { name: "NVIDIA", abbr: "NVDA" },
-  { name: "Scale AI", abbr: "Scale" },
-  { name: "OpenAI", abbr: "OAI" },
-  { name: "Meta", abbr: "META" },
-  { name: "Philips", abbr: "PHG" },
   { name: "Polytope", abbr: "POLY" },
+  { name: "OpenAI", abbr: "OAI" },
+  { name: "LabelX AI", abbr: "LabelX" },
+  { name: "Infigon Futures", abbr: "Infigon" },
 ];
 
 export const faqs = [
   { q: "What enterprise AI services does Dserve AI provide?", a: "We provide end-to-end data pipelines, multi-modal annotation, and bespoke AI model development. Our expertise spans computer vision, natural language processing (NLP), generative AI, and autonomous systems." },
-  { q: "How do you handle data security and confidentiality?", a: "Security is our top priority. We operate out of SOC 2 Type II compliant facilities, utilize end-to-end AES-256 encryption, and enforce strict Role-Based Access Control (RBAC) to ensure your proprietary intellectual property never leaves a secure silo." },
+  { q: "How do you handle data security and confidentiality?", a: "Security is our top priority. We operate out of fully compliant facilities, utilize end-to-end AES-256 encryption, and enforce strict Role-Based Access Control (RBAC) to ensure your proprietary intellectual property never leaves a secure silo." },
   { q: "Is your data sourcing ethically compliant?", a: "Absolutely. All proprietary and biometric data is sourced with explicit, informed consent. We adhere strictly to global data protection frameworks including GDPR, CCPA, and AI-specific ethical guidelines to guarantee clean data provenance." },
   { q: "How do you guarantee 99%+ annotation accuracy?", a: "We utilize a rigorous multi-stage QA pipeline. Every dataset passes through human expert annotation, secondary specialist review, and proprietary algorithmic consistency checks, ensuring an Inter-Annotator Agreement (IAA) score consistently above 99%." },
   { q: "Do you offer custom AI model training and development?", a: "Yes. Beyond providing pristine data, our machine learning engineers can design, train, and fine-tune custom AI models tailored specifically to your operational requirements and deploy them directly to your edge devices or cloud infrastructure." },
