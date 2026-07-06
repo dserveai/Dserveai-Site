@@ -17,10 +17,10 @@ export function generateOrganization(): OrganizationSchema & { "@context": "http
     sameAs: [
       "https://www.linkedin.com/company/106909852/"
     ],
-    // The company has offices in Ahmedabad, Mumbai, Dubai.
+    // The company has offices in Mumbai, Dubai.
     // Adding lightweight location references without fabricating addresses.
     address: [
-      { "@type": "PostalAddress", addressLocality: "Ahmedabad", addressCountry: "IN" },
+
       { "@type": "PostalAddress", addressLocality: "Mumbai", addressCountry: "IN" },
       { "@type": "PostalAddress", addressLocality: "Dubai", addressCountry: "AE" }
     ],

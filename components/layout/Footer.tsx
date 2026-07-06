@@ -86,7 +86,7 @@ export default function Footer() {
           <div className={styles.linkGroup}>
             <h3 className={styles.linkGroupTitle}>Global Presence</h3>
             <div className={styles.radarLocations}>
-              {["Dubai", "Mumbai", "Ahmedabad"].map((city, i) => (
+              {["Dubai", "Mumbai"].map((city, i) => (
                 <div key={city} className={styles.radarLocation}>
                   <div className={styles.radarDot}>
                     <div className={styles.radarPing} style={{ animationDelay: `${i * 0.4}s` }} />
