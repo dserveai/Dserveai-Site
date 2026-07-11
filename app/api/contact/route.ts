@@ -78,7 +78,7 @@ export async function POST(request: Request) {
     const safeDetails = escapeHTML(projectDetails);
 
     const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
-    const toEmail = 'connect@dserveai.com';
+    const toEmail = process.env.CONTACT_FORM_TO_EMAIL || 'connect@dserveai.com';
 
     // Send the email
     const data = await resend.emails.send({
