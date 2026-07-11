@@ -173,7 +173,7 @@ export default function ContactPage() {
                       <div style={{ textAlign: 'center', padding: '40px 20px', background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.2)', borderRadius: '16px' }}>
                         <DynamicIcon name="shieldCheck" size={48} color="#10b981" />
                         <h3 style={{ color: '#10b981', fontSize: '1.5rem', margin: '16px 0 8px' }}>Request Received!</h3>
-                        <p style={{ color: 'rgba(255,255,255,0.7)' }}>Our engineering team will review your requirements and get back to you within 24 hours.</p>
+                        <p style={{ color: 'rgba(255,255,255,0.7)' }}>Our project management team will review your requirements and get back to you within 24 hours.</p>
                       </div>
                     ) : (
                       <>
