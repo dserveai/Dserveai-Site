@@ -71,11 +71,16 @@ class SilkNode {
   }
 }
 
+type SilkThread = {
+  nodes: SilkNode[];
+  color: string;
+};
+
 export default function PrecisionWaveTracker() {
   const cvs = useRef<HTMLCanvasElement>(null);
   const raf = useRef<number>(0);
   const mouse = useRef({ x: 0, y: 0, active: false });
-  const threads = useRef<SilkNode[][]>([]);
+  const threads = useRef<SilkThread[]>([]);
   const t = useRef(0);
 
   useEffect(() => {
@@ -91,9 +96,9 @@ export default function PrecisionWaveTracker() {
       const NUM_THREADS = 14;
       const POINTS_PER_THREAD = window.innerWidth > 768 ? 100 : 50;
       
-      const newThreads: SilkNode[][] = [];
+      const newThreads: SilkThread[] = [];
       for (let i = 0; i < NUM_THREADS; i++) {
-        const thread: SilkNode[] = [];
+        const nodes: SilkNode[] = [];
         const normalized = i / (NUM_THREADS - 1); // 0 to 1
         
         // Stagger phase and amplitude to create a gorgeous 3D silk ribbon effect
@@ -101,11 +106,15 @@ export default function PrecisionWaveTracker() {
         const amp = 0.4 + Math.sin(normalized * Math.PI) * 0.6; // Thicker in middle
         const yOffset = (normalized - 0.5) * 50; // Spread vertically
         
+        // Cache color string
+        const alpha = 0.15 + Math.sin(normalized * Math.PI) * 0.35;
+        const color = `rgba(0, 210, 255, ${alpha})`;
+        
         for (let j = 0; j < POINTS_PER_THREAD; j++) {
           const x = (j / (POINTS_PER_THREAD - 1)) * canvas.width;
-          thread.push(new SilkNode(x, canvas.height / 2 + yOffset, phase, amp));
+          nodes.push(new SilkNode(x, canvas.height / 2 + yOffset, phase, amp));
         }
-        newThreads.push(thread);
+        newThreads.push({ nodes, color });
       }
       threads.current = newThreads;
     };
@@ -145,8 +154,6 @@ export default function PrecisionWaveTracker() {
 
       ctx.globalCompositeOperation = "screen";
 
-      // Scanner halo removed as requested by user
-
       let minX = Infinity, maxX = -Infinity;
       let minY = Infinity, maxY = -Infinity;
       let activeCount = 0;
@@ -155,16 +162,12 @@ export default function PrecisionWaveTracker() {
       for (let i = 0; i < threads.current.length; i++) {
         const thread = threads.current[i];
         
-        // Calculate elegance parameters
-        const normalized = i / (threads.current.length - 1);
-        const alpha = 0.15 + Math.sin(normalized * Math.PI) * 0.35; // Increased brightness
-        
-        ctx.strokeStyle = `rgba(0, 210, 255, ${alpha})`;
+        ctx.strokeStyle = thread.color;
         ctx.lineWidth = 1.5; // Increased thickness
         ctx.beginPath();
         
-        for (let j = 0; j < thread.length; j++) {
-          const node = thread[j];
+        for (let j = 0; j < thread.nodes.length; j++) {
+          const node = thread.nodes[j];
           const isDisturbed = node.update(t.current, mouse.current.x, mouse.current.y, mouse.current.active);
           
           if (isDisturbed) {
@@ -175,7 +178,7 @@ export default function PrecisionWaveTracker() {
           
           if (j === 0) ctx.moveTo(node.x, node.y);
           else {
-            const prev = thread[j - 1];
+            const prev = thread.nodes[j - 1];
             // Quadratic curve makes it flawlessly smooth
             const midX = (prev.x + node.x) / 2;
             const midY = (prev.y + node.y) / 2;
@@ -186,29 +189,31 @@ export default function PrecisionWaveTracker() {
       }
 
       // 2. Pass 2: Draw the Brilliant Cyan Disturbance Overlay (The Detected Anomaly)
-      ctx.strokeStyle = "rgba(0, 210, 255, 0.85)";
-      ctx.lineWidth = 1.5;
-      
-      for (let i = 0; i < threads.current.length; i++) {
-        const thread = threads.current[i];
-        ctx.beginPath();
-        let drawing = false;
+      if (activeCount > 0) {
+        ctx.strokeStyle = "rgba(0, 210, 255, 0.85)";
+        ctx.lineWidth = 1.5;
         
-        for (let j = 0; j < thread.length; j++) {
-          const node = thread[j];
-          if (node.isDisturbed) {
-            if (!drawing) {
-              ctx.moveTo(node.x, node.y);
-              drawing = true;
+        for (let i = 0; i < threads.current.length; i++) {
+          const thread = threads.current[i];
+          ctx.beginPath();
+          let drawing = false;
+          
+          for (let j = 0; j < thread.nodes.length; j++) {
+            const node = thread.nodes[j];
+            if (node.isDisturbed) {
+              if (!drawing) {
+                ctx.moveTo(node.x, node.y);
+                drawing = true;
+              } else {
+                // Strict rigid lines for the structured AI detection
+                ctx.lineTo(node.x, node.y); 
+              }
             } else {
-              // Strict rigid lines for the structured AI detection
-              ctx.lineTo(node.x, node.y); 
+              drawing = false;
             }
-          } else {
-            drawing = false;
           }
+          ctx.stroke();
         }
-        ctx.stroke();
       }
 
       // 3. Render Crisp AI Bounding Box & UI

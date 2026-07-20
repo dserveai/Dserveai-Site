@@ -1,0 +1,26 @@
+[
+  {
+    "file": "1.mp4",
+    "origSize": 6818645,
+    "newSize": 5236988,
+    "crf": 32
+  },
+  {
+    "file": "2.mp4",
+    "origSize": 7011935,
+    "newSize": 5474959,
+    "crf": 28
+  },
+  {
+    "file": "3.mp4",
+    "origSize": 2518155,
+    "newSize": 1478968,
+    "crf": 28
+  },
+  {
+    "file": "4.mp4",
+    "origSize": 5518504,
+    "newSize": 4058475,
+    "crf": 30
+  }
+]
