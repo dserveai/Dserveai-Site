@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata } from "next";
 import localFont from "next/font/local";
+import AnalyticsProvider from "@/components/analytics/AnalyticsProvider";
 import "./globals.css";
 
 const nasalization = localFont({
@@ -58,6 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         `}} />
         <a href="#main" className="skip-link">Skip to main content</a>
         {children}
+        <AnalyticsProvider />
       </body>
     </html>
   );

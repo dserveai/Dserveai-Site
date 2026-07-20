@@ -125,6 +125,16 @@ export default function ContactPage() {
         throw new Error("Failed to send message.");
       }
       setSubmitted(true);
+      
+      // Analytics tracking for successful lead generation
+      import("@/components/analytics/track").then(({ trackEvent }) => {
+        trackEvent("form_submission", {
+          form_name: "Contact Request",
+          country: data.country,
+          company: data.company
+        });
+      });
+      
     } catch (err) {
       console.error(err);
       setErrorMsg("An error occurred. Please try again or contact us directly.");
