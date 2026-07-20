@@ -95,7 +95,7 @@ export default function CaseStudiesPage() {
                     >
                       <div className={styles.featuredImageWrapper}>
                         <Image 
-                          src={`/case-studies/${featured.slug}.png`} 
+                          src={`/case-studies/${featured.slug}.webp`} 
                           alt={featured.title} 
                           fill 
                           className={styles.featureImage}
@@ -136,21 +136,21 @@ export default function CaseStudiesPage() {
             <section className={styles.bentoSection}>
               <div className="container">
                 <motion.div 
-                  variants={containerVariants}
+                  variants={containerVariants as any}
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: true, margin: "-100px" }}
                   className={styles.bentoGrid}
                 >
                   {bentoItems.map((cs, i) => (
-                    <motion.div key={cs.id} variants={itemVariants} className={`${styles.bentoCardWrapper} ${styles[`bentoCard${i+1}`]}`}>
+                    <motion.div key={cs.id} variants={itemVariants as any} className={`${styles.bentoCardWrapper} ${styles[`bentoCard${i+1}`]}`}>
                       <Link 
                         href={`/case-studies/${cs.slug}`} 
                         className={styles.bentoCard}
                         style={{ '--c': cs.color } as React.CSSProperties}
                       >
                         <Image 
-                          src={`/case-studies/${cs.slug}.png`} 
+                          src={`/case-studies/${cs.slug}.webp`} 
                           alt={cs.title} 
                           fill 
                           className={styles.bentoImage} 

@@ -51,7 +51,7 @@ export default function Navbar() {
         {/* Wordmark and Logo */}
         <div className={styles.logoWrapper}>
           <Link href="/" className={styles.logo}>
-            <Image src="/logo.png" alt="Dserve AI Logo" width={36} height={36} className={styles.logoIcon} />
+            <Image src="/logo.png" alt="Dserve AI Logo" width={36} height={36} priority={true} className={styles.logoIcon} />
             <span className={styles.logoText}>
               Dserve<span className={styles.logoAI}>AI</span>
             </span>

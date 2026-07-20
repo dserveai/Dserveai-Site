@@ -27,13 +27,13 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
       description,
       type: "article",
       url: `https://dserveai.com/blog/${params.slug}`,
-      images: [{ url: post.image || "/og-image.jpg", width: 1200, height: 630, alt: post.title }],
+      images: [{ url: ((post as any).image as string) || "/og-image.jpg", width: 1200, height: 630, alt: post.title }],
     },
     twitter: {
       card: "summary_large_image",
       title: `${post.title} | Dserve AI Blog`,
       description,
-      images: [post.image || "/og-image.jpg"],
+      images: [((post as any).image as string) || "/og-image.jpg"],
     },
   };
 }
@@ -57,7 +57,7 @@ export default async function BlogPostPage(props: Props) {
           generateArticle({
             title: post.title,
             date: post.date,
-            image: post.image,
+            image: (post as any).image,
             path: `/blog/${post.slug}`
           }),
           generateBreadcrumbList([

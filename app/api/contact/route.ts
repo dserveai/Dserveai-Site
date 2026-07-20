@@ -63,7 +63,7 @@ export async function POST(request: Request) {
     const parsed = contactSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(
-        { error: 'Invalid input', details: parsed.error.errors },
+        { error: 'Invalid input', details: (parsed.error as any).errors },
         { status: 400 }
       );
     }

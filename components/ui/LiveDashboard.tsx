@@ -18,7 +18,7 @@ export default function LiveDashboard({ slug, color, solutionName }: LiveDashboa
     switch (slug) {
       case "healthcare-ai":
         return {
-          image: "/solutions/healthcare_ai.png",
+          image: "/solutions/.webp",
           throughput: "450 scans/s",
           accuracy: "99.2%",
           logs: [
@@ -35,7 +35,7 @@ export default function LiveDashboard({ slug, color, solutionName }: LiveDashboa
         };
       case "computer-vision":
         return {
-          image: "/solutions/computer_vision.png",
+          image: "/solutions/.webp",
           throughput: "12k frames/s",
           accuracy: "98.7%",
           logs: [
@@ -52,7 +52,7 @@ export default function LiveDashboard({ slug, color, solutionName }: LiveDashboa
         };
       case "agentic-ai":
         return {
-          image: "/solutions/agentic_ai.png",
+          image: "/solutions/.webp",
           throughput: "2.4k actions/s",
           accuracy: "97.5%",
           logs: [
@@ -69,7 +69,7 @@ export default function LiveDashboard({ slug, color, solutionName }: LiveDashboa
         };
       case "generative-ai":
         return {
-          image: "/solutions/generative_ai.png",
+          image: "/solutions/.webp",
           throughput: "1.8k prompts/s",
           accuracy: "98.9%",
           logs: [
@@ -86,7 +86,7 @@ export default function LiveDashboard({ slug, color, solutionName }: LiveDashboa
         };
       case "multimodal-ai":
         return {
-          image: "/solutions/multimodal_ai.png",
+          image: "/solutions/.webp",
           throughput: "8.5k pairs/s",
           accuracy: "98.1%",
           logs: [
@@ -103,7 +103,7 @@ export default function LiveDashboard({ slug, color, solutionName }: LiveDashboa
         };
       case "biometric-ai":
         return {
-          image: "/solutions/biometric_ai.png",
+          image: "/solutions/.webp",
           throughput: "920 streams/s",
           accuracy: "99.9%",
           logs: [
@@ -120,7 +120,7 @@ export default function LiveDashboard({ slug, color, solutionName }: LiveDashboa
         };
       case "geospatial-ai":
         return {
-          image: "/solutions/geospatial_ai.png",
+          image: "/solutions/.webp",
           throughput: "120 tiles/s",
           accuracy: "98.5%",
           logs: [
@@ -137,7 +137,7 @@ export default function LiveDashboard({ slug, color, solutionName }: LiveDashboa
         };
       case "conversational-ai":
         return {
-          image: "/solutions/conversational_ai.png",
+          image: "/solutions/.webp",
           throughput: "5.5k hrs/day",
           accuracy: "99.1%",
           logs: [
@@ -154,7 +154,7 @@ export default function LiveDashboard({ slug, color, solutionName }: LiveDashboa
         };
       default:
         return {
-          image: "/solutions/computer_vision.png",
+          image: "/solutions/.webp",
           throughput: "System OK",
           accuracy: "99.0%",
           logs: [

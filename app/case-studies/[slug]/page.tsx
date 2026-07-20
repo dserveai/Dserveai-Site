@@ -62,7 +62,7 @@ export default async function CaseStudyPage(props: Props) {
           generateArticle({
             title: caseStudy.title,
             date: new Date().toISOString(),
-            image: `/case-studies/${caseStudy.slug}.png`,
+            image: `/case-studies/${caseStudy.slug}.webp`,
             path: `/case-studies/${caseStudy.slug}`,
             isTech: true
           }),
@@ -79,7 +79,7 @@ export default async function CaseStudyPage(props: Props) {
       {/* Immersive Hero */}
       <section className={styles.hero}>
         <Image 
-          src={`/case-studies/${caseStudy.slug}.png`}
+          src={`/case-studies/${caseStudy.slug}.webp`}
           alt={caseStudy.title}
           fill
           priority
@@ -177,7 +177,9 @@ export default async function CaseStudyPage(props: Props) {
         </motion.div>
 
         {/* Deep Dive Dynamic Content */}
-        {caseStudy.deepDive && caseStudy.deepDive.map((block, i) => (
+        {caseStudy.deepDive && caseStudy.deepDive.map((blockAny, i) => {
+          const block = blockAny as any;
+          return (
           <motion.div
             key={i}
             initial={{ opacity: 0, y: 40 }}
@@ -199,7 +201,7 @@ export default async function CaseStudyPage(props: Props) {
             
             {block.type === 'workflow' && block.steps && (
               <div className={styles.workflowGrid}>
-                {block.steps.map((step, stepIdx) => (
+                {block.steps.map((step: any, stepIdx: number) => (
                   <div 
                     key={stepIdx} 
                     className={styles.workflowStep}
@@ -214,7 +216,7 @@ export default async function CaseStudyPage(props: Props) {
             
             {block.type === 'tech-specs' && block.specs && (
               <div className={styles.techGrid}>
-                {block.specs.map((spec, specIdx) => (
+                {block.specs.map((spec: any, specIdx: number) => (
                   <div key={specIdx} className={styles.techSpec}>
                     <span className={styles.techLabel}>{spec.label}</span>
                     <span className={styles.techValue}>{spec.value}</span>
@@ -223,7 +225,7 @@ export default async function CaseStudyPage(props: Props) {
               </div>
             )}
           </motion.div>
-        ))}
+        )})}
       </section>
 
       {/* Related Case Studies */}
