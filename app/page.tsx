@@ -9,6 +9,7 @@ export function generateMetadata(): Metadata {
       title: "Dserve AI | High-Quality AI Data",
       description: "Fuel your AI models with precision data.",
       url: "https://dserveai.com",
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Dserve AI" }],
     },
   };
 }
