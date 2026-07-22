@@ -13,14 +13,18 @@ export function generateOrganization(): OrganizationSchema & { "@context": "http
       "@type": "ImageObject",
       url: `${SITE_URL}/logo.png`,
     },
-    description: "Premium AI training datasets, data annotation, and collection services for cutting-edge AI development.",
+    description: "Premium AI Data & Solutions Company bridging the gap between AI ambition and execution. We provide high-quality datasets, data annotation, and custom AI solutions.",
     sameAs: [
       "https://www.linkedin.com/company/106909852/"
     ],
-    // The company has offices in Mumbai, Dubai.
-    // Adding lightweight location references without fabricating addresses.
+    contactPoint: {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "connect@dserveai.com",
+      "url": `${SITE_URL}/contact`,
+      "availableLanguage": ["English"]
+    },
     address: [
-
       { "@type": "PostalAddress", addressLocality: "Mumbai", addressCountry: "IN" },
       { "@type": "PostalAddress", addressLocality: "Dubai", addressCountry: "AE" }
     ],
