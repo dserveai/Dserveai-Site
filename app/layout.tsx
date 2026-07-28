@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import AnalyticsProvider from "@/components/analytics/AnalyticsProvider";
 import SchemaScript from "@/components/seo/SchemaScript";
-import StickyLeadMagnet from "@/components/lead/StickyLeadMagnet";
 import "./globals.css";
 
 const nasalization = localFont({
@@ -133,7 +132,6 @@ export default function RootLayout({
         `}} />
         <a href="#main" className="skip-link">Skip to main content</a>
         {children}
-        <StickyLeadMagnet />
         <AnalyticsProvider />
       </body>
     </html>
