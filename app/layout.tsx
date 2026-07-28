@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import AnalyticsProvider from "@/components/analytics/AnalyticsProvider";
 import SchemaScript from "@/components/seo/SchemaScript";
+import StickyLeadMagnet from "@/components/lead/StickyLeadMagnet";
 import "./globals.css";
 
 const nasalization = localFont({
@@ -52,18 +53,36 @@ const globalSchema = {
       "@id": "https://dserveai.com/#organization",
       "name": "Dserve AI",
       "url": "https://dserveai.com",
-      "logo": "https://dserveai.com/og-image.jpg",
-      "description": "Premium AI training datasets, data annotation, and collection services.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://dserveai.com/logo.png"
+      },
+      "description": "Premium AI Data & Solutions Company bridging the gap between AI ambition and execution. We provide high-quality datasets, data annotation, and custom AI solutions.",
       "sameAs": [
-        "https://www.linkedin.com/company/dserve-ai",
-        "https://twitter.com/dserveai"
+        "https://www.linkedin.com/company/106909852/"
       ],
       "contactPoint": {
         "@type": "ContactPoint",
-        "email": "contact@dserveai.com",
-        "contactType": "customer service"
+        "contactType": "customer support",
+        "email": "connect@dserveai.com",
+        "url": "https://dserveai.com/contact",
+        "availableLanguage": ["English"]
+      },
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Mumbai",
+          "addressCountry": "IN"
+        },
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Dubai",
+          "addressCountry": "AE"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@id": "https://dserveai.com/services/#itemList"
       }
-      // Note: postalCode and streetAddress are intentionally omitted because Dserve AI does not currently list a public physical office address.
     },
     {
       "@type": "WebSite",
@@ -73,11 +92,27 @@ const globalSchema = {
       "publisher": {
         "@id": "https://dserveai.com/#organization"
       }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://dserveai.com/#webpage",
+      "url": "https://dserveai.com",
+      "name": "Dserve AI | Empowering AI with High-Quality Data",
+      "isPartOf": {
+        "@id": "https://dserveai.com/#website"
+      },
+      "about": {
+        "@id": "https://dserveai.com/#organization"
+      }
     }
   ]
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en" className={nasalization.variable} suppressHydrationWarning data-scroll-behavior="smooth">
       <head>
@@ -91,13 +126,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" content="#ffffff" />
         <SchemaScript schema={globalSchema} />
       </head>
-      <body>
+      <body className="antialiased">
         <style dangerouslySetInnerHTML={{__html: `
           .skip-link { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
           .skip-link:focus { position: absolute; top: 0; left: 0; padding: 1rem; background: #0ea5e9; color: #fff; z-index: 9999; width: auto; height: auto; clip: auto; }
         `}} />
         <a href="#main" className="skip-link">Skip to main content</a>
         {children}
+        <StickyLeadMagnet />
         <AnalyticsProvider />
       </body>
     </html>
