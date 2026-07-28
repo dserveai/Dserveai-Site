@@ -16,6 +16,52 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/about-dserve',
+        destination: '/about',
+        permanent: true,
+      },
+      {
+        source: '/about-us',
+        destination: '/about',
+        permanent: true,
+      },
+      // WordPress default structures
+      {
+        source: '/category/:slug*',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/tag/:slug*',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/author/:slug*',
+        destination: '/blog',
+        permanent: true,
+      },
+      // Catch-all for old biometric/computer-vision slugs often found in WP URLs
+      {
+        source: '/high-quality-biometric-ai-data',
+        destination: '/case-studies/biometric-verification-system',
+        permanent: true,
+      },
+      {
+        source: '/text-image-video-datasets',
+        destination: '/services/multi-modal-data-collection',
+        permanent: true,
+      },
+      {
+        source: '/best-computer-vision-datasets',
+        destination: '/services/computer-vision-analytics',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
