@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import HomeClient from "@/components/ui/HomeClient";
+import SchemaScript from "@/components/seo/SchemaScript";
+import { generateWebPage } from "@/lib/schema";
 
 export function generateMetadata(): Metadata {
   return {
@@ -15,5 +17,15 @@ export function generateMetadata(): Metadata {
 }
 
 export default function Page() {
-  return <HomeClient />;
+  return (
+    <>
+      <SchemaScript 
+        schema={generateWebPage({
+          title: "Dserve AI | High-Quality AI Data Collection & Annotation",
+          path: "/"
+        })}
+      />
+      <HomeClient />
+    </>
+  );
 }

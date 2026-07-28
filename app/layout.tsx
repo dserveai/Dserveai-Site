@@ -1,6 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata } from "next";
 import localFont from "next/font/local";
 import AnalyticsProvider from "@/components/analytics/AnalyticsProvider";
+import ClarityProvider from "@/components/analytics/ClarityProvider";
+import SchemaScript from "@/components/seo/SchemaScript";
 import "./globals.css";
 
 const nasalization = localFont({
@@ -16,7 +18,7 @@ export const metadata: Metadata = {
   creator: "Dserve AI",
   publisher: "Dserve AI",
   metadataBase: new URL("https://dserveai.com"),
-  alternates: { canonical: "/" },
+  alternates: { canonical: "./" },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -37,6 +39,38 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 },
   },
+  manifest: "/site.webmanifest",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  }
+};
+
+const globalSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://dserveai.com/#organization",
+      "name": "Dserve AI",
+      "url": "https://dserveai.com",
+      "logo": "https://dserveai.com/og-image.jpg",
+      "description": "Premium AI training datasets, data annotation, and collection services.",
+      "sameAs": [
+        "https://www.linkedin.com/company/dserve-ai",
+        "https://twitter.com/dserveai"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://dserveai.com/#website",
+      "url": "https://dserveai.com",
+      "name": "Dserve AI",
+      "publisher": {
+        "@id": "https://dserveai.com/#organization"
+      }
+    }
+  ]
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -50,7 +84,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="theme-color" content="#ffffff" />
+        <SchemaScript schema={globalSchema} />
       </head>
       <body>
         <style dangerouslySetInnerHTML={{__html: `
@@ -60,6 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#main" className="skip-link">Skip to main content</a>
         {children}
         <AnalyticsProvider />
+        <ClarityProvider />
       </body>
     </html>
   );
