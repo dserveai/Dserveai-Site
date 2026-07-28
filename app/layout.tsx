@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import AnalyticsProvider from "@/components/analytics/AnalyticsProvider";
-import ClarityProvider from "@/components/analytics/ClarityProvider";
 import SchemaScript from "@/components/seo/SchemaScript";
 import "./globals.css";
 
@@ -59,7 +58,13 @@ const globalSchema = {
       "sameAs": [
         "https://www.linkedin.com/company/dserve-ai",
         "https://twitter.com/dserveai"
-      ]
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "contact@dserveai.com",
+        "contactType": "customer service"
+      }
+      // Note: postalCode and streetAddress are intentionally omitted because Dserve AI does not currently list a public physical office address.
     },
     {
       "@type": "WebSite",
@@ -95,7 +100,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#main" className="skip-link">Skip to main content</a>
         {children}
         <AnalyticsProvider />
-        <ClarityProvider />
       </body>
     </html>
   );
