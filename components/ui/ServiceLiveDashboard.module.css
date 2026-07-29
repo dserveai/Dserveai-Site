@@ -244,3 +244,166 @@
   from { transform: rotateX(0deg) rotateY(0deg); }
   to { transform: rotateX(360deg) rotateY(360deg); }
 }
+
+/* =========================================
+   CLINICAL NLP (Text Parser)
+========================================= */
+.textParser {
+  width: 80%; height: 60%;
+  display: flex; flex-direction: column; gap: 15px;
+  justify-content: center;
+}
+.textLine {
+  height: 10px; background: rgba(255,255,255,0.1);
+  border-radius: 5px; position: relative; overflow: hidden;
+}
+.highlight {
+  position: absolute; top: 0; left: 0; height: 100%;
+  background: var(--c); opacity: 0.5;
+  animation: scanText 2s infinite ease-in-out;
+}
+@keyframes scanText {
+  0% { width: 0; opacity: 1; } 
+  50% { width: 100%; opacity: 1; } 
+  100% { width: 0; left: 100%; opacity: 0; }
+}
+
+/* =========================================
+   DRUG DISCOVERY (Molecule Graph)
+========================================= */
+.moleculeGraph {
+  width: 150px; height: 150px; position: relative;
+  animation: rotateMol 10s infinite linear;
+}
+.atom {
+  position: absolute; width: 20px; height: 20px;
+  background: var(--c); border-radius: 50%;
+  box-shadow: 0 0 15px var(--c);
+}
+.atom1 { top: 0; left: 50%; transform: translateX(-50%); }
+.atom2 { bottom: 0; left: 50%; transform: translateX(-50%); }
+.atom3 { top: 50%; left: 0; transform: translateY(-50%); }
+.atom4 { top: 50%; right: 0; transform: translateY(-50%); }
+.bond {
+  position: absolute; background: rgba(255,255,255,0.2);
+  height: 2px; width: 60px;
+}
+@keyframes rotateMol {
+  from { transform: rotate(0deg); } to { transform: rotate(360deg); }
+}
+
+/* =========================================
+   HEALTHCARE ADMIN (Document Scanner)
+========================================= */
+.documentScanner {
+  width: 100px; height: 140px; border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 8px; position: relative;
+  background: rgba(255,255,255,0.05); overflow: hidden;
+}
+.docBg {
+  position: absolute; top: 10px; left: 10px; right: 10px; height: 10px;
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 20px 0 rgba(255,255,255,0.1), 0 40px 0 rgba(255,255,255,0.1), 0 60px 0 rgba(255,255,255,0.1);
+}
+.docScannerLine {
+  position: absolute; width: 100%; height: 2px; background: var(--c);
+  box-shadow: 0 0 10px var(--c);
+  animation: docScan 2s infinite alternate ease-in-out;
+}
+@keyframes docScan {
+  0% { top: 0; } 100% { top: 100%; }
+}
+
+/* =========================================
+   REMOTE PATIENT MONITORING (ECG Wave)
+========================================= */
+.ecgContainer {
+  width: 80%; height: 100px; position: relative; overflow: hidden;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.ecgWave { width: 100%; height: 100%; }
+.ecgSweeper {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, transparent 10%, transparent 90%, rgba(0,0,0,1) 100%);
+  animation: sweepEcg 3s infinite linear;
+}
+@keyframes sweepEcg {
+  0% { transform: translateX(-100%); } 100% { transform: translateX(100%); }
+}
+
+/* =========================================
+   FINANCIAL SERVICES (Trading Chart)
+========================================= */
+.tradingChart {
+  width: 200px; height: 120px; position: relative;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+}
+.candle {
+  width: 15px; background: var(--c); border-radius: 2px;
+  animation: candleBounce 2s infinite alternate ease-in-out;
+  opacity: 0.8;
+}
+.chartLine {
+  position: absolute; top: 50%; left: 0; width: 100%; height: 1px;
+  background: rgba(255,255,255,0.2); border-top: 1px dashed rgba(255,255,255,0.2);
+}
+@keyframes candleBounce {
+  0% { transform: scaleY(0.5); } 100% { transform: scaleY(1.2); }
+}
+
+/* =========================================
+   MEDIA ENTERTAINMENT (Audio Visualizer)
+========================================= */
+.audioVisualizer {
+  display: flex; align-items: flex-end; gap: 8px; height: 100px;
+}
+.bar {
+  width: 15px; height: 100%; background: var(--c);
+  border-radius: 4px; animation: audioBounce 0.5s infinite alternate ease-in-out;
+  box-shadow: 0 0 10px var(--c);
+}
+@keyframes audioBounce {
+  0% { height: 20%; } 100% { height: 100%; }
+}
+
+/* =========================================
+   LLMs CONVERSATIONAL AI (Chat Bubbles)
+========================================= */
+.chatContainer {
+  width: 80%; display: flex; flex-direction: column; gap: 20px;
+}
+.chatBubbleUser {
+  align-self: flex-end; width: 60%; height: 30px;
+  background: rgba(255,255,255,0.1); border-radius: 15px 15px 0 15px;
+}
+.chatBubbleAI {
+  align-self: flex-start; width: 50%; height: 30px;
+  background: color-mix(in srgb, var(--c) 20%, transparent); border: 1px solid var(--c);
+  border-radius: 15px 15px 15px 0; display: flex; align-items: center; justify-content: center; gap: 5px;
+}
+.typingDot {
+  width: 6px; height: 6px; background: var(--c); border-radius: 50%;
+  animation: typing 1s infinite alternate;
+}
+.typingDot:nth-child(2) { animation-delay: 0.2s; }
+.typingDot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typing { 0% { transform: translateY(0); } 100% { transform: translateY(-5px); } }
+
+/* =========================================
+   ENTERPRISE AI (Server Rack)
+========================================= */
+.serverRack {
+  width: 120px; display: flex; flex-direction: column; gap: 10px;
+}
+.serverUnit {
+  height: 30px; border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px; background: rgba(255,255,255,0.05);
+  position: relative;
+}
+.blinker {
+  position: absolute; right: 10px; top: 10px; width: 10px; height: 10px;
+  border-radius: 50%; background: var(--c); box-shadow: 0 0 10px var(--c);
+  animation: blink 1s infinite step-start;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }

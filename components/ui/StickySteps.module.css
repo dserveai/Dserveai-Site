@@ -1,5 +1,7 @@
 .stickySection {
-  padding: 100px 0 0 0;
+  padding: 100px 24px 0;
+  max-width: 1200px;
+  margin: 0 auto;
   position: relative;
   border-top: 1px solid rgba(255,255,255,0.05);
 }

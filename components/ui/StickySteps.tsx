@@ -17,9 +17,10 @@ interface Props {
   color: string;
   sectionTitle: string;
   slug?: string;
+  visualizer?: React.ReactNode;
 }
 
-export default function StickySteps({ steps, color, sectionTitle, slug }: Props) {
+export default function StickySteps({ steps, color, sectionTitle, slug, visualizer }: Props) {
   const [activeIdx, setActiveIdx] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -62,15 +63,15 @@ export default function StickySteps({ steps, color, sectionTitle, slug }: Props)
         
         {/* LEFT: Massive Sticky Animation Monitor */}
         <div className={styles.stickyLeft}>
-          {slug ? (
-            <div className={styles.navDashboardWrapper}>
+          <div className={styles.navDashboardWrapper}>
+            {visualizer ? (
+              visualizer
+            ) : slug ? (
               <ServiceLiveDashboard slug={slug} color={color} />
-            </div>
-          ) : (
-            <div className={styles.navDashboardWrapper}>
+            ) : (
                <ServiceLiveDashboard slug="default" color={color} />
-            </div>
-          )}
+            )}
+          </div>
         </div>
 
         {/* RIGHT: Scrolling Workflow Steps */}

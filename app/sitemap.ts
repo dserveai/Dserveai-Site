@@ -52,5 +52,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...servicePages, ...solutionPages, ...caseStudyPages, ...blogPages];
+  const { industries } = await import('@/lib/industryData');
+  const industryPages = industries.map((industry) => ({
+    url: `${baseUrl}/industry/${industry.slug}`,
+    lastModified: new Date().toISOString().split('T')[0],
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  return [...staticPages, ...servicePages, ...solutionPages, ...caseStudyPages, ...blogPages, ...industryPages];
 }

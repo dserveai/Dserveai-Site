@@ -12,7 +12,56 @@ interface Props {
 export default function ServiceLiveDashboard({ slug, color }: Props) {
   const renderVisual = () => {
     switch (slug) {
-      case "custom-dataset-collection":
+      case "medical-imaging-ai":
+        return (
+          <div className={styles.mriContainer} style={{ "--c": color } as React.CSSProperties}>
+            <div className={styles.mriScanner} />
+            <div className={styles.mriGrid} />
+          </div>
+        );
+
+      case "clinical-nlp":
+        return (
+          <div className={styles.textParser} style={{ "--c": color } as React.CSSProperties}>
+            <div className={styles.textLine} style={{ width: '80%' }}></div>
+            <div className={styles.textLine} style={{ width: '60%' }}><div className={styles.highlight} /></div>
+            <div className={styles.textLine} style={{ width: '90%' }}></div>
+            <div className={styles.textLine} style={{ width: '40%' }}><div className={styles.highlight} style={{ animationDelay: '1s'}} /></div>
+          </div>
+        );
+
+      case "drug-discovery":
+        return (
+          <div className={styles.moleculeGraph} style={{ "--c": color } as React.CSSProperties}>
+            <div className={`${styles.atom} ${styles.atom1}`} />
+            <div className={`${styles.atom} ${styles.atom2}`} />
+            <div className={`${styles.atom} ${styles.atom3}`} />
+            <div className={`${styles.atom} ${styles.atom4}`} />
+            <div className={styles.bond} style={{ top: '35%', left: '35%', transform: 'rotate(45deg)' }} />
+            <div className={styles.bond} style={{ top: '35%', right: '35%', transform: 'rotate(-45deg)' }} />
+            <div className={styles.bond} style={{ bottom: '35%', left: '50%', transform: 'rotate(90deg)' }} />
+          </div>
+        );
+
+      case "healthcare-administration":
+        return (
+          <div className={styles.documentScanner} style={{ "--c": color } as React.CSSProperties}>
+            <div className={styles.docBg} />
+            <div className={styles.docScannerLine} />
+          </div>
+        );
+
+      case "remote-patient-monitoring":
+        return (
+          <div className={styles.ecgContainer} style={{ "--c": color } as React.CSSProperties}>
+            <svg className={styles.ecgWave} viewBox="0 0 100 50">
+              <path d="M 0 25 L 20 25 L 30 10 L 40 45 L 50 25 L 100 25" fill="none" stroke="var(--c)" strokeWidth="2" />
+            </svg>
+            <div className={styles.ecgSweeper} />
+          </div>
+        );
+
+      case "public-health":
         return (
           <div className={styles.worldMap} style={{ "--c": color } as React.CSSProperties}>
             <div className={`${styles.node} ${styles.node1}`} />
@@ -22,8 +71,20 @@ export default function ServiceLiveDashboard({ slug, color }: Props) {
             <div className={styles.connection} />
           </div>
         );
-      
-      case "data-annotation-labeling":
+
+      case "financial-services":
+        return (
+          <div className={styles.tradingChart} style={{ "--c": color } as React.CSSProperties}>
+            <div className={styles.candle} style={{ height: '40px', left: '10%' }} />
+            <div className={styles.candle} style={{ height: '70px', left: '30%', animationDelay: '0.2s' }} />
+            <div className={styles.candle} style={{ height: '30px', left: '50%', animationDelay: '0.4s' }} />
+            <div className={styles.candle} style={{ height: '90px', left: '70%', animationDelay: '0.6s' }} />
+            <div className={styles.candle} style={{ height: '60px', left: '90%', animationDelay: '0.8s' }} />
+            <div className={styles.chartLine} />
+          </div>
+        );
+
+      case "ecommerce-retail":
         return (
           <div className={styles.annotationFrame} style={{ "--c": color } as React.CSSProperties}>
             <div className={styles.boundingBox}>
@@ -32,33 +93,43 @@ export default function ServiceLiveDashboard({ slug, color }: Props) {
           </div>
         );
 
-      case "quality-assurance":
+      case "autonomous-systems":
         return (
-          <div className={styles.qaContainer} style={{ "--c": color } as React.CSSProperties}>
-            <div className={styles.dataRow}></div>
-            <div className={styles.dataRow}>
-              <div className={styles.errorBlock} />
-            </div>
-            <div className={styles.dataRow}></div>
-            <div className={styles.dataRow}></div>
-            <div className={styles.qaScanner} />
+          <div className={styles.pointCloud} style={{ "--c": color } as React.CSSProperties}>
+            <div className={styles.point} style={{ top: '10%', left: '50%', transform: 'translateZ(20px)' }} />
+            <div className={styles.point} style={{ top: '80%', left: '20%', transform: 'translateZ(-20px)' }} />
+            <div className={styles.point} style={{ top: '50%', left: '80%', transform: 'translateZ(40px)' }} />
+            <div className={styles.point} style={{ top: '20%', left: '20%', transform: 'translateZ(10px)' }} />
+            <div className={styles.point} style={{ top: '70%', left: '60%', transform: 'translateZ(-30px)' }} />
+            <div className={styles.lidarSweep} />
           </div>
         );
 
-      case "rapid-dataset-delivery":
+      case "media-entertainment":
         return (
-          <div className={styles.deliveryContainer} style={{ "--c": color } as React.CSSProperties}>
-            <div className={styles.serverNode}>
-              <DynamicIcon name="Server" size={24} color={color} />
-            </div>
-            <div className={styles.packetStream}>
-              <div className={styles.packet} style={{ animationDelay: "0s" }} />
-              <div className={styles.packet} style={{ animationDelay: "0.3s" }} />
-              <div className={styles.packet} style={{ animationDelay: "0.6s" }} />
-            </div>
-            <div className={styles.cloudNode}>
-              <DynamicIcon name="CloudUpload" size={24} color={color} />
-            </div>
+          <div className={styles.audioVisualizer} style={{ "--c": color } as React.CSSProperties}>
+            <div className={styles.bar} style={{ animationDelay: '0.1s' }} />
+            <div className={styles.bar} style={{ animationDelay: '0.3s' }} />
+            <div className={styles.bar} style={{ animationDelay: '0.0s' }} />
+            <div className={styles.bar} style={{ animationDelay: '0.4s' }} />
+            <div className={styles.bar} style={{ animationDelay: '0.2s' }} />
+          </div>
+        );
+
+      case "llms-conversational-ai":
+        return (
+          <div className={styles.chatContainer} style={{ "--c": color } as React.CSSProperties}>
+            <div className={styles.chatBubbleUser} />
+            <div className={styles.chatBubbleAI}><div className={styles.typingDot} /><div className={styles.typingDot} /><div className={styles.typingDot} /></div>
+          </div>
+        );
+
+      case "enterprise-ai":
+        return (
+          <div className={styles.serverRack} style={{ "--c": color } as React.CSSProperties}>
+            <div className={styles.serverUnit}><div className={styles.blinker} /></div>
+            <div className={styles.serverUnit}><div className={styles.blinker} style={{ animationDelay: '0.5s' }} /></div>
+            <div className={styles.serverUnit}><div className={styles.blinker} style={{ animationDelay: '0.2s' }} /></div>
           </div>
         );
 
