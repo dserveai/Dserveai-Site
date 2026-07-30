@@ -52,10 +52,9 @@ export default function StickySteps({ steps, color, sectionTitle, slug, visualiz
         <span className={styles.codeLabel} style={{ "--c": color } as React.CSSProperties}>
           // {sectionTitle}
         </span>
-        <h2 className={styles.stickyTitle}>The Pipeline Workflow</h2>
+        <h2 className={styles.stickyTitle}>High-Impact AI Use Cases</h2>
         <p className={styles.stickySubtitle}>
-          A structured, repeatable process. Every engagement follows the same
-          rigorous pipeline to ensure perfectly executed data.
+          Discover how our specialized data solutions power state-of-the-art models and drive measurable outcomes across real-world domain projects.
         </p>
       </div>
 

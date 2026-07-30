@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Star } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { caseStudies } from "@/lib/data";
@@ -78,13 +78,7 @@ export default async function CaseStudyPage(props: Props) {
       <main id="main">
       {/* Immersive Hero */}
       <section className={styles.hero}>
-        <Image 
-          src={`/case-studies/${caseStudy.slug}.webp`}
-          alt={caseStudy.title}
-          fill
-          priority
-          className={styles.heroImage}
-        />
+        <div className={styles.abstractBg} style={{ "--c": caseStudy.color } as React.CSSProperties} />
         <div className={styles.heroOverlay} />
         
         <div className={`container ${styles.heroContent}`}>
@@ -226,6 +220,30 @@ export default async function CaseStudyPage(props: Props) {
             )}
           </motion.div>
         )})}
+      </section>
+
+      {/* Testimonial Block */}
+      <section className={`container ${styles.testimonialSection}`}>
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8 }}
+          className={styles.testimonialCard}
+          style={{ "--c": caseStudy.color } as React.CSSProperties}
+        >
+          <div className={styles.quoteIcon}>"</div>
+          <p className={styles.testimonialText}>
+            "We were pleasantly surprised with Dserve AI's robust workflow management, quick turnaround time, their experience in AI data pipelines, and their network of expert annotators. Moreover, the quality that they offer is second to none."
+          </p>
+          <div className={styles.stars}>
+            <Star size={20} fill="currentColor" />
+            <Star size={20} fill="currentColor" />
+            <Star size={20} fill="currentColor" />
+            <Star size={20} fill="currentColor" />
+            <Star size={20} fill="currentColor" />
+          </div>
+        </motion.div>
       </section>
 
       {/* Related Case Studies */}

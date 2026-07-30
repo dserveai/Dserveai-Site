@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+export const dynamic = "force-static";
 import { services } from '@/lib/data';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

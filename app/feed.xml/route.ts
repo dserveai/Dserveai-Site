@@ -1,4 +1,5 @@
 import { NextResponse } from 'next';
+export const dynamic = "force-static";
 import { blogPosts, caseStudies } from '@/lib/data';
 
 export async function GET() {
@@ -41,7 +42,7 @@ export async function GET() {
     </channel>
   </rss>`;
 
-  return new NextResponse(rssFeed, {
+  return new Response(rssFeed, {
     headers: {
       'Content-Type': 'text/xml',
       'Cache-Control': 's-maxage=86400, stale-while-revalidate',
