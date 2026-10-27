@@ -7,7 +7,6 @@ import postsData from "@/lib/posts_data.json";
 import SchemaScript from "@/components/seo/SchemaScript";
 import { generateArticle, generateBreadcrumbList } from "@/lib/schema";
 import BlogConversionCta from "@/components/blog/BlogConversionCta";
-import BlogStickyBar from "@/components/blog/BlogStickyBar";
 
 function splitContentAtSecondParagraph(html: string): [string, string | null] {
   const pRegex = /<\/p>/gi;
@@ -163,7 +162,6 @@ export default async function BlogPostPage(props: Props) {
         article pre code { background: transparent; padding: 0; }
         .relatedCard:hover { background: rgba(255,255,255,0.05) !important; border-color: rgba(99,179,255,0.3) !important; transform: translateY(-4px); }
       `}} />
-      <BlogStickyBar />
       <Footer />
     </>
   );
