@@ -6,6 +6,25 @@ import Footer from "@/components/layout/Footer";
 import postsData from "@/lib/posts_data.json";
 import SchemaScript from "@/components/seo/SchemaScript";
 import { generateArticle, generateBreadcrumbList } from "@/lib/schema";
+import BlogConversionCta from "@/components/blog/BlogConversionCta";
+import BlogStickyBar from "@/components/blog/BlogStickyBar";
+
+function splitContentAtSecondParagraph(html: string): [string, string | null] {
+  const pRegex = /<\/p>/gi;
+  let match: RegExpExecArray | null = null;
+  let count = 0;
+
+  while ((match = pRegex.exec(html)) !== null) {
+    count++;
+    if (count === 2) {
+      const splitIdx = match.index + match[0].length;
+      return [html.substring(0, splitIdx), html.substring(splitIdx)];
+    }
+  }
+
+  // Fallback: If less than 2 paragraphs, return whole content
+  return [html, null];
+}
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -49,6 +68,8 @@ export default async function BlogPostPage(props: Props) {
   if (!post) {
     notFound();
   }
+
+  const [contentPart1, contentPart2] = splitContentAtSecondParagraph(post.content);
 
   return (
     <>
@@ -94,8 +115,11 @@ export default async function BlogPostPage(props: Props) {
               borderTop: "1px solid rgba(255,255,255,0.1)",
               paddingTop: "48px"
             }}
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
+          >
+            <div dangerouslySetInnerHTML={{ __html: contentPart1 }} />
+            <BlogConversionCta />
+            {contentPart2 && <div dangerouslySetInnerHTML={{ __html: contentPart2 }} />}
+          </article>
 
           <div style={{ marginTop: "64px", paddingTop: "40px", borderTop: "1px solid rgba(255,255,255,0.1)" }}>
             <h3 style={{ color: "white", fontFamily: "'Outfit', sans-serif", fontSize: "1.5rem", marginBottom: "24px" }}>Related Posts</h3>
@@ -139,6 +163,7 @@ export default async function BlogPostPage(props: Props) {
         article pre code { background: transparent; padding: 0; }
         .relatedCard:hover { background: rgba(255,255,255,0.05) !important; border-color: rgba(99,179,255,0.3) !important; transform: translateY(-4px); }
       `}} />
+      <BlogStickyBar />
       <Footer />
     </>
   );

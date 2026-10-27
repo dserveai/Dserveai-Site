@@ -90,8 +90,26 @@ export default async function IndustryPage({ params }: Props) {
     tags: industry.keywords.split(',').slice(0, 3).map(k => k.trim())
   }));
 
+  // Generate FAQ Schema (JSON-LD) for SEO
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: industry.faqs.map(faq => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer
+      }
+    }))
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Navbar />
       <main className={styles.pageContainer}>
         {/* 1. Interactive Hero Banner */}

@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./Footer.module.css";
 
-const footerLinks = {
+const topFooterLinks = {
   Company: [
     { href: "/about", label: "About Us" },
     { href: "/case-studies", label: "Case Studies" },
@@ -28,6 +28,19 @@ const footerLinks = {
     { href: "/solutions/agentic-ai", label: "Agentic AI" },
     { href: "/solutions/conversational-ai", label: "Conversational AI" },
   ],
+};
+
+const seoFooterLinks = {
+  Compare: [
+    { href: "/compare/dserve-vs-scale-ai", label: "Scale AI Alternative" },
+    { href: "/compare/dserve-vs-labelbox", label: "Labelbox Alternative" },
+    { href: "/compare/dserve-vs-snorkel-ai", label: "Snorkel AI Alternative" },
+  ],
+  "Use Cases": [
+    { href: "/use-cases/dicom-medical-annotation", label: "DICOM Annotation" },
+    { href: "/use-cases/lidar-3d-bounding-box", label: "LiDAR 3D Cuboids" },
+    { href: "/use-cases/llm-rlhf-alignment", label: "LLM RLHF Alignment" },
+  ]
 };
 
 export default function Footer() {
@@ -69,7 +82,7 @@ export default function Footer() {
           </div>
 
           {/* Link Columns */}
-          {Object.entries(footerLinks).map(([section, links]) => (
+          {Object.entries(topFooterLinks).map(([section, links]) => (
             <div key={section} className={styles.linkGroup}>
               <h3 className={styles.linkGroupTitle}>{section}</h3>
               <ul className={styles.linkList}>
@@ -96,6 +109,22 @@ export default function Footer() {
               ))}
             </div>
           </div>
+        </div>
+
+        {/* SEO Grid (Compare & Use Cases) */}
+        <div className={styles.seoGrid}>
+          {Object.entries(seoFooterLinks).map(([section, links]) => (
+            <div key={section} className={styles.linkGroup}>
+              <h3 className={styles.linkGroupTitle}>{section}</h3>
+              <ul className={styles.seoLinkList}>
+                {links.map(({ href, label }) => (
+                  <li key={label}>
+                    <Link href={href} className={styles.footerLink}>{label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
         {/* Bottom Bar */}

@@ -61,5 +61,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...servicePages, ...solutionPages, ...caseStudyPages, ...blogPages, ...industryPages];
+  const { comparisons } = await import('@/lib/compareData');
+  const comparePages = comparisons.map((comp) => ({
+    url: `${baseUrl}/compare/${comp.slug}`,
+    lastModified: new Date().toISOString().split('T')[0],
+    changeFrequency: 'monthly' as const,
+    priority: 0.85,
+  }));
+
+  const { useCases } = await import('@/lib/useCaseData');
+  const useCasePages = useCases.map((uc) => ({
+    url: `${baseUrl}/use-cases/${uc.slug}`,
+    lastModified: new Date().toISOString().split('T')[0],
+    changeFrequency: 'monthly' as const,
+    priority: 0.85,
+  }));
+
+  return [
+    ...staticPages,
+    ...servicePages,
+    ...solutionPages,
+    ...caseStudyPages,
+    ...blogPages,
+    ...industryPages,
+    ...comparePages,
+    ...useCasePages,
+  ];
 }
